@@ -1,0 +1,304 @@
+/* angy main*/ 
+
+/* ====== PALETA DE COLORES ====== */
+/* Azul marino oscuro: #1E2027 */
+/* Verde suave claro: #A3E4A6 */
+/* Verde fuerte: #5BA273 */
+/* Azul eléctrico: #4B7FFB */
+/* Blanco puro: #FFFFFF */
+/* en minuscula*/ 
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: white;
+  color: black;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+header {
+  background-image: url('images/header.avif');
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  padding: 120px 20px;
+  color: white;
+  position: relative;
+}
+
+header h1{
+  font-size: 2.5rem;
+  background: linear-gradient(45deg, silver, #00ff88, silver);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin-top: 2rem;
+  font-weight: bold;
+}
+header h2 {
+  position: relative;
+  z-index: 1;
+  margin: 0.5em 0;
+}
+
+header .btn {
+  display: inline-block;
+  margin-top: 20px;
+  background-color: #5ba273;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+header .btn:hover {
+  background-color: #4b7ffb;
+}
+
+/* Estilos base para la navbar */
+.navbar {
+  background-color: #1e3a8a;
+  padding: 10px 0;
+}
+
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-list li {
+  position: relative;
+  margin: 0 20px;
+}
+
+.nav-list li a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 10px;
+  display: block;
+}
+
+.nav-list li a:hover {
+  color: #b3d4fc;
+}
+
+/* Estilos para el dropdown */
+.dropdown .dropbtn {
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #1e3a8a;
+  min-width: 150px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 100; 
+  top: 100%;
+  left: 0;
+  transition: all 0.3s ease;
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #2b4db3;
+}
+
+/* Submenú anidado */
+.sub-dropdown .dropdown-content {
+    top: 100%; /* Posiciona debajo del elemento padre */
+    left: 0; /* Alinea con el borde izquierdo */
+    z-index: 102;
+}
+
+/* Estilo de la flecha */
+.arrow {
+  font-size: 12px;
+  margin-left: 5px;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+/* Comportamiento en escritorio */
+@media (min-width: 769px) {
+  .hamburger {
+    display: none;
+  }
+
+  .nav-list {
+    display: flex !important;
+  }
+
+  .dropdown:hover .dropdown-content,
+  .sub-dropdown:hover .dropdown-content {
+    display: block !important;
+  }
+
+.dropdown:hover .dropdown-content,
+  .dropdown .sub-dropdown:hover .dropdown-content {
+    display: block !important; /* Mantener dropdown principal abierto */
+  }
+
+  .dropdown:hover .arrow,
+  .sub-dropdown:hover .arrow {
+    transform: rotate(-90deg); 
+  }
+}
+
+/* Comportamiento en móviles */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+    color: white;
+    font-size: 24px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+
+  .nav-list {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: #1e3a8a;
+    z-index: 100;
+  }
+
+  .nav-list.active {
+    display: flex;
+  }
+
+  .nav-list li {
+    margin: 0;
+    text-align: center;
+  }
+
+  .nav-list li a {
+    padding: 15px;
+    font-size: 18px;
+  }
+
+  .dropdown-content {
+    position: static;
+    box-shadow: none;
+    background-color: #2b4db3;
+  }
+
+  .sub-dropdown .dropdown-content {
+    position: static;
+    background-color: #3c5ec1;
+  }
+
+  .dropdown:hover .dropdown-content,
+  .sub-dropdown:hover .dropdown-content {
+    display: none;
+  }
+
+  .dropdown.active .dropdown-content,
+  .sub-dropdown.active .dropdown-content {
+    display: block;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .nav-list li {
+    margin: 0 10px;
+  }
+
+  .nav-list li a {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
+section {
+  padding: 40px 20px;
+}
+
+.sticker-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  padding: 20px;
+}
+
+.sticker {
+  position: fixed;
+  top: 20px;
+  right: 20px; 
+  width: 100px;
+  height: auto;
+  transform-origin: top right; 
+  width: 100px; /* ajustá el tamaño que necesites */
+  height: 100px;
+}
+ .sticker:hover {
+  transform: scale(1.05);
+  background-color: #5ba273;
+  transform: scale(1.1)
+}
+
+.sticker img {
+  width: 100%;
+  height: 100%;
+  animation: scaleAnimation 2s infinite ease-in-out;
+  transition: transform 0.3s ease;
+}
+
+footer {
+  background-color: #004080;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.countdown-box {
+  background: linear-gradient(135deg, #2ecc71, #95a5a6);
+  color: #e0f2f1;
+  font-weight: bold;
+  font-size: 1.8em;
+  padding: 20px 30px;
+  border-radius: 15px;
+  width: fit-content;
+  margin: 20px auto 0 auto;
+  box-shadow: 0 0 15px 4px rgba(46, 204, 113, 0.6);
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1.2px;
+}
+
+@keyframes scaleAnimation {
+  0% {
+    transform: scale(0.7)
+  }
+  50% {
+    transform: scale(1.1)
+  }
+  100% {
+    transform: scale(0.7)
+  }
+}
