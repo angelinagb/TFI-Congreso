@@ -22,7 +22,7 @@ img {
 }
 
 header {
-  background-image: url('images/header.avif');
+  background-image: url('src/assets/images/header.avif');
   background-size: cover;
   background-position: center;
   text-align: center;
