@@ -5,13 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacto</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/redgtech_logo.png_ok.png" type="image/x-icon">
     <!--deberia incluir el reset styles*/ -->
 </head>
 <body>
     <header>
-        
+    <h1>VII Encuentro de Gestiores Tecnológicos 2025</h1>
+    <p>day_init al day_finit de 2026 – Mar del Plata, Argentina</p>
+        <div class="countdown-wrapper">
+        <h2>Falta para empezar <strong>VII Encuentro</strong></h2>
+        <div class="countdown-container">
+          <div class="countdown">
+            <div class="time-block">
+              <span id="days">009</span>
+              <p>Día</p>
+            </div>
+            <span class="separator">:</span>
+            <div class="time-block">
+              <span id="hours">01</span>
+              <p>Hrs</p>
+            </div>
+            <span class="separator">:</span>
+            <div class="time-block">
+              <span id="minutes">23</span>
+              <p>Min</p>
+            </div>
+            <span class="separator">:</span>
+            <div class="time-block">
+              <span id="seconds">20</span>
+              <p>Seg</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <section class="contact-container">
+        <h2>Contacto</h2>
+        <form class="contact-form" action="mailto:tuemail@ejemplo.com" method="POST" enctype="text/plain">
+        <label for="name">Nombre</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Mensaje</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Enviar</button>
+        </form>
+    </section>
     </header>
     
 </body>
+
+    <footer>
+        <p>&copy; 2026 RedGtech. Todos los derechos reservados.</p>
+    </footer>
+
 </html>
