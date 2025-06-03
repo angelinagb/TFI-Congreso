@@ -11,7 +11,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', Arial, sans-serif;
 }
 :root {
   --primary: #246488;
@@ -58,6 +57,8 @@ body {
   background-color: var(--surface);
   color: var(--on-surface);
   min-height: 100vh;
+  justify-content: center;
+  align-items: center;
 }
 
 main {
@@ -75,6 +76,10 @@ img {
   height: auto;
 }
 
+.spacer-40px {
+  width: 40px;
+  height: 40px;
+}
 .spacer-15px {
   width: 15px;
   height: 15px;
@@ -85,10 +90,13 @@ img {
 }
 
 header {
+  width: 100%;
   background: url('images/header.avif') no-repeat center center;
   background-size: cover;
   background-position: center;
   text-align: center;
+  align-items: center;
+  justify-content: center;
   padding: 120px 20px;
   position: relative;
 }
@@ -122,8 +130,8 @@ header h2 {
 header .btn {
   display: inline-block;
   margin-top: 20px;
-  background-color: #5ba273;
-  color: white;
+  background-color: var(--primary-container);
+  color: var(--on-primary-container);
   padding: 12px 24px;
   border: none;
   border-radius: 6px;
@@ -135,14 +143,42 @@ header .btn {
 }
 
 header .btn:hover {
-  background-color: #4b7ffb;
+  background-color: var(--primary);
+}
+
+h1 {
+  padding: 0 0 16px 0;
+}
+
+h2 {
+  padding: 0 0 6px 0;
 }
 
 /* Estilos base para la navbar */
 .navbar {
+  max-width: 1500px;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: relative;
   background-color: var(--primary);
   border-radius: 15px;
   padding: 10px 0;
+}
+
+.navbar.sticky {
+  position: fixed;
+  top: 10px;
+  z-index: 1000;
+  margin: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.navbar li a {
+  justify-content: center;
+  align-items: center;
 }
 
 .nav-list {
@@ -179,7 +215,7 @@ header .btn:hover {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #1e3a8a;
+  background-color: var(--primary);
   min-width: 150px;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 100; 
@@ -189,14 +225,15 @@ header .btn:hover {
 }
 
 .dropdown-content a {
-  color: white;
+  color: var(--surface);
   padding: 12px 16px;
   text-decoration: none;
   display: block;
 }
 
 .dropdown-content a:hover {
-  background-color: #2b4db3;
+  color: var(--on-tertiary);
+  background-color: var(--tertiary);
 }
 
 /* Submenú anidado */
@@ -229,7 +266,7 @@ header .btn:hover {
     display: block !important;
   }
 
-.dropdown:hover .dropdown-content,
+  .dropdown:hover .dropdown-content,
   .dropdown .sub-dropdown:hover .dropdown-content {
     display: block !important; /* Mantener dropdown principal abierto */
   }
@@ -252,17 +289,22 @@ header .btn:hover {
 
   .nav-list {
     display: none;
+  }
+
+  .navbar {
     flex-direction: column;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    background-color: #1e3a8a;
-    z-index: 100;
+    min-width: 90%;
   }
 
   .nav-list.active {
     display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    margin: 0 auto;
+    border-radius: 20px;
+    background-color: var(--primary);
+    z-index: 100;
   }
 
   .nav-list li {
@@ -278,12 +320,12 @@ header .btn:hover {
   .dropdown-content {
     position: static;
     box-shadow: none;
-    background-color: #2b4db3;
+    background-color: var(--primary);
   }
 
   .sub-dropdown .dropdown-content {
     position: static;
-    background-color: #3c5ec1;
+    background-color: var(--primary);
   }
 
   .dropdown:hover .dropdown-content,
@@ -327,12 +369,9 @@ section {
   width: 100px;
   height: auto;
   transform-origin: top right; 
-  width: 100px; /* ajustá el tamaño que necesites */
-  height: 100px;
 }
- .sticker:hover {
+.sticker:hover {
   transform: scale(1.05);
-  background-color: #5ba273;
   transform: scale(1.1)
 }
 
@@ -344,6 +383,7 @@ section {
 }
 
 footer {
+  width: 100%;
   background-color: var(--primary);
   color: var(--on-primary);
   text-align: center;
@@ -367,12 +407,12 @@ footer {
 
 @keyframes scaleAnimation {
   0% {
-    transform: scale(0.7)
+    transform: scale(0.9)
   }
   50% {
-    transform: scale(1.1)
+    transform: scale(1.0)
   }
   100% {
-    transform: scale(0.7)
+    transform: scale(0.9)
   }
 }
