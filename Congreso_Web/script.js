@@ -59,7 +59,7 @@ document.addEventListener('click', function(e) {
 
 
   // Fecha objetivo del congreso (25 de Octubre de 2026, 9:00 am por ejemplo)
-const countdownDate = new Date("Octubre 25, 2026 09:00:00").getTime();
+  const countdownDate = new Date("Octubre 25, 2026 09:00:00").getTime();
 
   // Actualiza la cuenta regresiva cada 1 segundo
   const countdownFunction = setInterval(() => {
