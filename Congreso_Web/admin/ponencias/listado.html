@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Ponencias | Admin VII ENGETECH 2026</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="icon" href="../../images/favicon.ico" type="image/x-icon">
+    <style>
+        
+        .admin-header {
+            background: var(--primary);
+            color: var(--on-primary);
+            padding: 30px 0 10px 0;
+            text-align: center;
+            margin-bottom: 32px; 
+        }
+        .admin-header nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            list-style: none;
+            padding: 0;
+        }
+        .admin-header nav ul li a {
+            color: var(--on-primary);
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 6px;
+        }
+        .admin-header nav ul li a.active,
+        .admin-header nav ul li a:hover {
+            background: var(--tertiary-container);
+            color: var(--on-tertiary-container);
+        }
+        .paginacion {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0; top: 0; width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.4);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-contenido {
+            background: var(--surface-container);
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 400px;
+            margin: auto;
+            position: relative;
+        }
+        .cerrar {
+            position: absolute;
+            top: 10px; right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .modal-acciones {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+    </style>
+</head>
+<body>
+    <header class="admin-header">
+        <h1>Gestión de Ponencias</h1>
+        <nav>
+            <ul>
+                <li><a href="../admin/dashboard-admin.html">Dashboard</a></li>
+                <li><a href="#" class="active">Ponencias</a></li>
+                <li><a href="#">Inscriptos</a></li>
+                <li><a href="#" id="logout">Cerrar sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="text-container">
+            <div class="filtros">
+                <select id="filtroEstado">
+                    <option value="todas">Todas las ponencias</option>
+                    <option value="pendiente">Pendientes</option>
+                    <option value="aprobado">Aprobadas</option>
+                    <option value="rechazado">Rechazadas</option>
+                </select>
+                <input type="text" id="busqueda" placeholder="Buscar por título o autor...">
+                <button id="btnFiltrar" class="btn-accion">Filtrar</button>
+            </div>
+
+            <div class="acciones-rapidas">
+                <button id="btnExportar" class="btn-accion">Exportar a Excel</button>
+                <button id="btnNotificar" class="btn-accion">Notificar seleccionados</button>
+            </div>
+
+            <table id="tablaPonencias">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" id="selectAll"></th>
+                        <th>Título</th>
+                        <th>Autor</th>
+                        <th>Institución</th>
+                        <th>Fecha envío</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpoTabla">
+                    <!-- aca se cargan las ponencias -->
+                </tbody>
+            </table>
+
+            <div class="paginacion">
+                <button id="btnAnterior">Anterior</button>
+                <span id="infoPagina">Página 1 de 1</span>
+                <button id="btnSiguiente">Siguiente</button>
+            </div>
+        </section>
+    </main>
+
+    <div id="modalPonencia" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar">&times;</span>
+            <h2 id="modalTitulo">Detalles de la Ponencia</h2>
+            <div id="modalContenido"></div>
+            <div class="modal-acciones">
+                <button id="btnAprobar" class="btn-accion">Aprobar</button>
+                <button id="btnRechazar" class="btn-accion">Rechazar</button>
+                <button id="btnCerrarModal" class="btn-accion">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../admin/admin.js"></script>
+    <script>
+        //Datos simulados
+        const ponencias=[
+            {
+                id: 1,
+                titulo: "Innovación en energías renovables",
+                autor: "María Lopez",
+                institucion: "UTN FRMDP",
+                fecha: "2026-03-15",
+                estado: "pendiente",
+                resumen: "Análisis de nuevas tecnologías solares...",
+                archivo: "ponencia1.pdf"
+            },
+            {
+                id: 2,
+                titulo: "Gestión tecnológica en PYMES",
+                autor: "Carlos Méndez",
+                institucion: "UNMDP",
+                fecha: "2026-03-18",
+                estado: "aprobado",
+                resumen: "Casos de éxito en implementación...",
+                archivo: "ponencia2.pdf"
+            }
+        ];
+
+        function renderizarTabla(datos) {
+            const cuerpoTabla = document.getElementById("cuerpoTabla");
+            cuerpoTabla.innerHTML = datos.map(ponencia => `
+                <tr data-id="${ponencia.id}">
+                    <td><input type="checkbox" class="check-ponencia"></td>
+                    <td>${ponencia.titulo}</td>
+                    <td>${ponencia.autor}</td>
+                    <td>${ponencia.institucion}</td>
+                    <td>${ponencia.fecha}</td>
+                    <td class="estado-${ponencia.estado}">${ponencia.estado.toUpperCase()}</td>
+                    <td>
+                        <button class="btn-ver btn-accion" data-id="${ponencia.id}">Ver</button>
+                        <button class="btn-editar btn-accion" data-id="${ponencia.id}">Editar</button>
+                    </td>
+                </tr>
+            `).join("");
+            // Asigna eventos a los botones después de renderizar
+            document.querySelectorAll(".btn-ver").forEach(btn => {
+                btn.addEventListener("click", (e) => {
+                    const id = e.target.getAttribute("data-id");
+                    const ponencia = ponencias.find(p => p.id == id);
+                    abrirModal(ponencia);
+                });
+            });
+        }
+
+        // Mostrar datos al cargar la página
+        document.addEventListener("DOMContentLoaded", () => {
+            renderizarTabla(ponencias);
+        });
+
+        function abrirModal(ponencia) {
+            const modal = document.getElementById("modalPonencia");
+            document.getElementById("modalTitulo").textContent = ponencia.titulo;
+            document.getElementById("modalContenido").innerHTML = `
+                <p><strong>Autor:</strong> ${ponencia.autor}</p>
+                <p><strong>Institución:</strong> ${ponencia.institucion}</p>
+                <p><strong>Resumen:</strong> ${ponencia.resumen}</p>
+                <p><strong>Archivo:</strong> <a href="../uploads/${ponencia.archivo}" target="_blank">Descargar</a></p>
+            `;
+            modal.style.display = "flex";
+        }
+
+        //cerrar modal
+        document.querySelectorAll(".cerrar, #btnCerrarModal").forEach(btn => {
+            btn.addEventListener("click", () => {
+                document.getElementById("modalPonencia").style.display = "none";
+            });
+        });
+
+        document.getElementById("modalPonencia").addEventListener("click", function(e) {
+            if (e.target === this) {
+                this.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>

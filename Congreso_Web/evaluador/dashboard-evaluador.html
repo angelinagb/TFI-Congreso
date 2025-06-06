@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - VII ENGETECH 2026</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+    <style>
+        .login-container{
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: var(--surface-container-high);
+            border-radius: 12px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Panel de Administración</h1>
+        <nav>
+            <ul>
+                <li><a href="../dashboard-evaluador.html">Inicio</a></li>
+                <li><a href="#">Ponencias</a></li>
+                <li><a href="#">Inscriptos</a></li>
+                <li><a href="#" id="logout">Cerrar sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="cards-container">
+            <div class="card">
+                <h3>Inscriptos</h3>
+                <p id="totalInscriptos">0</p>
+            </div>
+            <div class="card">
+                <h3>Ponencias</h3>
+                <p id="totalPonencias">0</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="../admin/admin.js"></script>
+</body>
+</html>
