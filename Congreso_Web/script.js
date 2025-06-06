@@ -82,3 +82,19 @@ document.addEventListener('click', function(e) {
       document.getElementById("countdown").innerHTML = "¡El congreso ha comenzado!";
     }
   }, 1000);
+
+  //validacion del formulario de inscripción
+  document.querySelector('.formulario')?.addEventListener('submit', function(e){
+    e.preventDefault();
+    const nombre = this.nombre.value.trim();
+    const email = this.email.value.trim();
+
+    if(!nombre || !email){
+        alert('Por favor, completa todos los campos.');
+        return;
+    }
+
+    //Simular envio, aquí iría back
+    alert(`¡Inscripcion exitosa, ${nombre}! Se envió un correo a ${email}`);
+    this.reset();
+  });
