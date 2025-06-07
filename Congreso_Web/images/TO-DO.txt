@@ -1,0 +1,8 @@
+Segun el Plan, la entrega del 9/6 Consiste en: 
+    1. Prototipo navegable con funcionalidad de registro simulada. Incluye
+        a. Integracion con formularios ( o sea que caiga a excel ?)
+        b. Flujos automatizados simples 
+        c. Simulacion de certificados 
+        d. Avance en automatizacion
+        e. Formularios de Inscripcion. 
+        f. Wireframes

@@ -59,29 +59,31 @@ document.addEventListener('click', function(e) {
 
 
   // Fecha objetivo del congreso (25 de Octubre de 2026, 9:00 am por ejemplo)
-  const countdownDate = new Date("Octubre 25, 2026 09:00:00").getTime();
+  const countdownDate = new Date("Junio 24, 2025 09:00:00").getTime();
 
-  // Actualiza la cuenta regresiva cada 1 segundo
-  const countdownFunction = setInterval(() => {
-  const now = new Date().getTime();
-  const distance = countdownDate - now;
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const diff = countdownDate - now;
 
-    // Cálculos de tiempo para días, horas, minutos y segundos
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      if (diff <= 0) {
+        document.getElementById('countdown').innerHTML = "<p>¡El tiempo llegó!</p>";
+        return;
+      }
 
-    // Mostrar resultado en el div con id="countdown"
-    document.getElementById("countdown").innerHTML = 
-      `<strong>Cuenta regresiva:</strong> ${days}d ${hours}h ${minutes}m ${seconds}s`;
+      const seconds = Math.floor((diff / 1000) % 60);
+      const minutes = Math.floor((diff / 1000 / 60) % 60);
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
 
-    // Si la cuenta regresiva termina
-    if (distance < 0) {
-      clearInterval(countdownFunction);
-      document.getElementById("countdown").innerHTML = "¡El congreso ha comenzado!";
+      document.getElementById("days").textContent = String(days).padStart(2, '0');
+      document.getElementById("hours").textContent = String(hours).padStart(2, '0');
+      document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
+      document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
     }
-  }, 1000);
+
+    updateCountdown(); // Llamada inicial
+    setInterval(updateCountdown, 1000); // Actualiza cada segundo
+
 
   //validacion del formulario de inscripción
   document.querySelector('.formulario')?.addEventListener('submit', function(e){
