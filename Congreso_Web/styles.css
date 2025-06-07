@@ -651,3 +651,26 @@ footer {
   padding: 8px;
   text-align: left;
 }
+
+.grid-ejes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  padding: 0;
+  list-style: none;
+  margin: 1rem 0 0 0;
+}
+
+.grid-ejes li {
+  background-color: #e6f2ff;
+  color: #003366;
+  padding: 0.75rem 1rem;
+  border-left: 4px solid #0074D9;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  transition: background-color 0.3s ease;
+}
+
+.grid-ejes li:hover {
+  background-color: #d0e9ff;
+}

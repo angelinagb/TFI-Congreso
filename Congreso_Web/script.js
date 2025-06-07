@@ -59,11 +59,11 @@ document.addEventListener('click', function(e) {
 
 
   // Fecha objetivo del congreso (25 de Octubre de 2026, 9:00 am por ejemplo)
-  const countdownDate = new Date("Octubre 25, 2026 09:00:00").getTime();
+  const countdownDate = new Date("Junio 24, 2025 09:00:00").getTime();
 
     function updateCountdown() {
-      const now = new Date();
-      const diff = targetDate - now;
+      const now = new Date().getTime();
+      const diff = countdownDate - now;
 
       if (diff <= 0) {
         document.getElementById('countdown').innerHTML = "<p>¡El tiempo llegó!</p>";
@@ -83,7 +83,7 @@ document.addEventListener('click', function(e) {
 
     updateCountdown(); // Llamada inicial
     setInterval(updateCountdown, 1000); // Actualiza cada segundo
-//   }, 1000);
+
 
   //validacion del formulario de inscripción
   document.querySelector('.formulario')?.addEventListener('submit', function(e){
