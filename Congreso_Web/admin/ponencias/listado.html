@@ -9,123 +9,174 @@
     <style>
         
         .admin-header {
-            background: var(--primary);
-            color: var(--on-primary);
-            padding: 30px 0 10px 0;
-            text-align: center;
-            margin-bottom: 32px; 
-        }
-        .admin-header nav ul {
+            background-color: #246488;
+            color: white;
+            padding: 1rem;
             display: flex;
-            justify-content: center;
-            gap: 20px;
-            list-style: none;
-            padding: 0;
+            justify-content: space-between;
+            align-items: center;
         }
-        .admin-header nav ul li a {
-            color: var(--on-primary);
+        
+        .admin-nav {
+            background-color: #246488;
+            padding: 1rem;
+        }
+        
+        .admin-nav ul {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .admin-nav a {
+            color: white;
             text-decoration: none;
-            font-weight: bold;
-            padding: 8px 16px;
-            border-radius: 6px;
+            font-weight: 500;
         }
+
         .admin-header nav ul li a.active,
         .admin-header nav ul li a:hover {
             background: var(--tertiary-container);
             color: var(--on-tertiary-container);
         }
-        .paginacion {
+        
+        .actions {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            margin-top: 20px;
+            gap: 0.5rem;
         }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 9999;
-            left: 0; top: 0; width: 100vw; height: 100vh;
-            background: rgba(0,0,0,0.4);
-            justify-content: center;
-            align-items: center;
+        
+        .btn-sm {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.875rem;
         }
-        .modal-contenido {
-            background: var(--surface-container);
-            padding: 30px;
+        
+        .btn-approve {
+            background-color: #5BA273;
+        }
+        
+        .btn-reject {
+            background-color: #E74C3C;
+        }
+        
+        .search-bar {
+            margin: 1.5rem;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .search-bar input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 1px solid #c1c7ce;
+            border-radius: 6px;
+        }
+        
+        .status-badge {
+            padding: 0.25rem 0.5rem;
             border-radius: 12px;
-            max-width: 400px;
-            margin: auto;
-            position: relative;
+            font-size: 0.75rem;
+            font-weight: bold;
         }
-        .cerrar {
-            position: absolute;
-            top: 10px; right: 15px;
-            font-size: 24px;
-            cursor: pointer;
+        
+        .status-pending {
+            background-color: #F39C12;
+            color: white;
         }
-        .modal-acciones {
-            margin-top: 20px;
-            display: flex;
-            gap: 10px;
-            justify-content: flex-end;
+        
+        .status-approved {
+            background-color: #5BA273;
+            color: white;
         }
+        
+        .status-rejected {
+            background-color: #E74C3C;
+            color: white;
+        }
+        
     </style>
 </head>
 <body>
     <header class="admin-header">
+        <img src="../../images/redgtech_logo.png" alt="RedGTech Logo">
         <h1>Gestión de Ponencias</h1>
-        <nav>
-            <ul>
-                <li><a href="../admin/dashboard-admin.html">Dashboard</a></li>
-                <li><a href="#" class="active">Ponencias</a></li>
-                <li><a href="#">Inscriptos</a></li>
-                <li><a href="#" id="logout">Cerrar sesión</a></li>
-            </ul>
-        </nav>
+        <div>
+            <span id="adminName">Admin User</span>
+            <a href="#" id="logout" style="color: #A3E4A6; margin-left: 1rem;">Cerrar sesión</a>
+        </div>
+        <div class="spacer-15px"></div>
     </header>
+    <nav class="admin-nav">
+        <ul>
+            <li><a href="../darshboard-admin.html" class="active">Inicio</a></li>
+            <li><a href="ponencias/ponencias.html">Ponencias</a></li>
+            <li><a href="usuarios/listado.html">Usuarios</a></li>
+            <li><a href="#">Configuración</a></li>
+            <li><a href="#" id="logout">Cerrar sesión</a></li>
+            <li><a href="../../index.html">Página del Congreso</a></li>
+        </ul>
+    </nav>
+
+        
     <main>
-        <section class="text-container">
-            <div class="filtros">
-                <select id="filtroEstado">
-                    <option value="todas">Todas las ponencias</option>
-                    <option value="pendiente">Pendientes</option>
-                    <option value="aprobado">Aprobadas</option>
-                    <option value="rechazado">Rechazadas</option>
-                </select>
-                <input type="text" id="busqueda" placeholder="Buscar por título o autor...">
-                <button id="btnFiltrar" class="btn-accion">Filtrar</button>
-            </div>
-
-            <div class="acciones-rapidas">
-                <button id="btnExportar" class="btn-accion">Exportar a Excel</button>
-                <button id="btnNotificar" class="btn-accion">Notificar seleccionados</button>
-            </div>
-
-            <table id="tablaPonencias">
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Buscar ponencias...">
+            <select id="filterStatus">
+                <option value="all">Todos los estados</option>
+                <option value="pending">Pendientes</option>
+                <option value="approved">Aprobadas</option>
+                <option value="rejected">Rechazadas</option>
+            </select>
+        </div>
+        
+        <div class="chart-container" style="margin: 1.5rem;">
+            <table id="ponenciasTable" style="width: 100%; border-collapse: collapse;">
                 <thead>
-                    <tr>
-                        <th><input type="checkbox" id="selectAll"></th>
-                        <th>Título</th>
-                        <th>Autor</th>
-                        <th>Institución</th>
-                        <th>Fecha envío</th>
-                        <th>Estado</th>
-                        <th>Acciones</th>
+                    <tr style="background-color: #246488; color: white;">
+                        <th style="padding: 1rem; text-align: left;">ID</th>
+                        <th style="padding: 1rem; text-align: left;">Título</th>
+                        <th style="padding: 1rem; text-align: left;">Autor</th>
+                        <th style="padding: 1rem; text-align: left;">Fecha</th>
+                        <th style="padding: 1rem; text-align: left;">Estado</th>
+                        <th style="padding: 1rem; text-align: left;">Acciones</th>
                     </tr>
                 </thead>
-                <tbody id="cuerpoTabla">
-                    <!-- aca se cargan las ponencias -->
+                <tbody>
+                    <!-- Datos dinámicos -->
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 1rem;">P-001</td>
+                        <td style="padding: 1rem;">Energías renovables en PYMES</td>
+                        <td style="padding: 1rem;">María López</td>
+                        <td style="padding: 1rem;">15/10/2026</td>
+                        <td style="padding: 1rem;">
+                            <span class="status-badge status-approved">Aprobada</span>
+                        </td>
+                        <td style="padding: 1rem;">
+                            <div class="actions">
+                                <a href="editar.html?id=P-001" class="btn-sm">Editar</a>
+                                <button class="btn-sm btn-reject">Rechazar</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 1rem;">P-002</td>
+                        <td style="padding: 1rem;">Gestión tecnológica 4.0</td>
+                        <td style="padding: 1rem;">Carlos Méndez</td>
+                        <td style="padding: 1rem;">16/10/2026</td>
+                        <td style="padding: 1rem;">
+                            <span class="status-badge status-pending">Pendiente</span>
+                        </td>
+                        <td style="padding: 1rem;">
+                            <div class="actions">
+                                <a href="editar.html?id=P-002" class="btn-sm">Editar</a>
+                                <button class="btn-sm btn-approve">Aprobar</button>
+                                <button class="btn-sm btn-reject">Rechazar</button>
+                            </div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
-
-            <div class="paginacion">
-                <button id="btnAnterior">Anterior</button>
-                <span id="infoPagina">Página 1 de 1</span>
-                <button id="btnSiguiente">Siguiente</button>
-            </div>
-        </section>
+        </div>
     </main>
+
 
     <div id="modalPonencia" class="modal">
         <div class="modal-contenido">
@@ -142,85 +193,25 @@
 
     <script src="../admin/admin.js"></script>
     <script>
-        //Datos simulados
-        const ponencias=[
-            {
-                id: 1,
-                titulo: "Innovación en energías renovables",
-                autor: "María Lopez",
-                institucion: "UTN FRMDP",
-                fecha: "2026-03-15",
-                estado: "pendiente",
-                resumen: "Análisis de nuevas tecnologías solares...",
-                archivo: "ponencia1.pdf"
-            },
-            {
-                id: 2,
-                titulo: "Gestión tecnológica en PYMES",
-                autor: "Carlos Méndez",
-                institucion: "UNMDP",
-                fecha: "2026-03-18",
-                estado: "aprobado",
-                resumen: "Casos de éxito en implementación...",
-                archivo: "ponencia2.pdf"
-            }
-        ];
-
-        function renderizarTabla(datos) {
-            const cuerpoTabla = document.getElementById("cuerpoTabla");
-            cuerpoTabla.innerHTML = datos.map(ponencia => `
-                <tr data-id="${ponencia.id}">
-                    <td><input type="checkbox" class="check-ponencia"></td>
-                    <td>${ponencia.titulo}</td>
-                    <td>${ponencia.autor}</td>
-                    <td>${ponencia.institucion}</td>
-                    <td>${ponencia.fecha}</td>
-                    <td class="estado-${ponencia.estado}">${ponencia.estado.toUpperCase()}</td>
-                    <td>
-                        <button class="btn-ver btn-accion" data-id="${ponencia.id}">Ver</button>
-                        <button class="btn-editar btn-accion" data-id="${ponencia.id}">Editar</button>
-                    </td>
-                </tr>
-            `).join("");
-            // Asigna eventos a los botones después de renderizar
-            document.querySelectorAll(".btn-ver").forEach(btn => {
-                btn.addEventListener("click", (e) => {
-                    const id = e.target.getAttribute("data-id");
-                    const ponencia = ponencias.find(p => p.id == id);
-                    abrirModal(ponencia);
-                });
+        // Lógica para filtrado y búsqueda
+        document.getElementById('searchInput').addEventListener('input', filterTable);
+        document.getElementById('filterStatus').addEventListener('change', filterTable);
+        
+        function filterTable() {
+            const searchText = document.getElementById('searchInput').value.toLowerCase();
+            const filterStatus = document.getElementById('filterStatus').value;
+            
+            document.querySelectorAll('#ponenciasTable tbody tr').forEach(row => {
+                const title = row.cells[1].textContent.toLowerCase();
+                const author = row.cells[2].textContent.toLowerCase();
+                const status = row.cells[4].querySelector('.status-badge').className.includes(filterStatus);
+                
+                const matchesSearch = title.includes(searchText) || author.includes(searchText);
+                const matchesStatus = filterStatus === 'all' || status;
+                
+                row.style.display = matchesSearch && matchesStatus ? '' : 'none';
             });
         }
-
-        // Mostrar datos al cargar la página
-        document.addEventListener("DOMContentLoaded", () => {
-            renderizarTabla(ponencias);
-        });
-
-        function abrirModal(ponencia) {
-            const modal = document.getElementById("modalPonencia");
-            document.getElementById("modalTitulo").textContent = ponencia.titulo;
-            document.getElementById("modalContenido").innerHTML = `
-                <p><strong>Autor:</strong> ${ponencia.autor}</p>
-                <p><strong>Institución:</strong> ${ponencia.institucion}</p>
-                <p><strong>Resumen:</strong> ${ponencia.resumen}</p>
-                <p><strong>Archivo:</strong> <a href="../uploads/${ponencia.archivo}" target="_blank">Descargar</a></p>
-            `;
-            modal.style.display = "flex";
-        }
-
-        //cerrar modal
-        document.querySelectorAll(".cerrar, #btnCerrarModal").forEach(btn => {
-            btn.addEventListener("click", () => {
-                document.getElementById("modalPonencia").style.display = "none";
-            });
-        });
-
-        document.getElementById("modalPonencia").addEventListener("click", function(e) {
-            if (e.target === this) {
-                this.style.display = "none";
-            }
-        });
     </script>
 </body>
 </html>

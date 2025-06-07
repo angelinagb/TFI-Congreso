@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <img src="../images/redgtech_logo.png_ok.png" alt="RedGTech Logo">
+        <img src="../images/redgtech_logo.png" alt="RedGTech Logo">
         <h1>VII Encuentro de Gestores Tecnológicos 2026</h1>
         <div class="spacer-15px"></div>
         <nav class="navbar">
@@ -26,12 +26,41 @@
     </header>
     <main class="login-container">
         <section class="text-container" id="dashboard">
-            <h2>Bienvenido/a al Panel del Ponente</h2>
+            <h2>Bienvenido/a, <span id="userName"></span></h2>
             <div class="spacer-6px"></div>
             <p>Aquí podrás gestionar tus inscripciones, ponencias y certificados del congreso.</p>
             <!-- Agregar cosas -->
         </section>
+
+        <section class="container">
+            <h2>Área de Ponentes</h2>
+            <div class="alert" id="estadoPonencia">
+            <!-- Ejemplo: "Tu ponencia 'Innovación tecnológica' está: APROBADA" -->
+        </section>
+
+        <section>
+            <h3>Mis ponencias</h3>
+            <table id="misPonencias">
+                <thead>
+                    <tr>
+                        <th>Título </th>
+                        <th>Estado </th>
+                        <th>Fecha </th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <a href="nueva-ponencia.html" class="btn">Nueva ponencia</a>
+        </section>
+
+        <section class="comentarios-evaluacion" id="seccionComentarios">
+            <h3>Feedback del comité</h3>
+            <!-- Comentarios de los evaluadores -->
+        </section>
+    </div>     
     </main>
+
+
     <footer class="footer-extendido">
         <div class="footer-container">
             <div class="footer-column">

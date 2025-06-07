@@ -24,9 +24,18 @@
     </header>
     <main>
         <section class="text-container" id="dashboard">
-            <h2>Bienvenido/a al Panel del Asistente</h2>
+            <h2>Bienvenido/a, <span id="userName"></span></h2>
             <div class="spacer-6px"></div>
             <p>Aquí podrás gestionar tus inscripciones y certificados del congreso.</p>
+            <section class="programa-personalizado">
+                <h3>Tu programa</h3>
+                <div id="eventosFavoritos"></div> <!-- Eventos guardados -->
+            </section>
+
+            <section class="acciones-rapidas">
+                <a href="#" class="btn">Descargar certificado</a>
+                <a href="#" class="btn">Materiales del evento</a>
+            </section>
             <!-- Agregar widgets, tablas o información relevante para el asistente -->
         </section>
     </main>
