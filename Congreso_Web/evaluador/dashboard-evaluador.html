@@ -3,10 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - VII ENGETECH 2026</title>
+    <title>Evaluador - VII ENGETECH 2026</title>
     <link rel="stylesheet" href="../styles.css">
     <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
     <style>
+        .eval-header {
+            background-color: #246488;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .eval-nav {
+            background-color: #246488;
+            padding: 1rem;
+        }
+        .eval-nav ul {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .eval-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
         .login-container{
             max-width: 400px;
             margin: 50px auto;
@@ -17,17 +41,28 @@
     </style>
 </head>
 <body>
-    <header>
-        <h1>Panel de Administración</h1>
-        <nav>
-            <ul>
-                <li><a href="../dashboard-evaluador.html">Inicio</a></li>
-                <li><a href="#">Ponencias</a></li>
-                <li><a href="#">Inscriptos</a></li>
-                <li><a href="#" id="logout">Cerrar sesión</a></li>
-            </ul>
-        </nav>
+    <header class="eval-header">
+        <img src="../images/redgtech_logo.png" alt="RedGTech Logo">
+        <h1>Panel de Evaluador</h1>
+        <div>
+            <span id="evalName">Eval User</span>
+            <a href="#" id="logout" style="color: #A3E4A6; margin-left: 1rem;">Cerrar sesión</a>
+        </div>
+        <div class="spacer-15px"></div>
     </header>
+
+    <nav class="eval-nav">
+        <ul>
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="darshboard-admin.html" class="active">Inicio</a></li>
+            <li><a href="#">Ponencias</a></li>
+            <li><a href="#">Inscriptos</a></li>
+            <li><a href="#">Configuración</a></li>
+            <li><a href="#" id="logout">Cerrar sesión</a></li>
+        </ul>
+    </nav>
+
+    
     <main>
         <section class="cards-container">
             <div class="card">

@@ -1,17 +1,362 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto</title>
+    <title>Contacto - VII ENGETECH 2026</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <!--deberia incluir el reset styles*/ -->
+    <style>
+        /* Estilos específicos para contacto */
+        .contacto-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        
+        .info-contacto {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 10px;
+            height: fit-content;
+        }
+        
+        .contacto-title {
+            color: #246488;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+        
+        .contacto-item {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contacto-icon {
+            margin-right: 1rem;
+            color: #5BA273;
+            font-size: 1.5rem;
+            min-width: 30px;
+        }
+        
+        .contacto-text h3 {
+            margin-bottom: 0.3rem;
+            color: #1E2027;
+        }
+        
+        .contacto-text p, .contacto-text a {
+            color: #4f606e;
+            text-decoration: none;
+        }
+        
+        .contacto-text a:hover {
+            color: #246488;
+            text-decoration: underline;
+        }
+        
+        .formulario-contacto {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #41484d;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #c1c7ce;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .btn-enviar {
+            background-color: #246488;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-enviar:hover {
+            background-color: #1a4d6e;
+        }
+        
+        .mapa-container {
+            grid-column: span 2;
+            margin-top: 2rem;
+        }
+        
+        .mapa-container iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+            border-radius: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .contacto-container {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+            
+            .mapa-container {
+                grid-column: span 1;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
-        
+        <img src="images/redgtech_logo.png" alt="RedGTech Logo">
+        <h1>Contacto</h1>
+        <div class="spacer-15px"></div>
+        <nav class="navbar">
+        <!-- Menú de navegación (copiar de index.html) -->
+            <div class="hamburger">☰</div>
+            <ul class="nav-list">
+                <li><a href="index.html">Inicio</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn" aria-haspopup="true" aria-expanded="false">Congreso <span class="arrow">▼</span></a>
+                    <div class="dropdown-content">
+                        <a href="organizadores.html">Organizadores</a>
+                        <a href="#">Autoridades</a>
+                        <a href="#">Auspician</a>
+                        <a href="#">Sponsors</a>
+                        <a href="#">Premios</a>
+                        <div class="sub-dropdown">
+                            <a href="#" class="dropbtn" aria-haspopup="true" aria-expanded="false">Eventos Anteriores <span class="arrow">▼</span></a>
+                            <div class="dropdown-content">
+                                <a href="https://fcefyn.unc.edu.ar/extension/vi-encuentro-nacional-de-gestores-tecnologicos/">VI Encuentro de Gestores Tecnológicos</a>
+                                <a href="#">Otro</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="sede.html">Sede</a></li>
+                <li class="dropdown">
+                    <a href="programa.html" class="dropbtn" aria-haspopup="true" aria-expanded="false">Programa <span class="arrow">▼</span></a>
+                    <div class="dropdown-content">
+                        <a href="#">Día 1</a>
+                        <a href="#">Día 2</a>
+                        <a href="#">Día 3</a>
+                    </div>
+                </li>
+                <li><a href="inscripciones.html">Inscripciones</a></li>
+                <li><a href="abstracts.html">Abstracts</a></li>
+                <li><a href="#">Oradores</a></li>
+                <li><a href="#">Alojamiento</a></li>
+                <li><a href="#">Turismo</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="#">Certificados 2026</a></li>
+            </ul>
+        </nav>
     </header>
+
+    <main class="contacto-container">
+        <!-- Información de Contacto -->
+        <section class="info-contacto">
+            <h2 class="contacto-title">Cómo contactarnos</h2>
+            
+            <div class="contacto-item">
+                <div class="contacto-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="contacto-text">
+                    <h3>Dirección</h3>
+                    <p>UTN Facultad Regional Mar del Plata<br>Av. Juan B. Justo XXXX<br>B7608 Mar del Plata, Argentina</p>
+                </div>
+            </div>
+            
+            <div class="contacto-item">
+                <div class="contacto-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="contacto-text">
+                    <h3>Email</h3>
+                    <p>
+                        <a href="mailto:info@viiengetech.org">info@viiengetech.org</a><br>
+                        <a href="mailto:ponencias@viiengetech.org">ponencias@viiengetech.org</a>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="contacto-item">
+                <div class="contacto-icon">
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+                <div class="contacto-text">
+                    <h3>Teléfonos</h3>
+                    <p>
+                        +54 223 123-4567 (Oficina)<br>
+                        +54 223 987-6543 (Logística)
+                    </p>
+                </div>
+            </div>
+            
+            <div class="contacto-item">
+                <div class="contacto-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="contacto-text">
+                    <h3>Horario de Atención</h3>
+                    <p>
+                        Lunes a Viernes: 9:00 - 18:00 hs<br>
+                        Sábados: 9:00 - 13:00 hs
+                    </p>
+                </div>
+            </div>
+            
+            <div class="contacto-item">
+                <div class="contacto-icon">
+                    <i class="fas fa-hashtag"></i>
+                </div>
+                <div class="contacto-text">
+                    <h3>Redes Sociales</h3>
+                    <p>
+                        <a href="https://facebook.com/VIIENGETECH" target="_blank"><i class="fab fa-facebook"></i> /VIIENGETECH</a><br>
+                        <a href="https://twitter.com/VIIENGETECH" target="_blank"><i class="fab fa-twitter"></i> @VIIENGETECH</a><br>
+                        <a href="https://instagram.com/VIIENGETECH" target="_blank"><i class="fab fa-instagram"></i> @VIIENGETECH</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Formulario de Contacto -->
+        <section class="formulario-contacto">
+            <h2 class="contacto-title">Formulario de Contacto</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="nombre">Nombre Completo *</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Correo Electrónico *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="asunto">Asunto *</label>
+                    <select id="asunto" name="asunto" required>
+                        <option value="">Seleccione un asunto</option>
+                        <option value="informacion">Información General</option>
+                        <option value="ponencias">Consultas sobre Ponencias</option>
+                        <option value="patrocinios">Patrocinios y Sponsoreo</option>
+                        <option value="inscripciones">Problemas con Inscripción</option>
+                        <option value="otros">Otros</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="mensaje">Mensaje *</label>
+                    <textarea id="mensaje" name="mensaje" required></textarea>
+                </div>
+                
+                <button type="submit" class="btn-enviar">Enviar Mensaje</button>
+            </form>
+        </section>
+        
+        <!-- Mapa -->
+        <div class="mapa-container">
+            <h2 class="contacto-title">Ubicación</h2>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3143.082567649102!2d-57.546252!3d-38.005417!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9584dc8f30ff5a1f%3A0x7f5eac1877fdcbdf!2sUTN%20-%20Facultad%20Regional%20Mar%20del%20Plata!5e0!3m2!1ses!2sar!4v1683852182717!5m2!1ses!2sar" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </main>
+
+    <footer class ="footer-extendido">
+      <div class="footer-container">
+        <div class="footer-column">
+        <h3>CONTÁCTANOS</h3>
+        <ul>
+          <li>Teléfono: +54 223 123 456789</li>
+          <li>Email: contacto@redgtech.org</li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>NOSOTROS</h3>
+        <ul>
+          <li><a href="#">Mesa de servicio</a></li>
+          <li><a href="#">Canal de denuncias</a></li>
+          <li><a href="#">Mapa del sitio</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>SÍGUENOS</h3>
+        <ul>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">LinkedIn</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>ENLACES ÚTILES</h3>
+        <ul>
+          <li><a href="#">Política de privacidad</a></li>
+          <li><a href="#">Términos de servicio</a></li>
+          <li><a href="#">Ayuda</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-copy">
+        <p>&copy; 2026 RedGtech. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Lógica para el formulario de contacto
+        document.getElementById('contactForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = {
+                nombre: e.target.nombre.value,
+                email: e.target.email.value,
+                asunto: e.target.asunto.value,
+                mensaje: e.target.mensaje.value,
+                fecha: new Date().toISOString()
+            };
+            
+            // Aquí iría la conexión con Firebase o un backend
+            try {
+                // Ejemplo con Firebase:
+                // await firebase.firestore().collection('contactos').add(formData);
+                
+                alert('¡Mensaje enviado con éxito! Nos contactaremos pronto.');
+                e.target.reset();
+            } catch (error) {
+                alert('Error al enviar el mensaje. Por favor intenta nuevamente.');
+                console.error(error);
+            }
+        });
+    </script>
     
 </body>
 </html>

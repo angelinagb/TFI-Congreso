@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organizadores - VII ENGETECH 2026</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <style>
+        /* Estilos específicos para organizadores */
+        .organizadores-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .comite-section {
+            margin-bottom: 3rem;
+        }
+        
+        .comite-title {
+            color: #246488;
+            border-bottom: 2px solid #5BA273;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .miembros-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .miembro-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .miembro-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .miembro-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .miembro-info {
+            padding: 1.5rem;
+        }
+        
+        .miembro-nombre {
+            color: #1E2027;
+            margin-bottom: 0.5rem;
+        }
+        
+        .miembro-cargo {
+            color: #5BA273;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .miembro-institucion {
+            color: #4B7FFB;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .instituciones-logos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            margin: 3rem 0;
+            align-items: center;
+        }
+        
+        .institucion-logo {
+            height: 80px;
+            width: auto;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s;
+        }
+        
+        .institucion-logo:hover {
+            filter: grayscale(0);
+            opacity: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .miembros-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="images/redgtech_logo.png" alt="RedGTech Logo">
+        <h1>Comité Organizador</h1>
+        <div class="spacer-15px"></div>
+        <nav class="navbar">
+        <!-- Menú de navegación (copiar de index.html) -->
+            <div class="hamburger">☰</div>
+            <ul class="nav-list">
+                <li><a href="index.html">Inicio</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn" aria-haspopup="true" aria-expanded="false">Congreso <span class="arrow">▼</span></a>
+                    <div class="dropdown-content">
+                        <a href="organizadores.html">Organizadores</a>
+                        <a href="#">Autoridades</a>
+                        <a href="#">Auspician</a>
+                        <a href="#">Sponsors</a>
+                        <a href="#">Premios</a>
+                        <div class="sub-dropdown">
+                            <a href="#" class="dropbtn" aria-haspopup="true" aria-expanded="false">Eventos Anteriores <span class="arrow">▼</span></a>
+                            <div class="dropdown-content">
+                                <a href="https://fcefyn.unc.edu.ar/extension/vi-encuentro-nacional-de-gestores-tecnologicos/">VI Encuentro de Gestores Tecnológicos</a>
+                                <a href="#">Otro</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="sede.html">Sede</a></li>
+                <li class="dropdown">
+                    <a href="programa.html" class="dropbtn" aria-haspopup="true" aria-expanded="false">Programa <span class="arrow">▼</span></a>
+                    <div class="dropdown-content">
+                        <a href="#">Día 1</a>
+                        <a href="#">Día 2</a>
+                        <a href="#">Día 3</a>
+                    </div>
+                </li>
+                <li><a href="inscripciones.html">Inscripciones</a></li>
+                <li><a href="abstracts.html">Abstracts</a></li>
+                <li><a href="#">Oradores</a></li>
+                <li><a href="#">Alojamiento</a></li>
+                <li><a href="#">Turismo</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="#">Certificados 2026</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="organizadores-container">
+        <!-- Comité Científico -->
+        <section class="comite-section">
+            <h2 class="comite-title">Comité Científico</h2>
+            <div class="miembros-grid">
+                <!-- Miembro 1 -->
+                <div class="miembro-card">
+                    <img src="images/avatar.png" width="10" height="10" alt="Dra. Laura Martínez" class="miembro-img">
+                    <div class="miembro-info">
+                        <h3 class="miembro-nombre">Dra. Laura Martínez</h3>
+                        <span class="miembro-cargo">Coordinadora Científica</span>
+                        <span class="miembro-institucion">UTN FRMDP</span>
+                        <p>Doctora en Ingeniería con especialización en gestión tecnológica.</p>
+                    </div>
+                </div>
+                
+                <!-- Miembro 2 -->
+                <div class="miembro-card">
+                    <img src="images/avatar.png" alt="Dr. Carlos Gómez" class="miembro-img">
+                    <div class="miembro-info">
+                        <h3 class="miembro-nombre">Dr. Carlos Gómez</h3>
+                        <span class="miembro-cargo">Evaluador Principal</span>
+                        <span class="miembro-institucion">UNMDP</span>
+                        <p>Experto en transferencia tecnológica y propiedad intelectual.</p>
+                    </div>
+                </div>
+                
+                <!-- Añadir más miembros según sea necesario -->
+            </div>
+        </section>
+
+        <!-- Comité Organizador -->
+        <section class="comite-section">
+            <h2 class="comite-title">Comité Organizador</h2>
+            <div class="miembros-grid">
+                <!-- Miembro 1 -->
+                <div class="miembro-card">
+                    <img src="images/avatar.png" alt="Lic. Ana Pérez" class="miembro-img">
+                    <div class="miembro-info">
+                        <h3 class="miembro-nombre">Lic. Ana Pérez</h3>
+                        <span class="miembro-cargo">Coordinadora General</span>
+                        <span class="miembro-institucion">RedGTech</span>
+                        <p>Especialista en organización de eventos académicos internacionales.</p>
+                    </div>
+                </div>
+                
+                <!-- Miembro 2 -->
+                <div class="miembro-card">
+                    <img src="images/avatar.png" alt="Ing. Pablo Rodríguez" class="miembro-img">
+                    <div class="miembro-info">
+                        <h3 class="miembro-nombre">Ing. Pablo Rodríguez</h3>
+                        <span class="miembro-cargo">Coordinador Logístico</span>
+                        <span class="miembro-institucion">UTN FRMDP</span>
+                        <p>Responsable de infraestructura y tecnología del evento.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Instituciones Organizadoras -->
+        <section class="comite-section">
+            <h2 class="comite-title">Instituciones Organizadoras</h2>
+            <div class="instituciones-logos">
+                <img src="images/utn_logo.png" alt="UTN" class="institucion-logo">
+                <img src="images/unmdp_logo.png" alt="UNMDP" class="institucion-logo">
+                <img src="images/redgtech_logo.png" alt="RedGTech" class="institucion-logo">
+                <img src="images/mincyt_logo.png" alt="MinCyT" class="institucion-logo">
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (copiar de index.html) -->
+    <footer class="footer-extendido">
+        <!-- ... contenido del footer ... -->
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Ponente | VII Encuentro de Gestores Tecnológicos 2026</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <img src="../images/redgtech_logo.png" alt="RedGTech Logo">
+        <h1>VII Encuentro de Gestores Tecnológicos 2026</h1>
+        <div class="spacer-15px"></div>
+    </header>
+
+    <section>
+        <h1>Carga de Ponencias</h1>
+        
+        <form id="formPonencia" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="titulo">Título de la Ponencia</label>
+                <input type="text" name="titulo" required>
+            </div>
+
+            <div class="form-group">
+                <label for="resumen">Resumen (máx. de 300 palabras)</label>
+                <textarea name="resumen" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="resumen">Subir archivo (PDF/PPT):</label>
+                <input type="file" name="archivo" accept=".pdf,.ppt,.pptx" required>
+            </div>
+
+            <div class="form-group">
+                <label for="resumen">Área temática:</label>
+                <select name="area" required>
+                <option value="tecnologia">Tecnología</option>
+                <option value="sostenibilidad">Sostenibilidad</option>
+            </select>
+            </div>
+
+            <button type="submit">Enviar ponencia</button>
+        </form>
+    </section>
+</body>
+</html>
