@@ -5,40 +5,162 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Asistente | VII Encuentro de Gestores Tecnológicos 2026</title>
     <link rel="stylesheet" href="../styles.css">
-    <link rel="icon" href="/images/redgtech_logo.png_ok.png" type="image/x-icon">
-</head>
-<body>
-    <header>
-        <img src="../images/redgtech_logo.png_ok.png" alt="RedGTech Logo">
-        <h1>VII Encuentro de Gestores Tecnológicos 2026</h1>
-        <div class="spacer-15px"></div>
-        <nav class="navbar">
-            <div class="hamburger">☰</div>
-            <ul class="nav-list">
-                <li><a href="../index.html">Inicio</a></li>
-                <li><a href="#">Mi Perfil</a></li>
-                <li><a href="#">Certificados</a></li>
-                <li><a href="#">Cerrar sesión</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section class="text-container" id="dashboard">
-            <h2>Bienvenido/a, <span id="userName"></span></h2>
-            <div class="spacer-6px"></div>
-            <p>Aquí podrás gestionar tus inscripciones y certificados del congreso.</p>
-            <section class="programa-personalizado">
-                <h3>Tu programa</h3>
-                <div id="eventosFavoritos"></div> <!-- Eventos guardados -->
-            </section>
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        .asistente-header {
+            background-color: #246488;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .asistente-nav {
+            background-color: #246488;
+            padding: 1rem;
+        }
+        
+        .asistente-nav ul {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .asistente-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
 
-            <section class="acciones-rapidas">
-                <a href="#" class="btn">Descargar certificado</a>
-                <a href="#" class="btn">Materiales del evento</a>
-            </section>
-            <!-- Agregar widgets, tablas o información relevante para el asistente -->
+        .login-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+    
+        .dashboard-section {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+    
+        .dashboard-section h3 {
+            color: #246488;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e0e0e0;
+        }
+    
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+    
+        table th {
+            background-color: #246488;
+            color: white;
+            padding: 0.75rem;
+            text-align: left;
+        }
+    
+        table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+    
+        table tr:hover {
+            background-color: #f5f5f5;
+        }
+    
+        .btn {
+            display: inline-block;
+            background-color: #246488;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            margin-top: 1rem;
+        }
+    
+        .btn:hover {
+            background-color: #1a4d6b;
+        }
+    
+        .certificate-card {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+    
+        .certificate-card img {
+            width: 40px;
+            height: auto;
+            margin-right: 1rem;
+        }
+    
+        .certificate-info {
+            flex-grow: 1;
+        }
+    
+        .certificate-download {
+            margin-left: 1rem;
+        }
+    
+    </style>
+</head>
+
+<body>
+    <header class="ponente-header">
+        <img src="../images/redgtech_logo.png" alt="RedGTech Logo">
+        <h1>Panel de Asistente</h1>
+        <div>
+            <span id="ponenteName">Asistente User</span>
+            <a href="#" id="logout" style="color: #A3E4A6; margin-left: 1rem;">Cerrar sesión</a>
+        </div>
+        <div class="spacer-15px"></div>
+    </header>
+
+    <nav class="asistente-nav">
+        <ul>
+            <li><a href="dashboard-asistente.html" class="active">Inicio</a></li>
+            <li><a href="#">Mi Perfil</a></li>
+            <li><a href="#">Configuración</a></li>
+            <li><a href="#" id="logout">Cerrar sesión</a></li>
+            <li><a href="../index.html">Página del Congreso</a></li>
+        </ul>
+    </nav>
+
+    <div class="login-container">
+        <section class="dashboard-section">
+            <h2>Bienvenido/a, <span id="userName">Nombre del Asistente</span></h2>
+            <p>Aquí podrás descargar tus certificados.</p>
         </section>
-    </main>
+
+        <section class="dashboard-section" id="seccionCertificados">
+            <h3>Mis Certificados</h3>
+            <div class="certificate-card">
+                <img src="../images/certificate-icon.png" alt="Icono de certificado">
+                <div class="certificate-info">
+                    <h4>Certificado de Asistente - VII Encuentro de Gestores Tecnológicos</h4>
+                    <p>Emitido el: 25/10/2026</p>
+                </div>
+                <div class="certificate-download">
+                    <a href="#" class="btn" id="generarCertificado" data-rol="Asistente">Descargar Certificado</a>
+
+                </div>
+            </div>
+        </section>
+    </div>
+
     <footer class="footer-extendido">
         <div class="footer-container">
             <div class="footer-column">
@@ -79,5 +201,7 @@
         </div>
     </footer>
     <script src="../script.js"></script>
+    <script src="../certificado.js"></script>
+
 </body>
 </html>

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Ponencia | VII Encuentro de Gestores Tecnológicos 2026</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .ponente-header {
+            background-color: #246488;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .ponente-nav {
+            background-color: #246488;
+            padding: 1rem;
+        }
+        
+        .ponente-nav ul {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .ponente-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .ponencia-form-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .ponencia-form-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .form-header h2 {
+            color: #246488;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-header .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-left: 0.5rem;
+        }
+        
+        .status-badge.pending {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        
+        .status-badge.approved {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .status-badge.rejected {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        
+        .btn-primary {
+            background-color: #246488;
+            color: white;
+            border: none;
+        }
+        
+        .btn-secondary {
+            background-color: #f0f0f0;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+        
+        .btn-danger {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+        }
+        
+        .file-upload {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .file-upload input[type="file"] {
+            display: none;
+        }
+        
+        .file-upload-label {
+            padding: 0.5rem 1rem;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+            cursor: pointer;
+            border: 1px dashed #ccc;
+        }
+        
+        .current-file {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .current-file a {
+            color: #246488;
+            text-decoration: none;
+        }
+        
+        .current-file a:hover {
+            text-decoration: underline;
+        }
+        
+        .help-text {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 0.25rem;
+        }
+        
+        .required-field::after {
+            content: " *";
+            color: #e74c3c;
+        }
+        
+        .feedback-section {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border-left: 4px solid #246488;
+        }
+        
+        .feedback-section h3 {
+            margin-top: 0;
+            color: #246488;
+        }
+        
+        .feedback-item {
+            margin-bottom: 1rem;
+        }
+        
+        .feedback-item p {
+            margin: 0.5rem 0;
+        }
+        
+        .readonly-field {
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 0.75rem;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <header class="ponente-header">
+        <img src="../images/redgtech_logo.png" alt="RedGTech Logo">
+        <h1>Panel de Ponente</h1>
+        <div>
+            <span id="ponenteName">Ponente User</span>
+            <a href="#" id="logout" style="color: #A3E4A6; margin-left: 1rem;">Cerrar sesión</a>
+        </div>
+        <div class="spacer-15px"></div>
+    </header>
+
+    <nav class="ponente-nav">
+        <ul>
+            <li><a href="dashboard-ponente.html">Inicio</a></li>
+            <li><a href="#">Mi Perfil</a></li>
+            <li><a href="#">Configuración</a></li>
+            <li><a href="#" id="logout">Cerrar sesión</a></li>
+            <li><a href="../index.html">Página del Congreso</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="ponencia-form-container">
+            <div class="form-header">
+                <h2>Editar Ponencia <span class="status-badge pending">En revisión</span></h2>
+                <p>ID: PON-2026-045 | Última actualización: 15/03/2026</p>
+            </div>
+
+            <!-- Sección de feedback (solo visible si existe) -->
+            <div class="feedback-section">
+                <h3>Feedback del Comité Evaluador</h3>
+                <div class="feedback-item">
+                    <p><strong>Sugerencias:</strong> Ampliar la sección de metodología con más detalles sobre el proceso de recolección de datos.</p>
+                </div>
+                <div class="feedback-item">
+                    <p><strong>Recomendación:</strong> Aprobada con modificaciones menores</p>
+                </div>
+            </div>
+
+            <form id="editarPonenciaForm">
+                <div class="form-group">
+                    <label for="titulo" class="required-field">Título de la ponencia</label>
+                    <input type="text" id="titulo" name="titulo" value="Innovación tecnológica en gestión universitaria" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="resumen" class="required-field">Resumen/Abstract</label>
+                    <textarea id="resumen" name="resumen" required>Este estudio analiza los procesos de innovación tecnológica en la gestión universitaria, evaluando su impacto en la eficiencia administrativa y la calidad educativa. La investigación se basa en un estudio de caso múltiple de cinco universidades nacionales...</textarea>
+                    <p class="help-text">Máximo 300 palabras. No incluya tablas, figuras o referencias bibliográficas.</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="palabrasClave" class="required-field">Palabras clave</label>
+                    <input type="text" id="palabrasClave" name="palabrasClave" value="innovación tecnológica, gestión universitaria, eficiencia administrativa" required>
+                    <p class="help-text">Ingrese 3 a 5 palabras clave separadas por comas</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="ejeTematico" class="required-field">Eje temático</label>
+                    <select id="ejeTematico" name="ejeTematico" required>
+                        <option value="">Seleccione un eje temático</option>
+                        <option value="1" selected>Gestión de la Innovación Tecnológica</option>
+                        <option value="2">Transferencia Tecnológica</option>
+                        <option value="3">Propiedad Intelectual</option>
+                        <option value="4">Emprendimientos Tecnológicos</option>
+                        <option value="5">Políticas de Ciencia y Tecnología</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="modalidad" class="required-field">Modalidad de presentación</label>
+                    <select id="modalidad" name="modalidad" required>
+                        <option value="">Seleccione una modalidad</option>
+                        <option value="oral" selected>Presentación Oral</option>
+                        <option value="poster">Póster Científico</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="archivo">Documento completo (PDF)</label>
+                    <div class="current-file">
+                        <span>📄</span>
+                        <a href="#" target="_blank">ponencia_innovacion_tecnologica.pdf</a>
+                        <span>(2.4MB)</span>
+                    </div>
+                    <div class="file-upload" style="margin-top: 1rem;">
+                        <label for="archivo" class="file-upload-label">Subir nueva versión</label>
+                        <span class="help-text">Dejar en blanco para mantener el archivo actual</span>
+                        <input type="file" id="archivo" name="archivo" accept=".pdf">
+                    </div>
+                    <p class="help-text">Tamaño máximo: 5MB. El documento debe incluir: título, autores, resumen, introducción, metodología, resultados, discusión y referencias.</p>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" name="confirmacion" required checked> 
+                        Confirmo que esta ponencia es original y no ha sido presentada anteriormente en este evento
+                    </label>
+                </div>
+
+                <div class="form-footer">
+                    <div>
+                        <button type="button" class="btn btn-danger" id="eliminarBtn">Eliminar Ponencia</button>
+                    </div>
+                    <div>
+                        <a href="mis-ponencias.html" class="btn btn-secondary">Cancelar</a>
+                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="footer-extendido">
+        <!-- Mantener el footer existente -->
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mostrar nombre de archivo seleccionado
+            document.getElementById('archivo').addEventListener('change', function(e) {
+                const fileName = e.target.files[0] ? e.target.files[0].name : 'No se ha seleccionado archivo';
+                
+                // Validar tamaño de archivo
+                if (e.target.files[0] && e.target.files[0].size > 5 * 1024 * 1024) {
+                    alert('El archivo excede el tamaño máximo de 5MB');
+                    e.target.value = '';
+                    return;
+                }
+            });
+            
+            // Validación del formulario
+            document.getElementById('editarPonenciaForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validar palabras clave
+                const palabrasClave = document.getElementById('palabrasClave').value;
+                if (palabrasClave.split(',').length < 3) {
+                    alert('Por favor ingrese al menos 3 palabras clave separadas por comas');
+                    return;
+                }
+                
+                // Validar resumen
+                const resumen = document.getElementById('resumen').value;
+                if (resumen.split(/\s+/).length > 300) {
+                    alert('El resumen no debe exceder las 300 palabras');
+                    return;
+                }
+                
+                // Simular envío exitoso
+                alert('Los cambios se guardaron correctamente. La ponencia será revisada nuevamente por el comité científico.');
+                window.location.href = 'mis-ponencias.html';
+            });
+            
+            // Confirmación para eliminar
+            document.getElementById('eliminarBtn').addEventListener('click', function() {
+                if (confirm('¿Está seguro que desea eliminar esta ponencia? Esta acción no se puede deshacer.')) {
+                    alert('Ponencia eliminada correctamente');
+                    window.location.href = 'mis-ponencias.html';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

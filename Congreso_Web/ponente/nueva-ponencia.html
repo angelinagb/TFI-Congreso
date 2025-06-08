@@ -3,46 +3,337 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Ponente | VII Encuentro de Gestores Tecnológicos 2026</title>
+    <title>Cargar Ponencia | VII Encuentro de Gestores Tecnológicos 2026</title>
     <link rel="stylesheet" href="../styles.css">
-    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+    <style>
+        .ponente-header {
+            background-color: #246488;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .ponente-nav {
+            background-color: #246488;
+            padding: 1rem;
+        }
+        
+        .ponente-nav ul {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .ponente-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .ponencia-form-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .form-header h2 {
+            color: #246488;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-header p {
+            color: #666;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        
+        .btn-primary {
+            background-color: #246488;
+            color: white;
+            border: none;
+        }
+        
+        .btn-secondary {
+            background-color: #f0f0f0;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+        
+        .btn-disabled {
+            background-color: #e0e0e0;
+            color: #999;
+            cursor: not-allowed;
+        }
+        
+        .file-upload {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .file-upload input[type="file"] {
+            display: none;
+        }
+        
+        .file-upload-label {
+            padding: 0.5rem 1rem;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+            cursor: pointer;
+            border: 1px dashed #ccc;
+        }
+        
+        .file-name {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .ponencias-count {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .ponencias-count .count-number {
+            font-weight: bold;
+            color: #246488;
+            font-size: 1.2rem;
+        }
+        
+        .required-field::after {
+            content: " *";
+            color: #e74c3c;
+        }
+        
+        .help-text {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 0.25rem;
+        }
+        
+        .max-reached {
+            background-color: #fff3cd;
+            padding: 1.5rem;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border-left: 4px solid #ffc107;
+        }
+    </style>
 </head>
 <body>
-    <header>
+    <header class="ponente-header">
         <img src="../images/redgtech_logo.png" alt="RedGTech Logo">
-        <h1>VII Encuentro de Gestores Tecnológicos 2026</h1>
+        <h1>Panel de Ponente</h1>
+        <div>
+            <span id="ponenteName">Ponente User</span>
+            <a href="#" id="logout" style="color: #A3E4A6; margin-left: 1rem;">Cerrar sesión</a>
+        </div>
         <div class="spacer-15px"></div>
     </header>
 
-    <section>
-        <h1>Carga de Ponencias</h1>
-        
-        <form id="formPonencia" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="titulo">Título de la Ponencia</label>
-                <input type="text" name="titulo" required>
+    <nav class="ponente-nav">
+        <ul>
+            <li><a href="dashboard-ponente.html">Inicio</a></li>
+            <li><a href="#">Mi Perfil</a></li>
+            <li><a href="#">Configuración</a></li>
+            <li><a href="#" id="logout">Cerrar sesión</a></li>
+            <li><a href="../index.html">Página del Congreso</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="ponencia-form-container">
+            <!-- Mensaje cuando ya tiene 2 ponencias -->
+            <div class="max-reached" id="maxPonenciasMsg" style="display: none;">
+                <h3>Límite de ponencias alcanzado</h3>
+                <p>Has alcanzado el máximo de 2 ponencias permitidas por ponente.</p>
+                <p>Puedes editar tus ponencias existentes en la sección <a href="mis-ponencias.html">Mis Ponencias</a>.</p>
             </div>
 
-            <div class="form-group">
-                <label for="resumen">Resumen (máx. de 300 palabras)</label>
-                <textarea name="resumen" required></textarea>
+            <!-- Contador de ponencias -->
+            <div class="ponencias-count">
+                <p>Ponencias cargadas: <span class="count-number" id="currentCount">1</span>/2</p>
+                <p class="help-text">Cada ponente puede cargar un máximo de 2 ponencias</p>
             </div>
 
-            <div class="form-group">
-                <label for="resumen">Subir archivo (PDF/PPT):</label>
-                <input type="file" name="archivo" accept=".pdf,.ppt,.pptx" required>
+            <div class="form-header">
+                <h2>Nueva Ponencia</h2>
+                <p>Complete todos los campos obligatorios (*) para enviar su ponencia</p>
             </div>
 
-            <div class="form-group">
-                <label for="resumen">Área temática:</label>
-                <select name="area" required>
-                <option value="tecnologia">Tecnología</option>
-                <option value="sostenibilidad">Sostenibilidad</option>
-            </select>
-            </div>
+            <form id="ponenciaForm">
+                <div class="form-group">
+                    <label for="titulo" class="required-field">Título de la ponencia</label>
+                    <input type="text" id="titulo" name="titulo" required>
+                </div>
 
-            <button type="submit">Enviar ponencia</button>
-        </form>
-    </section>
+                <div class="form-group">
+                    <label for="resumen" class="required-field">Resumen/Abstract</label>
+                    <textarea id="resumen" name="resumen" required></textarea>
+                    <p class="help-text">Máximo 300 palabras. No incluya tablas, figuras o referencias bibliográficas.</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="palabrasClave" class="required-field">Palabras clave</label>
+                    <input type="text" id="palabrasClave" name="palabrasClave" required>
+                    <p class="help-text">Ingrese 3 a 5 palabras clave separadas por comas</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="ejeTematico" class="required-field">Eje temático</label>
+                    <select id="ejeTematico" name="ejeTematico" required>
+                        <option value="">Seleccione un eje temático</option>
+                        <option value="1">Gestión de la Innovación Tecnológica</option>
+                        <option value="2">Transferencia Tecnológica</option>
+                        <option value="3">Propiedad Intelectual</option>
+                        <option value="4">Emprendimientos Tecnológicos</option>
+                        <option value="5">Políticas de Ciencia y Tecnología</option>
+                    </select>
+                </div>
+
+                <div class="form-group"> 
+                    <label for="modalidad" class="required-field">Modalidad de presentación</label>
+                    <select id="modalidad" name="modalidad" required>
+                        <option value="">Seleccione una modalidad</option>
+                        <option value="oral">Presentación Oral</option>
+                        <option value="poster">Póster Científico</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="archivo" class="required-field">Documento completo (PDF)</label>
+                    <div class="file-upload">
+                        <label for="archivo" class="file-upload-label">Seleccionar archivo</label>
+                        <span class="file-name" id="fileName">No se ha seleccionado archivo</span>
+                        <input type="file" id="archivo" name="archivo" accept=".pdf" required>
+                    </div>
+                    <p class="help-text">Tamaño máximo: 5MB. El documento debe incluir: título, autores, resumen, introducción, metodología, resultados, discusión y referencias.</p>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" name="confirmacion" required> 
+                        Confirmo que esta ponencia es original y no ha sido presentada anteriormente en este evento
+                    </label>
+                </div>
+
+                <div class="form-footer">
+                    <a href="dashboard-ponente.html" class="btn btn-secondary">Cancelar</a>
+                    <button type="submit" class="btn btn-primary" id="submitBtn">Enviar Ponencia</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="footer-extendido">
+        <!-- Mantener el footer existente -->
+    </footer>
+
+    <script>
+        // Control del contador de ponencias
+        document.addEventListener('DOMContentLoaded', function() {
+            // Simulamos que el ponente tiene 1 ponencia cargada
+            const currentCount = 1;
+            const maxCount = 2;
+            
+            document.getElementById('currentCount').textContent = currentCount;
+            
+            // Mostrar mensaje si ya alcanzó el máximo
+            if (currentCount >= maxCount) {
+                document.getElementById('maxPonenciasMsg').style.display = 'block';
+                document.getElementById('ponenciaForm').style.display = 'none';
+                document.getElementById('submitBtn').classList.add('btn-disabled');
+                document.getElementById('submitBtn').disabled = true;
+            }
+            
+            // Mostrar nombre de archivo seleccionado
+            document.getElementById('archivo').addEventListener('change', function(e) {
+                const fileName = e.target.files[0] ? e.target.files[0].name : 'No se ha seleccionado archivo';
+                document.getElementById('fileName').textContent = fileName;
+                
+                // Validar tamaño de archivo
+                if (e.target.files[0] && e.target.files[0].size > 5 * 1024 * 1024) {
+                    alert('El archivo excede el tamaño máximo de 5MB');
+                    e.target.value = '';
+                    document.getElementById('fileName').textContent = 'No se ha seleccionado archivo';
+                }
+            });
+            
+            // Validación del formulario
+            document.getElementById('ponenciaForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validar palabras clave
+                const palabrasClave = document.getElementById('palabrasClave').value;
+                if (palabrasClave.split(',').length < 3) {
+                    alert('Por favor ingrese al menos 3 palabras clave separadas por comas');
+                    return;
+                }
+                
+                // Validar resumen
+                const resumen = document.getElementById('resumen').value;
+                if (resumen.split(/\s+/).length > 300) {
+                    alert('El resumen no debe exceder las 300 palabras');
+                    return;
+                }
+                
+                // Simular envío exitoso
+                alert('Ponencia enviada correctamente. Será revisada por el comité científico.');
+                window.location.href = 'mis-ponencias.html';
+            });
+        });
+    </script>
 </body>
 </html>
