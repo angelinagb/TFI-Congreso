@@ -126,54 +126,22 @@
                 <option value="rejected">Rechazadas</option>
             </select>
         </div>
-        
-        <div class="chart-container" style="margin: 1.5rem;">
-            <table id="ponenciasTable" style="width: 100%; border-collapse: collapse;">
-                <thead>
-                    <tr style="background-color: #246488; color: white;">
-                        <th style="padding: 1rem; text-align: left;">ID</th>
-                        <th style="padding: 1rem; text-align: left;">Título</th>
-                        <th style="padding: 1rem; text-align: left;">Autor</th>
-                        <th style="padding: 1rem; text-align: left;">Fecha</th>
-                        <th style="padding: 1rem; text-align: left;">Estado</th>
-                        <th style="padding: 1rem; text-align: left;">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Datos dinámicos -->
-                    <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 1rem;">P-001</td>
-                        <td style="padding: 1rem;">Energías renovables en PYMES</td>
-                        <td style="padding: 1rem;">María López</td>
-                        <td style="padding: 1rem;">15/10/2026</td>
-                        <td style="padding: 1rem;">
-                            <span class="status-badge status-approved">Aprobada</span>
-                        </td>
-                        <td style="padding: 1rem;">
-                            <div class="actions">
-                                <a href="editar.html?id=P-001" class="btn-sm">Editar</a>
-                                <button class="btn-sm btn-reject">Rechazar</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 1rem;">P-002</td>
-                        <td style="padding: 1rem;">Gestión tecnológica 4.0</td>
-                        <td style="padding: 1rem;">Carlos Méndez</td>
-                        <td style="padding: 1rem;">16/10/2026</td>
-                        <td style="padding: 1rem;">
-                            <span class="status-badge status-pending">Pendiente</span>
-                        </td>
-                        <td style="padding: 1rem;">
-                            <div class="actions">
-                                <a href="editar.html?id=P-002" class="btn-sm">Editar</a>
-                                <button class="btn-sm btn-approve">Aprobar</button>
-                                <button class="btn-sm btn-reject">Rechazar</button>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+           <div class="chart-container" style="margin: 1.5rem;">
+           <table id="ponenciasTable" border="1">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Título</th>
+        <th>Autor</th>
+        <th>Fecha</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Acá se va a llenar la tabla automáticamente -->
+    </tbody>
+  </table>
         </div>
     </main>
 
@@ -192,26 +160,7 @@
     </div>
 
     <script src="../admin/admin.js"></script>
-    <script>
-        // Lógica para filtrado y búsqueda
-        document.getElementById('searchInput').addEventListener('input', filterTable);
-        document.getElementById('filterStatus').addEventListener('change', filterTable);
-        
-        function filterTable() {
-            const searchText = document.getElementById('searchInput').value.toLowerCase();
-            const filterStatus = document.getElementById('filterStatus').value;
-            
-            document.querySelectorAll('#ponenciasTable tbody tr').forEach(row => {
-                const title = row.cells[1].textContent.toLowerCase();
-                const author = row.cells[2].textContent.toLowerCase();
-                const status = row.cells[4].querySelector('.status-badge').className.includes(filterStatus);
-                
-                const matchesSearch = title.includes(searchText) || author.includes(searchText);
-                const matchesStatus = filterStatus === 'all' || status;
-                
-                row.style.display = matchesSearch && matchesStatus ? '' : 'none';
-            });
-        }
-    </script>
+    <script src="ponencias.js"></script>
+    <script>src="../dashboard_evaluador"></script>  
 </body>
 </html>
