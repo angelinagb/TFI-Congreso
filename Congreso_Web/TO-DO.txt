@@ -1,0 +1,45 @@
+Segun el Plan, la entrega del 9/6 Consiste en: 
+    1. Prototipo navegable con funcionalidad de registro simulada. Incluye
+        a. Integracion con formularios ( o sea que caiga a excel ?)
+        b. Flujos automatizados simples 
+        c. Simulacion de certificados 
+        d. Avance en automatizacion
+        e. Formularios de Inscripcion. 
+        f. Wireframes
+
+
+------US----------------
+
+Mejorar estilo : Separe todos los css asi que no deberia ser un problema cambiar colores /fuentes etc.
+Hice una carpeta que es VistaGeneral que quiero poner todo lo que no es puertas adentro del sistema, aunque no mude nada para no romper todo
+En general : Falta la campanita de notificaciones 
+En el dashboard del ADMIN: 
+    a. No andan los graficos, pongamos alguna foto
+    b. Acomodar el css para que se vea bien "admin user" -> nombre encuadrado y toda la bola
+    c. No deberia tener acceso a votar las ponencias, pero si a ver su estado
+    d. La ruta al dashboard esta rota
+    e. Acta de congreso 
+En el dashboard del Ponente:
+    a. Si esta aprobada no deberia poder editarla xD
+    b. Se superponen algunos div 
+    c. Esta rota la ruta del icono del certificados
+    d. POST CONGRESO - el ranking de la ponencia en su eje 
+En el dashboard del Asistente: 
+    a. Tambien se rompe el icono de certificado asi que arreglar uno arregla los dashboard
+    b. Quizas estaria bueno agregar en while - congreso " mis actividades favoritas " algo asi como "mi congreso" donde seleccionas las ponencias que te gustan 
+    c. Aca tiene que verse la votacion de ponencias 
+    e. /* Dear Paula: Cheta la persistencia */
+En el dashboard del Evaluador: 
+   a. el listado esta en ponencias/listado.html que creo que seria el dashboard en cuestion. 
+   b.  Agregar opcion de derivar ponencia por conflicto de intereses / no coincide con el area experticia / no es del eje tematico 
+
+Despues del Index y la cara general:
+    a. Se rompe en @media-mid los subdropdown
+    b. terminar Programa, dias etc
+    c. Mejorar Abstracts (Explica los ejes tematicos y las pautas de Envio, las circulares deberian estar aca)
+    d. Turimo y Alojamiento -> hacer el dashboard
+    e. Certificados. pedir la misma data que cuando se inscribieron. 
+    f. Mejorar el estilo para que coincida con los dash de Paula 
+    g. Expositores: charlas magistrales
+    h. Registro: hacer dinamico el boton recibir novedades s 
+

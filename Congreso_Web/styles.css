@@ -560,6 +560,7 @@ footer {
   color: var(--on-tertiary-container);
 }
 
+/*footer*/
 .footer-extendido {
   background-color: var(--primary);
   color: var(--on-primary);
@@ -625,6 +626,7 @@ footer {
   font-size: 13px;
   color: #ddd;
 }
+/*Cards*/
 
 .cards-container {
   display: flex;
@@ -640,37 +642,21 @@ footer {
   text-align: center;
 }
 
-#tablaPonencias {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
 
-#tablaPonencias th, #tablaPonencias td {
-  border: 1px solid var(--outline-variant);
-  padding: 8px;
-  text-align: left;
-}
+/*Login*/
 
-.grid-ejes {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1rem;
-  padding: 0;
-  list-style: none;
-  margin: 1rem 0 0 0;
-}
+  .login-btn {
+      background-color: #4CAF50; /* verde */
+      border: none;
+      color: white;
+      padding: 12px 24px;
+      text-align: center;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
 
-.grid-ejes li {
-  background-color: #e6f2ff;
-  color: #003366;
-  padding: 0.75rem 1rem;
-  border-left: 4px solid #0074D9;
-  border-radius: 6px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  transition: background-color 0.3s ease;
-}
-
-.grid-ejes li:hover {
-  background-color: #d0e9ff;
-}
+    .login-btn:hover {
+      background-color: #45a049;
+    }
