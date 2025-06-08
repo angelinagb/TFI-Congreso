@@ -643,6 +643,37 @@ footer {
 }
 
 
+/*logos footer*/
+.miembro-institucion {
+    color: #4B7FFB;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.instituciones-logos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    margin: 3rem 0;
+    align-items: center;
+}
+
+.institucion-logo {
+    height: 80px;
+    width: auto;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: all 0.3s;
+}
+
+.institucion-logo:hover {
+    filter: grayscale(0);
+    opacity: 1;
+}
+
+
+
 /*Login*/
 
   .login-btn {

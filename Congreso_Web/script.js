@@ -1,90 +1,73 @@
-document.querySelectorAll('.dropbtn').forEach(button => {
-    button.addEventListener('click', function(e) {
-        e.preventDefault();
-        const dropdownContent = this.nextElementSibling;
-        dropdownContent.style.display = 
-            dropdownContent.style.display === 'block' ? 'none' : 'block';
-    });
-});
-
-// Cierra los dropdowns si se hace clic fuera de ellos
-document.addEventListener('click', function(e) {
-    if (!e.target.closest('.dropdown')) {
-        document.querySelectorAll('.dropdown-content').forEach(dropdown => {
-            dropdown.style.display = 'none';
+document.addEventListener('DOMContentLoaded', function() {
+    // Hamburguesa
+    const hamburger = document.querySelector('.hamburger');
+    const navList = document.querySelector('.nav-list');
+    if (hamburger && navList) {
+        hamburger.addEventListener('click', function() {
+            navList.classList.toggle('active');
         });
     }
-});
 
-// Controlar el botón hamburguesa
-const hamburger = document.querySelector('.hamburger');
-const navList = document.querySelector('.nav-list');
+    // Dropdowns
+    document.querySelectorAll('.dropbtn').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const dropdownContent = this.nextElementSibling;
+            if (dropdownContent) {
+                dropdownContent.style.display = 
+                    dropdownContent.style.display === 'block' ? 'none' : 'block';
+            }
+        });
+    });
 
-hamburger.addEventListener('click', () => {
-    navList.classList.toggle('active');
-});
-
-// Controlar los dropdowns
-document.querySelectorAll('.dropbtn').forEach(button => {
-    button.addEventListener('click', function(e) {
-        e.preventDefault();
-        const dropdown = this.parentElement;
-        const dropdownContent = this.nextElementSibling;
-
-        // En móviles, toggle del dropdown
-        if (window.innerWidth <= 768) {
-            dropdown.classList.toggle('active');
-        } else {
-            // En pantallas grandes, mantener el hover del CSS
-            dropdownContent.style.display = 
-                dropdownContent.style.display === 'block' ? 'none' : 'block';
+    // Cierra los dropdowns si se hace clic fuera
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.dropdown')) {
+            document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+                dropdown.style.display = 'none';
+            });
+        }
+        // Cierra el menú hamburguesa si se hace clic fuera
+        if (!e.target.closest('.hamburger') && !e.target.closest('.nav-list')) {
+            if (navList) navList.classList.remove('active');
         }
     });
-});
 
-// Cierra los dropdowns y el menú si se hace clic fuera de ellos
-document.addEventListener('click', function(e) {
-    if (!e.target.closest('.dropdown') && !e.target.closest('.hamburger') && !e.target.closest('.nav-list')) {
-        // Cerrar todos los dropdowns
-        document.querySelectorAll('.dropdown-content').forEach(dropdown => {
-            dropdown.style.display = 'none';
-        });
-        document.querySelectorAll('.dropdown').forEach(dropdown => {
-            dropdown.classList.remove('active');
-        });
-        // Cerrar el menú hamburguesa
-        navList.classList.remove('active');
-    }
-});
-
-
-  // Fecha objetivo del congreso (25 de Octubre de 2026, 9:00 am por ejemplo)
-  const countdownDate = new Date("Junio 24, 2025 09:00:00").getTime();
+    // Cuenta regresiva (solo si existen los elementos)
+    const days = document.getElementById("days");
+    const hours = document.getElementById("hours");
+    const minutes = document.getElementById("minutes");
+    const seconds = document.getElementById("seconds");
+    // Cambia la fecha objetivo según tu evento
+    const countdownDate = new Date("June 24, 2025 09:00:00").getTime();
 
     function updateCountdown() {
-      const now = new Date().getTime();
-      const diff = countdownDate - now;
+        if (!(days && hours && minutes && seconds)) return;
+        const now = new Date().getTime();
+        const diff = countdownDate - now;
 
-      if (diff <= 0) {
-        document.getElementById('countdown').innerHTML = "<p>¡El tiempo llegó!</p>";
-        return;
-      }
+        if (diff <= 0) {
+            days.textContent = "00";
+            hours.textContent = "00";
+            minutes.textContent = "00";
+            seconds.textContent = "00";
+            return;
+        }
 
-      const seconds = Math.floor((diff / 1000) % 60);
-      const minutes = Math.floor((diff / 1000 / 60) % 60);
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const s = Math.floor((diff / 1000) % 60);
+        const m = Math.floor((diff / 1000 / 60) % 60);
+        const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
 
-      document.getElementById("days").textContent = String(days).padStart(2, '0');
-      document.getElementById("hours").textContent = String(hours).padStart(2, '0');
-      document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
-      document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
+        days.textContent = String(d).padStart(2, '0');
+        hours.textContent = String(h).padStart(2, '0');
+        minutes.textContent = String(m).padStart(2, '0');
+        seconds.textContent = String(s).padStart(2, '0');
     }
 
-    updateCountdown(); // Llamada inicial
-    setInterval(updateCountdown, 1000); // Actualiza cada segundo
-
-
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+});
   //validacion del formulario de inscripción
   document.querySelector('.formulario')?.addEventListener('submit', function(e){
     e.preventDefault();
