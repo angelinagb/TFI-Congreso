@@ -1,217 +1,75 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Ponencias | Admin VII ENGETECH 2026</title>
-    <link rel="stylesheet" href="../../styles.css">
-    <link rel="icon" href="/images/redgtech_logo.png_ok.png" type="image/x-icon">
-    <style>
-        
-        .admin-header {
-            background-color: #246488;
-            color: white;
-            padding: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .admin-nav {
-            background-color: #246488;
-            padding: 1rem;
-        }
-        
-        .admin-nav ul {
-            display: flex;
-            gap: 1.5rem;
-        }
-        
-        .admin-nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .admin-header nav ul li a.active,
-        .admin-header nav ul li a:hover {
-            background: var(--tertiary-container);
-            color: var(--on-tertiary-container);
-        }
-        
-        .actions {
-            display: flex;
-            gap: 0.5rem;
-        }
-        
-        .btn-sm {
-            padding: 0.25rem 0.5rem;
-            font-size: 0.875rem;
-        }
-        
-        .btn-approve {
-            background-color: #5BA273;
-        }
-        
-        .btn-reject {
-            background-color: #E74C3C;
-        }
-        
-        .search-bar {
-            margin: 1.5rem;
-            display: flex;
-            gap: 1rem;
-        }
-        
-        .search-bar input {
-            flex: 1;
-            padding: 0.75rem;
-            border: 1px solid #c1c7ce;
-            border-radius: 6px;
-        }
-        
-        .status-badge {
-            padding: 0.25rem 0.5rem;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: bold;
-        }
-        
-        .status-pending {
-            background-color: #F39C12;
-            color: white;
-        }
-        
-        .status-approved {
-            background-color: #5BA273;
-            color: white;
-        }
-        
-        .status-rejected {
-            background-color: #E74C3C;
-            color: white;
-        }
-        
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión de Ponencias | Admin VII ENGETECH 2026</title>
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="ponencias.css">
+  <link rel="icon" href="/images/redgtech_logo.png" type="image/x-icon">
 </head>
 <body>
-    <header class="admin-header">
-        <img src="../../images/redgtech_logo.png" alt="RedGTech Logo">
-        <h1>Gestión de Ponencias</h1>
-        <div>
-            <span id="adminName">Admin User</span>
-            <a href="#" id="logout" style="color: #A3E4A6; margin-left: 1rem;">Cerrar sesión</a>
-        </div>
-        <div class="spacer-15px"></div>
-    </header>
-    <nav class="admin-nav">
-        <ul>
-            <li><a href="../darshboard-admin.html" class="active">Inicio</a></li>
-            <li><a href="ponencias/ponencias.html">Ponencias</a></li>
-            <li><a href="usuarios/listado.html">Usuarios</a></li>
-            <li><a href="#">Configuración</a></li>
-            <li><a href="#" id="logout">Cerrar sesión</a></li>
-            <li><a href="../../index.html">Página del Congreso</a></li>
-        </ul>
-    </nav>
+  <header class="admin-header">
+    <h1>Gestión de Ponencias</h1>
+    <div>
+      <span id="adminName">Admin User</span>
+      <a href="#" id="logout" style="color: #A3E4A6; margin-left: 1rem;">Cerrar sesión</a>
+    </div>
+  </header>
 
-        
-    <main>
-        <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="Buscar ponencias...">
-            <select id="filterStatus">
-                <option value="all">Todos los estados</option>
-                <option value="pending">Pendientes</option>
-                <option value="approved">Aprobadas</option>
-                <option value="rejected">Rechazadas</option>
-            </select>
-        </div>
-        
-        <div class="chart-container" style="margin: 1.5rem;">
-            <table id="ponenciasTable" style="width: 100%; border-collapse: collapse;">
-                <thead>
-                    <tr style="background-color: #246488; color: white;">
-                        <th style="padding: 1rem; text-align: left;">ID</th>
-                        <th style="padding: 1rem; text-align: left;">Título</th>
-                        <th style="padding: 1rem; text-align: left;">Autor</th>
-                        <th style="padding: 1rem; text-align: left;">Fecha</th>
-                        <th style="padding: 1rem; text-align: left;">Estado</th>
-                        <th style="padding: 1rem; text-align: left;">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Datos dinámicos -->
-                    <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 1rem;">P-001</td>
-                        <td style="padding: 1rem;">Energías renovables en PYMES</td>
-                        <td style="padding: 1rem;">María López</td>
-                        <td style="padding: 1rem;">15/10/2026</td>
-                        <td style="padding: 1rem;">
-                            <span class="status-badge status-approved">Aprobada</span>
-                        </td>
-                        <td style="padding: 1rem;">
-                            <div class="actions">
-                                <a href="editar.html?id=P-001" class="btn-sm">Editar</a>
-                                <button class="btn-sm btn-reject">Rechazar</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 1rem;">P-002</td>
-                        <td style="padding: 1rem;">Gestión tecnológica 4.0</td>
-                        <td style="padding: 1rem;">Carlos Méndez</td>
-                        <td style="padding: 1rem;">16/10/2026</td>
-                        <td style="padding: 1rem;">
-                            <span class="status-badge status-pending">Pendiente</span>
-                        </td>
-                        <td style="padding: 1rem;">
-                            <div class="actions">
-                                <a href="editar.html?id=P-002" class="btn-sm">Editar</a>
-                                <button class="btn-sm btn-approve">Aprobar</button>
-                                <button class="btn-sm btn-reject">Rechazar</button>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </main>
+  <nav class="admin-nav">
+    <ul>
+      <li><a href="../darshboard-admin.html" class="active">Inicio</a></li>
+      <li><a href="ponencias/ponencias.html">Ponencias</a></li>
+      <li><a href="usuarios/listado.html">Usuarios</a></li>
+      <li><a href="#">Configuración</a></li>
+      <li><a href="#" id="logout">Cerrar sesión</a></li>
+      <li><a href="../../index.html">Página del Congreso</a></li>
+    </ul>
+  </nav>
 
-
-    <div id="modalPonencia" class="modal">
-        <div class="modal-contenido">
-            <span class="cerrar">&times;</span>
-            <h2 id="modalTitulo">Detalles de la Ponencia</h2>
-            <div id="modalContenido"></div>
-            <div class="modal-acciones">
-                <button id="btnAprobar" class="btn-accion">Aprobar</button>
-                <button id="btnRechazar" class="btn-accion">Rechazar</button>
-                <button id="btnCerrarModal" class="btn-accion">Cerrar</button>
-            </div>
-        </div>
+  <main>
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Buscar ponencias..." />
+      <select id="filterStatus">
+        <option value="all">Todos los estados</option>
+        <option value="pending">Pendientes</option>
+        <option value="approved">Aprobadas</option>
+        <option value="rejected">Rechazadas</option>
+      </select>
     </div>
 
-    <script src="../admin/admin.js"></script>
-    <script>
-        // Lógica para filtrado y búsqueda
-        document.getElementById('searchInput').addEventListener('input', filterTable);
-        document.getElementById('filterStatus').addEventListener('change', filterTable);
-        
-        function filterTable() {
-            const searchText = document.getElementById('searchInput').value.toLowerCase();
-            const filterStatus = document.getElementById('filterStatus').value;
-            
-            document.querySelectorAll('#ponenciasTable tbody tr').forEach(row => {
-                const title = row.cells[1].textContent.toLowerCase();
-                const author = row.cells[2].textContent.toLowerCase();
-                const status = row.cells[4].querySelector('.status-badge').className.includes(filterStatus);
-                
-                const matchesSearch = title.includes(searchText) || author.includes(searchText);
-                const matchesStatus = filterStatus === 'all' || status;
-                
-                row.style.display = matchesSearch && matchesStatus ? '' : 'none';
-            });
-        }
-    </script>
+    <div class="chart-container" style="margin: 1.5rem;">
+      <table id="ponenciasTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Se llena dinámicamente -->
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+<div class="modal" id="modalPonencia">
+    <div class="modal-contenido">
+      <span class="cerrar" id="modal">&times;</span>
+      <h2 id="modalTitulo"></h2>
+      <div id="modalContenido"></div>
+      <div class="modal-acciones">
+        <button class="btn-accion btn-detalles" id="btnCerrarModal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="ponencias.js"></script>
+  <script src="listado.js"></script>
 </body>
 </html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Ponencias | Admin VII ENGETECH 2026</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="icon" href="/images/redgtech_logo.png_ok.png" type="image/x-icon">
+    <style>
+        
+        .admin-header {
+            background-color: #246488;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .admin-nav {
+            background-color: #246488;
+            padding: 1rem;
+        }
+        
+        .admin-nav ul {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .admin-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .admin-header nav ul li a.active,
+        .admin-header nav ul li a:hover {
+            background: var(--tertiary-container);
+            color: var(--on-tertiary-container);
+        }
+        
+        .actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .btn-sm {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.875rem;
+        }
+        
+        .btn-approve {
+            background-color: #5BA273;
+        }
+        
+        .btn-reject {
+            background-color: #E74C3C;
+        }
+        
+        .search-bar {
+            margin: 1.5rem;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .search-bar input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 1px solid #c1c7ce;
+            border-radius: 6px;
+        }
+        
+        .status-badge {
+            padding: 0.25rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+        
+        .status-pending {
+            background-color: #F39C12;
+            color: white;
+        }
+        
+        .status-approved {
+            background-color: #5BA273;
+            color: white;
+        }
+        
+        .status-rejected {
+            background-color: #E74C3C;
+            color: white;
+        }
+        
+    </style>
+</head>
+<body>
+    <header class="admin-header">
+        <img src="../../images/redgtech_logo.png" alt="RedGTech Logo">
+        <h1>Gestión de Ponencias</h1>
+        <div>
+            <span id="adminName">Admin User</span>
+            <a href="#" id="logout" style="color: #A3E4A6; margin-left: 1rem;">Cerrar sesión</a>
+        </div>
+        <div class="spacer-15px"></div>
+    </header>
+    <nav class="admin-nav">
+        <ul>
+            <li><a href="../darshboard-admin.html" class="active">Inicio</a></li>
+            <li><a href="ponencias/ponencias.html">Ponencias</a></li>
+            <li><a href="usuarios/listado.html">Usuarios</a></li>
+            <li><a href="#">Configuración</a></li>
+            <li><a href="#" id="logout">Cerrar sesión</a></li>
+            <li><a href="../../index.html">Página del Congreso</a></li>
+        </ul>
+    </nav>
+
+        
+    <main>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Buscar ponencias...">
+            <select id="filterStatus">
+                <option value="all">Todos los estados</option>
+                <option value="pending">Pendientes</option>
+                <option value="approved">Aprobadas</option>
+                <option value="rejected">Rechazadas</option>
+            </select>
+        </div>
+           <div class="chart-container" style="margin: 1.5rem;">
+           <table id="ponenciasTable" border="1">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Título</th>
+        <th>Autor</th>
+        <th>Fecha</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Acá se va a llenar la tabla automáticamente -->
+    </tbody>
+  </table>
+        </div>
+    </main>
+
+
+    <div id="modalPonencia" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar">&times;</span>
+            <h2 id="modalTitulo">Detalles de la Ponencia</h2>
+            <div id="modalContenido"></div>
+            <div class="modal-acciones">
+                <button id="btnAprobar" class="btn-accion">Aprobar</button>
+                <button id="btnRechazar" class="btn-accion">Rechazar</button>
+                <button id="btnCerrarModal" class="btn-accion">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../admin/admin.js"></script>
+    <script src="ponencias.js"></script>
+    <script>src="../dashboard_evaluador"></script>  
+</body>
+</html>
