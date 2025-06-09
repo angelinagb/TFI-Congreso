@@ -21,7 +21,7 @@ En el dashboard del ADMIN:
     e. Acta de congreso 
 En el dashboard del Ponente:
     a. Si esta aprobada no deberia poder editarla xD
-    b. Se superponen algunos div 
+    ARREGLADO: b. Se superponen algunos div 
     d. POST CONGRESO - el ranking de la ponencia en su eje 
 En el dashboard del Asistente: 
     a. Quizas estaria bueno agregar en while - congreso " mis actividades favoritas " algo asi como "mi congreso" donde seleccionas las ponencias que te gustan 

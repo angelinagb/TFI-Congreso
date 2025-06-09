@@ -142,23 +142,24 @@
             margin-left: 1rem;
         }
         .anonymous-feedback {
-        background-color: #f8f9fa;
-        border-radius: 8px;
-        padding: 1.5rem;
-        margin-bottom: 1rem;
-        position: relative;
-    }
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            margin-top: 1.5rem;
+        }
     
-    .anonymous-feedback::before {
-        content: "EVALUACIÓN ANÓNIMA";
-        position: absolute;
-        top: -10px;
-        left: 15px;
-        background: #246488;
-        color: white;
-        padding: 0 10px;
-        font-size: 0.75rem;
-        border-radius: 4px;
+        .anonymous-feedback::before {
+            content: "EVALUACIÓN ANÓNIMA";
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            background: #246488;
+            color: white;
+            padding: 0 10px;
+            font-size: 0.75rem;
+            border-radius: 4px;
     }
     
     .feedback-meta {
