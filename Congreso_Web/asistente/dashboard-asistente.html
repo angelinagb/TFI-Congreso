@@ -8,31 +8,6 @@
     <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
-        .asistente-header {
-            background-color: #246488;
-            color: white;
-            padding: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .asistente-nav {
-            background-color: #246488;
-            padding: 1rem;
-        }
-        
-        .asistente-nav ul {
-            display: flex;
-            gap: 1.5rem;
-        }
-        
-        .asistente-nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
         .login-container {
             max-width: 1200px;
             margin: 2rem auto;
@@ -52,28 +27,6 @@
             margin-bottom: 1rem;
             padding-bottom: 0.5rem;
             border-bottom: 2px solid #e0e0e0;
-        }
-    
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1rem 0;
-        }
-    
-        table th {
-            background-color: #246488;
-            color: white;
-            padding: 0.75rem;
-            text-align: left;
-        }
-    
-        table td {
-            padding: 0.75rem;
-            border-bottom: 1px solid #e0e0e0;
-        }
-    
-        table tr:hover {
-            background-color: #f5f5f5;
         }
     
         .btn {
@@ -114,12 +67,11 @@
         .certificate-download {
             margin-left: 1rem;
         }
-    
     </style>
 </head>
 
 <body>
-    <header class="ponente-header">
+    <header class="dashboard-header">
         <img src="../images/redgtech_logo.png" alt="RedGTech Logo">
         <h1>Panel de Asistente</h1>
         <div>
@@ -129,7 +81,7 @@
         <div class="spacer-15px"></div>
     </header>
 
-    <nav class="asistente-nav">
+    <nav class="dashboard-nav">
         <ul>
             <li><a href="dashboard-asistente.html" class="active">Inicio</a></li>
             <li><a href="#">Mi Perfil</a></li>
@@ -148,7 +100,7 @@
         <section class="dashboard-section" id="seccionCertificados">
             <h3>Mis Certificados</h3>
             <div class="certificate-card">
-                <img src="../images/certificate-icon.png" alt="Icono de certificado">
+                <img src="../images/certificate_icon.png" alt="Icono de certificado">
                 <div class="certificate-info">
                     <h4>Certificado de Asistente - VII Encuentro de Gestores Tecnológicos</h4>
                     <p>Emitido el: 25/10/2026</p>
