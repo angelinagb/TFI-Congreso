@@ -1,48 +1,100 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Evaluador - VII ENGETECH 2026</title>
-    <link rel="stylesheet" href="../styles.css">
-    <link rel="stylesheet" href="evaluador.css">
-    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión de Ponencias | Admin VII ENGETECH 2026</title>
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="evaluador.css">
+  <link rel = "stylesheet" href=".css">
+
+  <link rel="icon" href="/images/redgtech_logo.png" type="image/x-icon">
 </head>
 <body>
-    <header class="eval-header">
-        <img src="../images/redgtech_logo.png" alt="RedGTech Logo">
-        <h1>Panel de Evaluador</h1>
-        <div>
-            <span id="evalName">Eval User</span>
-            <a href="#" id="logout" style="color: #A3E4A6; margin-left: 1rem;">Cerrar sesión</a>
-        </div>
-        <div class="spacer-15px"></div>
-    </header>
+  <header class="admin-header">
+    <h1>Gestión de Ponencias</h1>
+    <div>
+      <span id="adminName">Admin User</span>
+      <a href="#" id="logout" style="color: #A3E4A6; margin-left: 1rem;">Cerrar sesión</a>
+    </div>
+  </header>
 
-    <nav class="eval-nav">
-        <ul>
-            <li><a href="darshboard-admin.html" class="active">Inicio</a></li>
-            <li><a href="#">Ponencias</a></li>
-            <li><a href="#">Inscriptos</a></li>
-            <li><a href="#">Configuración</a></li>
-            <li><a href="#" id="logout">Cerrar sesión</a></li>
-            <li><a href="../index.html">Página del Congreso</a></li>
-        </ul>
-    </nav>
-    
-    <main>
-        <section class="cards-container">
-            <div class="card">
-                <h3>Inscriptos</h3>
-                <p id="totalInscriptos">0</p>
-            </div>
-            <div class="card">
-                <h3>Ponencias</h3>
-                <p id="totalPonencias">0</p>
-            </div>
-        </section>
-    </main>
+  <nav class="admin-nav">
+    <ul>
+      <li><a href="../darshboard-admin.html" class="active">Inicio</a></li>
+      <li><a href="ponencias/ponencias.html">Ponencias</a></li>
+      <li><a href="usuarios/listado.html">Usuarios</a></li>
+      <li><a href="#">Configuración</a></li>
+      <li><a href="#" id="logout">Cerrar sesión</a></li>
+      <li><a href="../../index.html">Página del Congreso</a></li>
+    </ul>
+  </nav>
 
-    <script src="../admin/admin.js"></script>
+  <main>
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Buscar ponencias..." />
+      <select id="filterStatus">
+        <option value="all">Todos los estados</option>
+        <option value="pending">Pendientes</option>
+        <option value="approved">Aprobadas</option>
+        <option value="rejected">Rechazadas</option>
+      </select>
+    </div>
+
+    <div class="chart-container" style="margin: 1.5rem;">
+      <table id="ponenciasTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Se llena dinámicamente -->
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+<div class="modal" id="modalPonencia">
+    <div class="modal-contenido">
+      <span class="cerrar" id="modal">&times;</span>
+      <h2 id="modalTitulo"></h2>
+      <div id="modalContenido"></div>
+      <div class="modal-acciones">
+        <button class="btn-accion btn-detalles" id="btnCerrarModal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="modalDerivar" class="modal">
+  <div class="modal-contenido">
+    <span class="cerrar" id="cerrarDerivar">&times;</span>
+    <h3>Derivar ponencia</h3>
+
+    <label for="razonDerivar">Motivo:</label>
+    <select id="razonDerivar">
+      <option value="">Seleccionar motivo</option>
+      <option value="conflicto">Conflicto de interés</option>
+      <option value="eje">Error de eje temático</option>
+    </select>
+
+    <label for="evaluadorDestino">Derivar a:</label>
+    <select id="evaluadorDestino">
+      <option value="">Seleccionar evaluador</option>
+    </select>
+
+    <div class="modal-acciones">
+      <button id="confirmarDerivacion" class="btn-accion btn-derivar">Confirmar derivación</button>
+    </div>
+  </div>
+</div>
+
+  <script src="../ponencias/ponencias.js"></script>
+  <script src="listado.js"></script>
 </body>
 </html>

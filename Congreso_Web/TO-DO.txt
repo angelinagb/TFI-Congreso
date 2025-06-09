@@ -28,8 +28,8 @@ En el dashboard del Asistente:
     b. Aca tiene que verse la votacion de ponencias 
     c. /* Dear Paula: Cheta la persistencia */
 En el dashboard del Evaluador: 
-   a. el listado esta en ponencias/listado.html que creo que seria el dashboard en cuestion. 
-   b.  Agregar opcion de derivar ponencia por conflicto de intereses / no coincide con el area experticia / no es del eje tematico 
+   a. ARREGLADO: el listado esta en ponencias/listado.html que creo que seria el dashboard en cuestion. 
+   b. HECHO: Agregar opcion de derivar ponencia por conflicto de intereses / no coincide con el area experticia / no es del eje tematico 
 
 Despues del Index y la cara general:
     a. Se rompe en @media-mid los subdropdown

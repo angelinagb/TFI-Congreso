@@ -25,7 +25,7 @@ const usuarios = [
     email: "evaluador1@ejemplo.com",
     password: "evaluador123",
     categoria: "evaluador",
-    ruta: "../admin/dashboard-evaluador.html",
+    ruta: "../evaluador/dashboard-evaluador.html",
     nombre:'Javier Torres'
   }
 ];
