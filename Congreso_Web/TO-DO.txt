@@ -22,13 +22,11 @@ En el dashboard del ADMIN:
 En el dashboard del Ponente:
     a. Si esta aprobada no deberia poder editarla xD
     b. Se superponen algunos div 
-    c. Esta rota la ruta del icono del certificados
     d. POST CONGRESO - el ranking de la ponencia en su eje 
 En el dashboard del Asistente: 
-    a. Tambien se rompe el icono de certificado asi que arreglar uno arregla los dashboard
-    b. Quizas estaria bueno agregar en while - congreso " mis actividades favoritas " algo asi como "mi congreso" donde seleccionas las ponencias que te gustan 
-    c. Aca tiene que verse la votacion de ponencias 
-    e. /* Dear Paula: Cheta la persistencia */
+    a. Quizas estaria bueno agregar en while - congreso " mis actividades favoritas " algo asi como "mi congreso" donde seleccionas las ponencias que te gustan 
+    b. Aca tiene que verse la votacion de ponencias 
+    c. /* Dear Paula: Cheta la persistencia */
 En el dashboard del Evaluador: 
    a. el listado esta en ponencias/listado.html que creo que seria el dashboard en cuestion. 
    b.  Agregar opcion de derivar ponencia por conflicto de intereses / no coincide con el area experticia / no es del eje tematico 

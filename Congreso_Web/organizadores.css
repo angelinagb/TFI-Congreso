@@ -60,3 +60,24 @@
         grid-template-columns: 1fr;
     }
 }
+
+.instituciones-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  align-items: center;
+}
+
+.institucion-logo {
+  max-width: 180px;
+  height: auto;
+  object-fit: contain;
+  filter: grayscale(100%) brightness(0.9) contrast(1.1);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.institucion-logo:hover {
+  filter: none;
+  transform: scale(1.05);
+}
