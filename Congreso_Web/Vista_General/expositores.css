@@ -1,0 +1,73 @@
+/* Sección de contadores */
+.contadores {
+  display: flex;
+  justify-content: space-around;
+  background-color: white;
+  padding: 2rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.contador {
+  text-align: center;
+  color: #003366;
+}
+
+/* Sección de cuenta regresiva */
+.cuenta-regresiva {
+  text-align: center;
+  background-color: #e6f1fb;
+  padding: 1.5rem;
+  font-size: 1.2rem;
+  color: #003366;
+}
+
+/* Exponentes invitados */
+.exponentes {
+  background-color: #012c5c;
+  padding: 3rem 2rem;
+  color: white;
+}
+
+.exponentes h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+}
+
+.grid-exponentes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.card-exponente {
+  background-color: white;
+  border-radius: 12px;
+  padding: 1rem;
+  color: #003366;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-exponente h3 {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.card-exponente span {
+  font-size: 0.9rem;
+  color: #027ab3;
+}
+
+/* Partners */
+.partners {
+  background-color: #e8edf3;
+  padding: 2rem;
+  text-align: center;
+}
+
+.partners img {
+  margin: 0 1rem;
+  height: 40px;
+  vertical-align: middle;
+}
+
