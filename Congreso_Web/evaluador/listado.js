@@ -45,11 +45,10 @@ function renderTabla(ponenciasFiltradas) {
         <span class="status-badge ${estadoClass}">${p.estado}</span>
       </td>
       <td class="actions">
-        <button class="btn-sm btn-approve" data-id="${p.ponencia_id}" ${disabled}>Aprobar</button>
-        <button class="btn-sm btn-reject" data-id="${p.ponencia_id}" ${disabled}>Rechazar</button>
         <button class="btn-sm btn-detalles" data-id="${p.ponencia_id}">Ver detalles</button>
         <button class="btn-sm btn-derivar" data-id="${p.ponencia_id}" ${disabled}>Derivar</button>
-      </td>
+        <button class="btn-sm btn-evaluar" data-id="${p.ponencia_id}" ${disabled}>Evaluar</button>
+        </td>
     `;
     tabla.appendChild(tr);
   });
@@ -94,23 +93,6 @@ function renderTabla(ponenciasFiltradas) {
         modal.style.display = "flex";
       }
     }
-    if (e.target.classList.contains("btn-approve")) {
-      const id = e.target.dataset.id;
-      const ponencia = ponencias.find(p => p.ponencia_id === id);
-      if (ponencia) {
-        ponencia.estado = "Aprobada";
-        renderTabla(getPonenciasFiltradas());
-      }
-    }
-    if (e.target.classList.contains("btn-reject")) {
-      const id = e.target.dataset.id;
-      const ponencia = ponencias.find(p => p.ponencia_id === id);
-      if (ponencia) {
-        ponencia.estado = "Rechazada";
-        renderTabla(getPonenciasFiltradas());
-      }
-    }
-
     if (e.target.classList.contains("btn-derivar")) {
       const id = e.target.dataset.id;
       ponenciaSeleccionada = ponencias.find(p => p.ponencia_id === id);
@@ -118,13 +100,19 @@ function renderTabla(ponenciasFiltradas) {
         razonDerivar.value = "";
         evaluadorDestino.innerHTML = '<option value="">Seleccionar evaluador</option>';
         modalDerivar.style.display = "flex";
-  }
-}
-
+      }
+    }
+    if (e.target.classList.contains("btn-evaluar")) {
+      const id = e.target.dataset.id;
+      const ponencia = ponencias.find(p => p.ponencia_id === id);
+      if (ponencia) {
+        window.location.href = `evaluacion.html?id=${ponencia.ponencia_id}`;
+      }
+    }
   });
 
 
-  cerrarDerivar.addEventListener("click", () => {
+cerrarDerivar.addEventListener("click", () => {
   modalDerivar.style.display = "none";
 });
 
@@ -194,7 +182,6 @@ confirmarDerivacion.addEventListener("click", () => {
   window.addEventListener("click", (e) => {
     if (e.target === modal) modal.style.display = "none";
   });
-});
 
 confirmarDerivacion.addEventListener("click", () => {
   const evaluador = evaluadorDestino.value;
@@ -204,5 +191,7 @@ confirmarDerivacion.addEventListener("click", () => {
   }
   ponenciaSeleccionada.estado = "Derivada";
   renderTabla(getPonenciasFiltradas());
-  modalDerivar.style.display = "none";
-});
+  modalDerivar.style.display = "none";  
+})
+
+})

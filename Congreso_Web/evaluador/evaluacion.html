@@ -6,7 +6,8 @@
   <title>Evaluar Ponencia | VII ENGETECH 2026</title>
   <link rel="stylesheet" href="../../styles.css">
   <link rel="stylesheet" href="../admin/admin.css">
-  <link rel="stylesheet" href="evaluador.css">
+  <link rel="stylesheet" href="evaluacion.css">
+  <link rel = "stylesheet" href="evaluador.css">
   <link rel="icon" href="/images/redgtech_logo.png" type="image/x-icon">
 </head>
 <body>
@@ -20,44 +21,162 @@
 
   <nav class="admin-nav">
     <ul>
-      <li><a href="evaluador.html" class="active">Volver a Mis Evaluaciones</a></li>
+      <li><a href="dashboard-evaluador.html" class="active">Volver a Mis Evaluaciones</a></li>
       <li><a href="../../index.html">Página del Congreso</a></li>
       <li><a href="#" id="logout">Cerrar sesión</a></li>
     </ul>
   </nav>
+  <h2>Informe de valoración de la Ponencia presentada</h2>
+  <h3>VII Encuentro de Gestores Tecnologicos - RedGTech</h3>
+  <hr>
 
-  <main>
-    <div class="main-content-wrapper">
-      <div class="chart-container">
-        <h2 id="ponenciaTitulo">Cargando Título...</h2>
-        <p><strong>ID:</strong> <span id="ponenciaId"></span></p>
-        <p><strong>Eje Temático:</strong> <span id="ponenciaEje"></span></p>
-        <p><strong>Resumen:</strong> <span id="ponenciaResumen"></span></p>
-        <p><strong>Infografía:</strong> <a id="ponenciaInfografia" href="#" target="_blank">Ver Infografía</a></p>
-        <p><strong>Informe de Investigación:</strong> <a id="ponenciaInforme" href="#" target="_blank">Ver Informe</a></p>
+<div class="section-title">Datos del Proyecto</div>
 
-        <hr>
+<label>ID de la Ponencia</label>
+<span id="ponenciaId"></span>
 
-        <h3>Mi Evaluación</h3>
-        <div class="form-group">
-          <label for="feedback">Feedback (Comentarios para el Ponente):</label>
-          <textarea id="feedback" rows="6" placeholder="Escribe tu feedback aquí..."></textarea>
-        </div>
+<label>Nombre del Ponente</label>
+<span id="ponenciaAutor"></span>
 
-        <div class="form-group">
-            <label for="calificacion">Calificación (1-10):</label>
-            <input type="number" id="calificacion" min="1" max="10" placeholder="Ej: 8">
-        </div>
+<label>Fecha de Presentación</label>
+<span id="ponenciaFecha"></span>
 
-        <div class="evaluation-actions">
-          <button class="btn-accion btn-approve" id="btnAprobar">Aprobar Ponencia</button>
-          <button class="btn-accion btn-reject" id="btnRechazar">Rechazar Ponencia</button>
-          <button class="btn-accion btn-save" id="btnGuardarFeedback">Guardar Feedback</button>
-        </div>
-      </div>
+<label>Eje Temático</label>
+<span id="ponenciaEje"></span>
+
+<label>Resumen</label>
+<span id="ponenciaResumen"></span>
+
+<label>Estado de la Ponencia</label>
+<span id="ponenciaEstado"></span>
+
+<label>Título del Proyecto</label>
+<span id="ponenciaTitulo"></span>
+
+  <div class="section-title">Valoración del Proyecto / Presentación</div>
+
+  <div class="rating-row">
+    <div class="rating-label">Exposición</div>
+    <div class="scale">
+      <span class="scale-label">Bajo</span>
+      <span>
+        <!-- Radios del 1 al 18 -->
+        <script>
+          for (let i = 1; i <= 18; i++) {
+            document.write(`<input type='radio' name='exposicion' value='${i}'>${i}`);
+          }
+        </script>
+      </span>
     </div>
-  </main>
+  </div>
 
+  <div class="rating-row">
+    <div class="rating-label">Claridad</div>
+    <div class="scale">
+      <span class="scale-label">Bajo</span>
+      <span>
+        <script>
+          for (let i = 1; i <= 18; i++) {
+            document.write(`<input type='radio' name='claridad' value='${i}'>${i}`);
+          }
+        </script>
+      </span>
+    </div>
+  </div>
+
+  <div class="section-title">Valoración del Proyecto / Proyecto</div>
+
+  <div class="rating-row">
+    <div class="rating-label">Originalidad</div>
+    <div class="scale">
+      <span class="scale-label">Bajo</span>
+      <span>
+        <script>
+          for (let i = 1; i <= 15; i++) {
+            document.write(`<input type='radio' name='originalidad' value='${i}'>${i}`);
+          }
+        </script>
+      </span>
+      <span class="scale-label">Alto</span>
+    </div>
+  </div>
+
+  <div class="rating-row">
+    <div class="rating-label">Pertinencia</div>
+    <div class="scale">
+      <span class="scale-label">Bajo</span>
+      <span>
+        <script>
+          for (let i = 1; i <= 10; i++) {
+            document.write(`<input type='radio' name='pertinencia' value='${i}'>${i}`);
+          }
+        </script>
+      </span>
+      <span class="scale-label">Alto</span>
+    </div>
+  </div>
+
+  <div class="rating-row">
+    <div class="rating-label">Objetivos</div>
+    <div class="scale">
+      <span class="scale-label">Bajo</span>
+      <span>
+        <script>
+          for (let i = 1; i <= 10; i++) {
+            document.write(`<input type='radio' name='objetivos' value='${i}'>${i}`);
+          }
+        </script>
+      </span>
+      <span class="scale-label">Alto</span>
+    </div>
+  </div>
+
+  <div class="rating-row">
+    <div class="rating-label">Metodología</div>
+    <div class="scale">
+      <span class="scale-label">Bajo</span>
+      <span>
+        <script>
+          for (let i = 1; i <= 15; i++) {
+            document.write(`<input type='radio' name='metodologia' value='${i}'>${i}`);
+          }
+        </script>
+      </span>
+      <span class="scale-label">Alto</span>
+    </div>
+  </div>
+
+  <div class="rating-row">
+    <div class="rating-label">Relevancia de Productos y/o Resultados</div>
+    <div class="scale">
+      <span class="scale-label">Bajo</span>
+      <span>
+        <script>
+          for (let i = 1; i <= 10; i++) {
+            document.write(`<input type='radio' name='relevancia' value='${i}'>${i}`);
+          }
+        </script>
+      </span>
+      <span class="scale-label">Alto</span>
+    </div>
+  </div>
+
+  <label for="promedio">Calificación Promedio</label>
+  <textarea id="feedback" rows="6"></textarea>
+
+  <div class="form-group">
+    <label for="feedback">Feedback (Comentarios para el Ponente):</label>
+    <input type ="text" placeholder="Escribe tu feedback aquí..."></textarea>
+  </div>
+
+
+  <div class="submit-section">
+    <button class="btn-accion btn-save" id="btnGuardarFeedback">Guardar Feedback</button>
+    <button class="btn-sm btn-approve" data-id="${p.ponencia_id}" ${disabled}>Aprobar</button>
+    <button class="btn-sm btn-reject" data-id="${p.ponencia_id}" ${disabled}>Rechazar</button>   
+  </div>
+
+  <script src="../ponencias/ponencias.js"></script>
   <script src="evaluacion.js"></script>
 </body>
 </html>

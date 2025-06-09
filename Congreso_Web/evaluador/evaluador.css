@@ -175,6 +175,24 @@
 .btn-derivar:hover {
   background-color: #313539;
 }
+
+.btn-evaluar {
+  background-color: #6f8218;
+
+}
+.btn-evaluar:hover {
+  background-color: #6f7e24;
+}
+
+.btn-save {
+  background-color: #1715a2;
+
+}
+.btn-save:hover {
+  background-color: #6f7e24;
+}
+
+
 .cerrar {
   float: right;
   font-size: 1.5rem;

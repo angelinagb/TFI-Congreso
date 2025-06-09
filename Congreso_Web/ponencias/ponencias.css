@@ -114,6 +114,9 @@
     gap: 10px;
     justify-content: flex-end;
 }
+
+/* Botones */
+
 .btn-sm, .btn-accion {
   padding: 0.5rem 1rem;
   font-size: 0.875rem;
@@ -151,6 +154,8 @@
   font-size: 1.5rem;
   cursor: pointer;
 }
+
+/*
 
 table {
   width: 100%;

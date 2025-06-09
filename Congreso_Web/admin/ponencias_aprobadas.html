@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin | VII Encuentro de Gestores Tecnológicos 2026</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="admin.css">
+    <link rel="icon" href="/Congreso_Web/images/redgtech_logo.png" type="image/x-icon">
+</head>
+
+<body>
+    <header class="admin-header">
+        <img src="../images/redgtech_logo.png" alt="RedGTech Logo">
+        <h1>Panel de Administración</h1>
+        <div>
+            <span id="adminName">Admin User</span>
+            <a href="#" id="logout" style="color: #A3E4A6; margin-left: 1rem;">Cerrar sesión</a>
+        </div>
+        <div class="spacer-15px"></div>
+    </header>
+
+    <nav class="admin-nav">
+        <ul>
+            <li><a href="dashboard-admin.html" class="active">Inicio</a></li>
+            <li><a href="../ponencias/listado.html">Gestionar ponencias</a></li>
+            <li><a href="../usuarios/listado.html">Gestionar usuarios</a></li>
+            <li><a href="#">Configuración</a></li>
+            <li><a href="#" id="logout">Cerrar sesión</a></li>
+            <li><a href="../index.html">Página del Congreso</a></li>
+        </ul>
+    </nav>
+    
+<main>
+<table id="tablaAprobadas">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Título</th>
+      <th>Autor</th>
+      <th>Fecha</th>
+      <th>Eje Temático</th>
+      <th>Resumen</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Se llena con JS -->
+  </tbody>
+</table>
+</main>
+
+<script src="../ponencias/ponencias.js"></script>
+<script src="admin_listado_ponencias.js"></script>
+</body>
+</html>
