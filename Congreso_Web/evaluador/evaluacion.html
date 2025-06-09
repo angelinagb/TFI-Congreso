@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evaluar Ponencia | VII ENGETECH 2026</title>
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../admin/admin.css">
+  <link rel="stylesheet" href="evaluador.css">
+  <link rel="icon" href="/images/redgtech_logo.png" type="image/x-icon">
+</head>
+<body>
+  <header class="admin-header">
+    <h1>Evaluar Ponencia</h1>
+    <div>
+      <span id="evaluadorName">Evaluador User</span>
+      <a href="#" id="logout" style="color: #A3E4A6; margin-left: 1rem;">Cerrar sesión</a>
+    </div>
+  </header>
+
+  <nav class="admin-nav">
+    <ul>
+      <li><a href="evaluador.html" class="active">Volver a Mis Evaluaciones</a></li>
+      <li><a href="../../index.html">Página del Congreso</a></li>
+      <li><a href="#" id="logout">Cerrar sesión</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="main-content-wrapper">
+      <div class="chart-container">
+        <h2 id="ponenciaTitulo">Cargando Título...</h2>
+        <p><strong>ID:</strong> <span id="ponenciaId"></span></p>
+        <p><strong>Eje Temático:</strong> <span id="ponenciaEje"></span></p>
+        <p><strong>Resumen:</strong> <span id="ponenciaResumen"></span></p>
+        <p><strong>Infografía:</strong> <a id="ponenciaInfografia" href="#" target="_blank">Ver Infografía</a></p>
+        <p><strong>Informe de Investigación:</strong> <a id="ponenciaInforme" href="#" target="_blank">Ver Informe</a></p>
+
+        <hr>
+
+        <h3>Mi Evaluación</h3>
+        <div class="form-group">
+          <label for="feedback">Feedback (Comentarios para el Ponente):</label>
+          <textarea id="feedback" rows="6" placeholder="Escribe tu feedback aquí..."></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="calificacion">Calificación (1-10):</label>
+            <input type="number" id="calificacion" min="1" max="10" placeholder="Ej: 8">
+        </div>
+
+        <div class="evaluation-actions">
+          <button class="btn-accion btn-approve" id="btnAprobar">Aprobar Ponencia</button>
+          <button class="btn-accion btn-reject" id="btnRechazar">Rechazar Ponencia</button>
+          <button class="btn-accion btn-save" id="btnGuardarFeedback">Guardar Feedback</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="evaluacion.js"></script>
+</body>
+</html>

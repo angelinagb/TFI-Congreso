@@ -1,0 +1,243 @@
+/* Estilos para el contenedor principal de la página */
+.main-content-wrapper {
+    max-width: 1200px; 
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+/* Estilos generales de la sección */
+.section-container {
+    background-color: var(--surface);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.section-container h2 {
+    color: var(--primary);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.section-container h3 {
+    color: var(--on-surface); /* Color más oscuro para los títulos internos */
+    font-size: 1.5rem; /* Tamaño de fuente para h3 */
+    margin-top: 2rem; /* Espacio superior para separar secciones */
+    margin-bottom: 1rem;
+    text-align: center;
+    border-bottom: 2px solid var(--outline-variant); /* Línea divisoria */
+    padding-bottom: 0.5rem;
+}
+
+.section-description {
+    color: var(--on-surface-variant);
+    text-align: center;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.section-description ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.section-description ul li {
+    margin-bottom: 0.5rem;
+}
+
+.section-description ul li a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.section-description ul li a:hover {
+    color: var(--secondary);
+    text-decoration: underline;
+}
+
+
+/* Estilos para la tabla */
+.table-container {
+    overflow-x: auto; /* Permite scroll horizontal en tablas grandes */
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid var(--outline-variant);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+#programaResumenTable,
+#programaDiaTable {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px; /* Asegura que la tabla no sea demasiado estrecha en pantallas pequeñas */
+}
+
+#programaResumenTable th, #programaResumenTable td,
+#programaDiaTable th, #programaDiaTable td {
+    padding: 12px 18px; /* Ajusta el padding para más espacio */
+    border: 1px solid var(--outline-variant); /* Bordes de celdas más suaves */
+    text-align: left;
+    vertical-align: top; /* Alinea el contenido de la celda en la parte superior */
+}
+
+#programaResumenTable tbody tr:nth-child(even),
+#programaDiaTable tbody tr:nth-child(even) {
+    background-color: var(--surface-dim); /* Rayado para mejor legibilidad */
+}
+
+#programaResumenTable tbody tr:hover,
+#programaDiaTable tbody tr:hover {
+    background-color: var(--secondary-container); /* Resaltar fila al pasar el mouse */
+    cursor: default;
+}
+
+#programaResumenTable thead th,
+#programaDiaTable thead th {
+    background-color: var(--primary-container); /* Color de fondo para encabezados */
+    color: var(--on-primary-container); /* Color de texto para encabezados */
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    padding: 15px 18px; /* Un poco más de padding en los encabezados */
+}
+
+
+/* Estilo para el botón "Ver Programa" en la tabla resumen */
+.btn-sm.btn-details {
+  background-color: var(--primary); /* Usar el color primario del tema */
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none; /* Quitar subrayado del enlace */
+  display: inline-block; /* Para aplicar padding y margen */
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  font-size: 0.9em;
+}
+
+.btn-sm.btn-details:hover {
+  background-color: var(--secondary); /* Un color más oscuro al pasar el mouse */
+  transform: translateY(-2px); /* Pequeño efecto de elevación */
+}
+
+/* Ajustes para el pie de página para que no se vea cortado */
+footer {
+    margin-top: 4rem; /* Asegura espacio suficiente */
+    padding-top: 2rem; /* Y padding interno */
+}
+
+.stats-overview {
+    background-color: var(--primary-container); /* Un fondo sutil para la sección de stats */
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.stats-overview h3 {
+    color: var(--on-primary-container);
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    border-bottom: none; /* Quitar línea divisoria del h3 principal de stats */
+    padding-bottom: 0;
+}
+
+.stats-overview p {
+    font-size: 1.1em;
+    color: var(--on-surface-variant);
+    font-weight: 500;
+}
+
+.stats-overview span {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--primary);
+    margin-left: 0.5rem;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.stat-value {
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: var(--primary); /* Color principal para los números grandes */
+    margin-bottom: 0.5rem;
+    line-height: 1; /* Eliminar espacio extra */
+}
+
+.stat-label {
+    font-size: 0.95rem;
+    color: var(--on-surface-variant);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Columnas responsivas */
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.stat-card {
+    background: var(--surface); /* Fondo blanco o similar para cada tarjeta */
+    border-radius: 10px;
+    padding: 1.5rem 1rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Responsive design para las tablas */
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Ajustar para pantallas más pequeñas */
+    }
+
+    #programaResumenTable,
+    #programaDiaTable {
+        font-size: 0.9em; /* Reduce el tamaño de fuente de la tabla en móviles */
+    }
+
+    #programaResumenTable th, #programaResumenTable td,
+    #programaDiaTable th, #programaDiaTable td {
+        padding: 10px 12px; /* Reducir padding en celdas para ahorrar espacio */
+    }
+
+    .stat-value {
+        font-size: 2.2rem; /* Ajustar tamaño de fuente de los números */
+    }
+
+    .stat-label {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr; /* Una columna por tarjeta en móviles muy pequeños */
+    }
+    .main-content-wrapper {
+        padding: 0 1rem;
+    }
+    .section-container {
+        padding: 1.5rem;
+    }
+}

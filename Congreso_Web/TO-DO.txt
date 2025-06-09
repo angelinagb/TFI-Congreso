@@ -14,26 +14,31 @@ Mejorar estilo : Separe todos los css asi que no deberia ser un problema cambiar
 Hice una carpeta que es VistaGeneral que quiero poner todo lo que no es puertas adentro del sistema, aunque no mude nada para no romper todo
 En general : Falta la campanita de notificaciones 
 En el dashboard del ADMIN: 
-    ARREGLADO: a. No andan los graficos, pongamos alguna foto
-    b. Acomodar el css para que se vea bien "admin user" -> nombre encuadrado y toda la bola
-    c. No deberia tener acceso a votar las ponencias, pero si a ver su estado
-    d. La ruta al dashboard esta rota
+    a. Acomodar el css para que se vea bien "admin user" -> nombre encuadrado y toda la bola
+    b. No deberia tener acceso a votar las ponencias, pero si a ver su estado
+    YA DEBERÍA FUNCIONAR: c. La ruta al dashboard esta rota
     e. Acta de congreso 
+
 En el dashboard del Ponente:
     a. Si esta aprobada no deberia poder editarla xD
-    ARREGLADO: b. Se superponen algunos div 
-    d. POST CONGRESO - el ranking de la ponencia en su eje 
+    b. POST CONGRESO - el ranking de la ponencia en su eje 
+
 En el dashboard del Asistente: 
     a. Quizas estaria bueno agregar en while - congreso " mis actividades favoritas " algo asi como "mi congreso" donde seleccionas las ponencias que te gustan 
     b. Aca tiene que verse la votacion de ponencias 
     c. /* Dear Paula: Cheta la persistencia */
-En el dashboard del Evaluador: 
+
+En el dashboard del Evaluador: (Necesito entender qué pasó acá -Pau)
    a. ARREGLADO: el listado esta en ponencias/listado.html que creo que seria el dashboard en cuestion. 
    b. HECHO: Agregar opcion de derivar ponencia por conflicto de intereses / no coincide con el area experticia / no es del eje tematico 
+   ----> c. Agregué una página para evaluar, pero como no sé cómo funciona ahora Evaluador, habría que ver si sirve o se elimina
 
 Despues del Index y la cara general:
     a. Se rompe en @media-mid los subdropdown
-    b. terminar Programa, dias etc
+    --->  b. terminar Programa, dias etc
+        Agregué algo, aunque hay que modificar ya que podrían haber varias poencias a la vez. 
+        También no me funciona las tablas en programa.html
+       
     c. Mejorar Abstracts (Explica los ejes tematicos y las pautas de Envio, las circulares deberian estar aca)
     d. Turimo y Alojamiento -> hacer el dashboard
     e. Certificados. pedir la misma data que cuando se inscribieron. 
