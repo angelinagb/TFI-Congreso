@@ -14,7 +14,7 @@ Mejorar estilo : Separe todos los css asi que no deberia ser un problema cambiar
 Hice una carpeta que es VistaGeneral que quiero poner todo lo que no es puertas adentro del sistema, aunque no mude nada para no romper todo
 En general : Falta la campanita de notificaciones 
 En el dashboard del ADMIN: 
-    a. No andan los graficos, pongamos alguna foto
+    ARREGLADO: a. No andan los graficos, pongamos alguna foto
     b. Acomodar el css para que se vea bien "admin user" -> nombre encuadrado y toda la bola
     c. No deberia tener acceso a votar las ponencias, pero si a ver su estado
     d. La ruta al dashboard esta rota
