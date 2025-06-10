@@ -16,7 +16,6 @@ En general : Falta la campanita de notificaciones
 En el dashboard del ADMIN: 
     a. Acomodar el css para que se vea bien "admin user" -> nombre encuadrado y toda la bola
     b. No deberia tener acceso a votar las ponencias, pero si a ver su estado
-    YA DEBERÍA FUNCIONAR: c. La ruta al dashboard esta rota
     e. Acta de congreso 
 
 En el dashboard del Ponente:
@@ -26,12 +25,9 @@ En el dashboard del Ponente:
 En el dashboard del Asistente: 
     a. Quizas estaria bueno agregar en while - congreso " mis actividades favoritas " algo asi como "mi congreso" donde seleccionas las ponencias que te gustan 
     b. Aca tiene que verse la votacion de ponencias 
-    c. /* Dear Paula: Cheta la persistencia */
 
 En el dashboard del Evaluador: (Necesito entender qué pasó acá -Pau)
-   a. ARREGLADO: el listado esta en ponencias/listado.html que creo que seria el dashboard en cuestion. 
-   b. HECHO: Agregar opcion de derivar ponencia por conflicto de intereses / no coincide con el area experticia / no es del eje tematico 
-   ----> c. Agregué una página para evaluar, pero como no sé cómo funciona ahora Evaluador, habría que ver si sirve o se elimina
+    -Botones inutiles.
 
 Despues del Index y la cara general:
     a. Se rompe en @media-mid los subdropdown
