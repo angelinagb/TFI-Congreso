@@ -10,7 +10,8 @@ const ponencias = [
         infografia: "https://example.com/infografia1.png",
         informe_investigacion: "https://example.com/informe1.pdf",
         estado: "Pendiente",
-
+        evaluador_asignado: null, // Nuevo campo
+        solicitud_derivacion: false // Nuevo campo
     },
     {
         ponencia_id: "P-002",
@@ -23,9 +24,9 @@ const ponencias = [
         infografia: "https://example.com/infografia2.png",
         informe_investigacion: "https://example.com/informe2.pdf",
         estado: "Pendiente",
-
-    }
-    ,
+        evaluador_asignado: null, // Nuevo campo
+        solicitud_derivacion: false // Nuevo campo
+    },
     {
         ponencia_id: "P-003",
         titulo: 'Trazabilidad del BlockChaain',
@@ -37,5 +38,7 @@ const ponencias = [
         infografia: "https://example.com/infografia3.png",
         informe_investigacion: "https://example.com/informe3.pdf",
         estado: "Pendiente",
+        evaluador_asignado: null, // Nuevo campo
+        solicitud_derivacion: true // Nuevo campo
     }
 ];

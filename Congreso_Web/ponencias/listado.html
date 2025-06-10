@@ -19,9 +19,9 @@
 
   <nav class="admin-nav">
     <ul>
-      <li><a href="../darshboard-admin.html" class="active">Inicio</a></li>
-      <li><a href="ponencias/ponencias.html">Ponencias</a></li>
-      <li><a href="usuarios/listado.html">Usuarios</a></li>
+      <li><a href="../admin/dashboard-admin.html" class="active">Inicio</a></li>
+      <li><a href="ponencias/listado.html">Gestionar ponencias</a></li>
+      <li><a href="usuarios/listado.html">Gestionar usuarios</a></li>
       <li><a href="#">Configuración</a></li>
       <li><a href="#" id="logout">Cerrar sesión</a></li>
       <li><a href="../../index.html">Página del Congreso</a></li>
@@ -48,7 +48,7 @@
             <th>Autor</th>
             <th>Fecha</th>
             <th>Estado</th>
-            <th>Acciones</th>
+            <th>Evaluador Asignado</th> <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
@@ -69,6 +69,24 @@
     </div>
   </div>
 
+  <div class="modal" id="assignEvaluatorModal">
+    <div class="modal-contenido">
+        <span class="cerrar" id="cerrarAssignEvaluatorModal">&times;</span>
+        <h2 id="assignEvaluatorModalTitle">Asignar Evaluador a Ponencia</h2>
+        <div id="assignEvaluatorModalContent">
+            <p><strong>Ponencia:</strong> <span id="ponenciaAsignarTitulo"></span></p>
+            <p><strong>Autor:</strong> <span id="ponenciaAsignarAutor"></span></p>
+            <div class="form-group">
+                <label for="selectEvaluador">Seleccionar Evaluador:</label>
+                <select id="selectEvaluador" class="form-control">
+                    </select>
+            </div>
+            <button id="btnConfirmarAsignacion" class="btn btn-approve" style="margin-top: 15px;">Confirmar Asignación</button>
+        </div>
+    </div>
+</div>
+
+  <script src="../admin/admin_listado_evaluadores.js"></script>
   <script src="ponencias.js"></script>
   <script src="listado.js"></script>
 </body>
