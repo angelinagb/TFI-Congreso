@@ -38,7 +38,51 @@ const ponencias = [
         infografia: "https://example.com/infografia3.png",
         informe_investigacion: "https://example.com/informe3.pdf",
         estado: "Pendiente",
-        evaluador_asignado: null, // Nuevo campo
+        evaluador_asignado: "Dr. Juan Ledesma", // Nuevo campo
         solicitud_derivacion: true // Nuevo campo
+    }
+,
+    {
+        ponencia_id: "P-004",
+        titulo: 'Sostenibilidad y energías renovables',
+        autor: "Lucía Torres",
+        autor_id: "Anonim-004",
+        fecha: "2025-10-08",
+        resumen: "Análisis de las últimas innovaciones en energías renovables y su impacto en la sostenibilidad global.",
+        eje_tematico: "Medio Ambiente y Sostenibilidad",
+        infografia: "https://example.com/infografia4.png",
+        informe_investigacion: "https://example.com/informe4.pdf",
+        estado: "Pendiente",
+        evaluador_asignado: null, // Nuevo campo
+        solicitud_derivacion: false // Nuevo campo
+    },
+    {
+        ponencia_id: "P-005",
+        titulo: 'Desarrollo de software ágil',
+        autor: "Javier López",
+        autor_id: "Anonim-005",
+        fecha: "2025-10-09",
+        resumen: "Una guía sobre las mejores prácticas en el desarrollo de software ágil, incluyendo metodologías y herramientas clave.",
+        eje_tematico: "Innovación y Tecnología",
+        infografia: "https://example.com/infografia5.png",
+        informe_investigacion: "https://example.com/informe5.pdf",
+        estado: "Pendiente",
+        evaluador_asignado: null, // Nuevo campo
+        solicitud_derivacion: false // Nuevo campo
+    }
+    ,
+    {
+        ponencia_id: "P-006",
+        titulo: 'Ciberseguridad en la era digital',
+        autor: "María Fernández",
+        autor_id: "Anonim-006",
+        fecha: "2025-10-10",
+        resumen: "Un estudio sobre los desafíos y soluciones en ciberseguridad, incluyendo la protección de datos y la privacidad en línea.",
+        eje_tematico: "Seguridad Informática",
+        infografia: "https://example.com/infografia6.png",
+        informe_investigacion: "https://example.com/informe6.pdf",
+        estado: "Pendiente",
+        evaluador_asignado: null, // Nuevo campo
+        solicitud_derivacion: false // Nuevo campo
     }
 ];

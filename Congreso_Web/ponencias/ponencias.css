@@ -208,7 +208,7 @@
     box-sizing: border-box; /* Asegura que padding no aumente el ancho total */
 }
 
-/*
+
 
 table {
   width: 100%;
@@ -229,5 +229,9 @@ th {
 }
 
 tr:hover {
-  background-color: #f9f9f9;
+  background-color: #b2c8cf;
+}
+/* Colores alternos para las filas de la tabla */
+tr:nth-child(even) {
+  background-color: #eaf3fa;
 }
