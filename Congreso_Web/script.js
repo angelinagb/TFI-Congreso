@@ -67,6 +67,52 @@ document.addEventListener('DOMContentLoaded', function() {
 
     updateCountdown();
     setInterval(updateCountdown, 1000);
+
+    // Lógica para el modal de Novedades
+    const btnNovedades = document.getElementById('btnNovedades');
+    const novedadesModal = document.getElementById('novedades-modal');
+    const closeButton = document.querySelector('#novedades-modal .close-button');
+    const novedadesForm = document.getElementById('novedades-form');
+
+    if (btnNovedades && novedadesModal && closeButton && novedadesForm) {
+        btnNovedades.addEventListener('click', function(e) {
+            e.preventDefault(); // Evita que el enlace recargue la página
+            novedadesModal.style.display = 'flex'; // Cambia a 'flex' para centrar con justify/align
+        });
+
+        closeButton.addEventListener('click', function() {
+            novedadesModal.style.display = 'none';
+        });
+
+        // Cerrar el modal si se hace clic fuera del contenido del modal
+        window.addEventListener('click', function(e) {
+            if (e.target === novedadesModal) {
+                novedadesModal.style.display = 'none';
+            }
+        });
+
+        novedadesForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Evita el envío por defecto del formulario
+
+            const nombre = document.getElementById('novedades-nombre').value.trim();
+            const email = document.getElementById('novedades-email').value.trim();
+
+            if (!email) {
+                alert('Por favor, ingresa tu correo electrónico para suscribirte a las novedades.');
+                return;
+            }
+
+            // Aquí es donde enviarías los datos al servidor.
+            // Por ahora, simularemos el envío y mostraremos una alerta.
+            console.log(`Subscribing: Nombre - ${nombre}, Email - ${email}`);
+
+            alert(`¡Gracias ${nombre ? nombre : ''} por suscribirte! Recibirás novedades en ${email}.`);
+
+            // Limpiar el formulario y cerrar el modal
+            novedadesForm.reset();
+            novedadesModal.style.display = 'none';
+        });
+    }
 });
   //validacion del formulario de inscripción
   document.querySelector('.formulario')?.addEventListener('submit', function(e){
@@ -83,3 +129,4 @@ document.addEventListener('DOMContentLoaded', function() {
     alert(`¡Inscripcion exitosa, ${nombre}! Se envió un correo a ${email}`);
     this.reset();
   });
+

@@ -7,7 +7,58 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <style>
-        /* Estilos específicos para inscripción */
+        /* Estilos para el Modal de Novedades */
+      .modal {
+        display: none; /* Ocultar por defecto */
+        position: fixed; /* Posición fija en la pantalla */
+        z-index: 200; /* Asegurar que esté por encima de otros elementos */
+        left: 0;
+        top: 0;
+        width: 100%; /* Cubrir todo el ancho */
+        height: 100%; /* Cubrir toda la altura */
+        overflow: auto; /* Habilitar scroll si el contenido es muy largo */
+        background-color: rgba(0,0,0,0.4); /* Fondo semi-transparente */
+        justify-content: center; /* Centrar horizontalmente el contenido */
+        align-items: center; /* Centrar verticalmente el contenido */
+      }
+
+      .modal-content {
+        background-color: #fefefe;
+        margin: auto; /* Centrar en la pantalla */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%; /* Ancho del modal */
+        max-width: 500px; /* Ancho máximo */
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        position: relative; /* Para posicionar el botón de cerrar */
+      }
+
+    .close-button {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      position: absolute; /* Posicionar el botón de cerrar */
+      top: 10px;
+      right: 20px;
+      cursor: pointer;
+    }
+
+    .close-button:hover,
+    .close-button:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .modal-content h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: var(--color-primary);
+    }
+
+    /* Estilos específicos para inscripción */
         :root {
             --color-primary: #246488;
             --color-secondary: #5BA273;
@@ -130,6 +181,23 @@
           </div>
         </div>
       </section>
+
+      <!---- para novedades */-->
+    <div id="novedades-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Suscríbete a nuestras novedades</h2>
+        <form id="novedades-form" class="formulario">
+            <label for="novedades-nombre">Nombre (opcional):</label>
+            <input type="text" id="novedades-nombre" name="nombre">
+
+            <label for="novedades-email">Correo Electrónico:</label>
+            <input type="email" id="novedades-email" name="email" required>
+
+            <button type="submit">Suscribirme</button>
+        </form>
+      </div>
+    </div>
     </main>
 
     <footer class ="footer-extendido">
