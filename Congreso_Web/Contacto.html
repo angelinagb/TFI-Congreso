@@ -290,6 +290,36 @@
          </div>
     </main>
 
+    <script src="script.js"></script>
+    <script>
+        // Lógica para el formulario de contacto
+        document.getElementById('contactForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = {
+                nombre: e.target.nombre.value,
+                email: e.target.email.value,
+                asunto: e.target.asunto.value,
+                mensaje: e.target.mensaje.value,
+                fecha: new Date().toISOString()
+            };
+            
+            // Aquí iría la conexión con Firebase o un backend
+            try {
+                // Ejemplo con Firebase:
+                // await firebase.firestore().collection('contactos').add(formData);
+                
+                alert('¡Mensaje enviado con éxito! Nos contactaremos pronto.');
+                e.target.reset();
+            } catch (error) {
+                alert('Error al enviar el mensaje. Por favor intenta nuevamente.');
+                console.error(error);
+            }
+        });
+    </script>
+    
+</body>
+
     <footer class ="footer-extendido">
       <div class="footer-container">
         <div class="footer-column">
@@ -328,40 +358,6 @@
       <div class="footer-copy">
         <p>&copy; 2026 RedGtech. Todos los derechos reservados.</p>
       </div>
-    </footer>
-
-    <script src="script.js"></script>
-    <script>
-        // Lógica para el formulario de contacto
-        document.getElementById('contactForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const formData = {
-                nombre: e.target.nombre.value,
-                email: e.target.email.value,
-                asunto: e.target.asunto.value,
-                mensaje: e.target.mensaje.value,
-                fecha: new Date().toISOString()
-            };
-            
-            // Aquí iría la conexión con Firebase o un backend
-            try {
-                // Ejemplo con Firebase:
-                // await firebase.firestore().collection('contactos').add(formData);
-                
-                alert('¡Mensaje enviado con éxito! Nos contactaremos pronto.');
-                e.target.reset();
-            } catch (error) {
-                alert('Error al enviar el mensaje. Por favor intenta nuevamente.');
-                console.error(error);
-            }
-        });
-    </script>
-    
-</body>
-
-    <footer>
-        <p>&copy; 2026 RedGtech. Todos los derechos reservados.</p>
     </footer>
 
 </html>
