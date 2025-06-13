@@ -69,16 +69,15 @@ main {
   flex-grow: 1;
 }
 
-text-container {
-  max-width: 1200px;      /* Aumenta el ancho máximo */
+.text-container {
+  max-width: 1000px;      /* Aumenta el ancho máximo */
   margin: 0 auto;
   padding: 0 20px;
-  width: 100%;            /* Ocupa todo el ancho disponible */
 }
 
 @media (max-width: 900px) {
   .text-container {
-    max-width: 100%;
+    max-width: 700px;
     padding: 0 10px;      /* Reduce el padding lateral */
   }
 }
@@ -925,7 +924,7 @@ footer {
     /* Option 1: Modern & Bold (A good starting point) */
     font-family: 'Montserrat', sans-serif; /* Requires Google Fonts import */
     color: #0056b3; /* A strong, professional blue */
-    font-size: 2.8em; /* Make it significantly larger */
+    font-size: 2.0em; /* Make it significantly larger */
     text-align: center; /* Center the text */
     margin-bottom: 20px; /* Add some space below it */
     line-height: 1.2; /* Adjust line height for readability */
