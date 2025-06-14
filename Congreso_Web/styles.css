@@ -58,7 +58,6 @@ body {
   display: flex;
   flex-direction: column;
   margin: 0;
-  padding-top: 50vh;
   font-family: 'Segoe UI', sans-serif;
   background-color: var(--surface);
   color: var(--on-surface);
@@ -67,6 +66,12 @@ body {
 
 main {
   flex-grow: 1;
+}
+
+.spacer-vh {
+	display: block;
+	position: relative;
+	height: 50vh;
 }
 
 .text-container {

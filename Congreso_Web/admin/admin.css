@@ -1,4 +1,7 @@
    /* Estilos específicos para admin */
+   body {
+	   padding-top: 0%;
+   }
         .admin-header {
             background-color: #246488;
             color: white;
