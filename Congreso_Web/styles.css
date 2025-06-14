@@ -58,7 +58,7 @@ body {
   display: flex;
   flex-direction: column;
   margin: 0;
-  padding-top: 80vh;
+  padding-top: 50vh;
   font-family: 'Segoe UI', sans-serif;
   background-color: var(--surface);
   color: var(--on-surface);
@@ -524,7 +524,7 @@ footer {
 }
 
 #sticky-parallax-header-bkg {
-  font-size: calc(2vw + 1em);
+  font-size: 2rem;
   padding-top: 8%;
   overflow: hidden;
   width: 100%;
