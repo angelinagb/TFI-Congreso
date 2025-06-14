@@ -58,7 +58,7 @@ body {
   display: flex;
   flex-direction: column;
   margin: 0;
-  padding: 0;
+  padding-top: 80vh;
   font-family: 'Segoe UI', sans-serif;
   background-color: var(--surface);
   color: var(--on-surface);
@@ -71,6 +71,8 @@ main {
 
 .text-container {
   max-width: 1000px;      /* Aumenta el ancho máximo */
+  font-size: 20px;
+  font-weight: 400;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -125,22 +127,7 @@ img {
 }
 
 header {
-  background: url('images/martech.jpg') no-repeat center center;
-  background-size: cover;
-  background-position: center;
   text-align: center;
-  padding: 120px 20px;
-  position: relative;
-}
-
-header::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100px; /* Adjust the height of the gradient */
-  background: linear-gradient(to bottom, transparent, var(--surface));
 }
 
 .slogan {
@@ -194,12 +181,12 @@ header .btn:hover {
 /* Estilos base para la navbar */
 .navbar {
   position: relative;
-  display: block;         /* Cambia de inline-block a block */
-  width: 100%;            /* Ocupa todo el ancho */
+  display: inline-block;         /* Cambia de inline-block a block */
   margin: 0 auto;
   background-color: var(--primary);
   border-radius: 15px;
   padding: 10px 0;
+  z-index: 10000;
 }
 
 .nav-list {
@@ -207,9 +194,8 @@ header .btn:hover {
   margin: 0;
   padding: 0 24px;        /* Espaciado lateral opcional */
   display: flex;
-  justify-content: space-between; /* Distribuye los ítems a los extremos */
+  justify-content: center; /* Distribuye los ítems a los extremos */
   align-items: center;            /* Centra verticalmente */
-  width: 100%;
 }
 
 .nav-list li {
@@ -223,7 +209,7 @@ header .btn:hover {
 .nav-list li a {
   color: var(--on-primary);
   text-decoration: none;
-  font-size: 16px;
+  font-size: 23px;
   padding: 10px;
   display: block;
 }
@@ -314,7 +300,6 @@ header .btn:hover {
   .nav-list {
     display: none;
     flex-direction: column;
-    width: 100%;
     background-color: var(--primary);
     z-index: 100;
   }
@@ -390,6 +375,7 @@ section {
   height: 100px;
   animation: scaleAnimation 2s infinite ease-in-out;
   transition: transform 0.3s ease;
+  z-index: 2000;
 }
  .sticker:hover {
   transform: scale(1.05);
@@ -502,6 +488,61 @@ footer {
     transform: scale(0.7)
   }
 }
+
+@keyframes sticky-header {
+	from {
+		background-color: rgba(0,0,0,1);
+	}
+	to {
+		background-color: rgba(0,0,0,0);
+		transform: translate(0%, -90%);
+	}
+}
+@keyframes sticky-parallax-header-bkg-move-and-fade {
+	from {
+		opacity: 1.0;
+		height: 100%;
+	}
+	to {
+		transform: translate(0%, -20%);
+		height: 0%;
+		opacity: 0.0;
+	}
+}
+
+.header-container {
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: url('images/martech.jpg') no-repeat center center;
+  background-size: cover;
+  background-position: center;
+  animation: sticky-header linear forwards;
+  animation-timeline: scroll();
+  animation-range: 0vh 60vh;
+}
+
+#sticky-parallax-header-bkg {
+  font-size: calc(2vw + 1em);
+  padding-top: 8%;
+  overflow: hidden;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 60%;
+  animation: sticky-parallax-header-bkg-move-and-fade linear forwards;
+  animation-timeline: scroll();
+  animation-range: 0vh 90vh;
+}
+
+#sticky-parallax-header {
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .aviso {
   background-color: #fff3cd;
   color: #856404;
