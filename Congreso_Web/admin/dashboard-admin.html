@@ -1,130 +1,159 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Admin | VII Encuentro de Gestores Tecnológicos 2026</title>
-    <link rel="stylesheet" href="../styles.css">
-    <link rel="stylesheet" href="admin.css">
-    <link rel="icon" href="/Congreso_Web/images/redgtech_logo.png" type="image/x-icon">
+  <meta name="generator" content=
+  "HTML Tidy for HTML5 for Linux version 5.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content=
+  "width=device-width, initial-scale=1.0">
+  <title>Dashboard Admin | VII Encuentro de Gestores Tecnológicos
+  2026</title>
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="admin.css">
+  <link rel="icon" href="/Congreso_Web/images/redgtech_logo.png"
+  type="image/x-icon">
 </head>
-
 <body>
-    <header class="admin-header">
-        <img src="../images/redgtech_logo.png" alt="RedGTech Logo">
-        <h1>Panel de Administración</h1>
-        <div>
-            <span id="adminName">Admin User</span>
-            <a href="#" id="logout" style="color: #A3E4A6; margin-left: 1rem;">Cerrar sesión</a>
-        </div>
-        <div class="spacer-15px"></div>
-    </header> 
-
-    <nav class="admin-nav">
+  <header class="admin-header">
+    <img src="../images/redgtech_logo.png" alt="RedGTech Logo">
+    <h1>Panel de Administración</h1>
+    <div>
+      <span id="adminName">Admin User</span> <a href="#" id=
+      "logout" style="color: #A3E4A6; margin-left: 1rem;">Cerrar
+      sesión</a>
+    </div>
+    <div class="spacer-15px"></div>
+  </header>
+  <nav class="admin-nav">
+    <ul>
+      <li>
+        <a href="dashboard-admin.html" class="active">Inicio</a>
+      </li>
+      <li>
+        <a href="../ponencias/listado.html">Gestionar ponencias</a>
+      </li>
+      <li>
+        <a href="../usuarios/listado.html">Gestionar usuarios</a>
+      </li>
+      <li>
+        <a href="#">Configuración</a>
+      </li>
+      <li>
+        <a href="#" id="logout">Cerrar sesión</a>
+      </li>
+      <li>
+        <a href="../index.html">Página del Congreso</a>
+      </li>
+    </ul>
+  </nav>
+  <main>
+    <!-- Estadísticas Rápidas -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h3>Inscripciones Hoy</h3>
+        <p id="inscripcionesHoy">24</p>
+      </div>
+      <div class="stat-card">
+        <h3>Ponencias Totales</h3>
+        <p id="ponenciasTotales">156</p>
+      </div>
+      <div class="stat-card">
+        <h3>Usuarios Registrados</h3>
+        <p id="usuariosRegistrados">423</p>
+      </div>
+      <div class="stat-card">
+        <h3>Certificados Generados</h3>
+        <p id="certificadosGenerados">387</p>
+      </div>
+    </div><!-- Gráficos -->
+    <div class="chart-container">
+      <h2>Inscripciones por Día</h2>
+      <canvas id="inscripcionesChart" height="150"></canvas>
+    </div>
+    <div style=
+    "display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem; margin: 2rem;">
+      <div class="chart-container">
+        <h2>Ponencias por Estado</h2>
+        <canvas id="ponenciasChart" height="200"></canvas>
+      </div>
+      <div class="chart-container">
+        <h2>Usuarios por Rol</h2>
+        <canvas id="rolesChart" height="200"></canvas>
+      </div>
+    </div><!-- Actividad Reciente -->
+    <div class="chart-container recent-activity">
+      <h2>Actividad Reciente</h2>
+      <ul id="actividadList">
+        <!-- Datos dinámicos -->
+        <li>Juan Pérez registró nueva ponencia (hace 5 min)</li>
+        <li>María Gómez aprobó 3 abstracts (hace 12 min)</li>
+        <li>Nuevo asistente: Laura Torres (hace 25 min)</li>
+      </ul>
+    </div>
+  </main>
+  <footer class="footer-extendido">
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>CONTÁCTANOS</h3>
         <ul>
-            <li><a href="dashboard-admin.html" class="active">Inicio</a></li>
-            <li><a href="../ponencias/listado.html">Gestionar ponencias</a></li>
-            <li><a href="../usuarios/listado.html">Gestionar usuarios</a></li>
-            <li><a href="#">Configuración</a></li>
-            <li><a href="#" id="logout">Cerrar sesión</a></li>
-            <li><a href="../index.html">Página del Congreso</a></li>
+          <li>Teléfono: +54 223 123 456789</li>
+          <li>Email: contacto@redgtech.org</li>
         </ul>
-    </nav>
-    
-<main>
-        <!-- Estadísticas Rápidas -->
-        <div class="stats-grid">
-            <div class="stat-card">
-                <h3>Inscripciones Hoy</h3>
-                <p id="inscripcionesHoy">24</p>
-            </div>
-            <div class="stat-card">
-                <h3>Ponencias Totales</h3>
-                <p id="ponenciasTotales">156</p>
-            </div>
-            <div class="stat-card">
-                <h3>Usuarios Registrados</h3>
-                <p id="usuariosRegistrados">423</p>
-            </div>
-            <div class="stat-card">
-                <h3>Certificados Generados</h3>
-                <p id="certificadosGenerados">387</p>
-            </div>
-        </div>
-        
-        <!-- Gráficos -->
-        <div class="chart-container">
-            <h2>Inscripciones por Día</h2>
-            <canvas id="inscripcionesChart" height="150"></canvas>
-        </div>
-        
-        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem; margin: 2rem;">
-            <div class="chart-container">
-                <h2>Ponencias por Estado</h2>
-                <canvas id="ponenciasChart" height="200"></canvas>
-            </div>
-            
-            <div class="chart-container">
-                <h2>Usuarios por Rol</h2>
-                <canvas id="rolesChart" height="200"></canvas>
-            </div>
-        </div>
-        
-        <!-- Actividad Reciente -->
-        <div class="chart-container recent-activity">
-            <h2>Actividad Reciente</h2>
-            <ul id="actividadList">
-                <!-- Datos dinámicos -->
-                <li>Juan Pérez registró nueva ponencia (hace 5 min)</li>
-                <li>María Gómez aprobó 3 abstracts (hace 12 min)</li>
-                <li>Nuevo asistente: Laura Torres (hace 25 min)</li>
-            </ul>
-        </div>
-    </main>
-
-    
-    <footer class="footer-extendido">
-        <div class="footer-container">
-            <div class="footer-column">
-                <h3>CONTÁCTANOS</h3>
-                <ul>
-                    <li>Teléfono: +54 223 123 456789</li>
-                    <li>Email: contacto@redgtech.org</li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>NOSOTROS</h3>
-                <ul>
-                    <li><a href="#">Mesa de servicio</a></li>
-                    <li><a href="#">Canal de denuncias</a></li>
-                    <li><a href="#">Mapa del sitio</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>SÍGUENOS</h3>
-                <ul>
-                    <li><a href="#">Facebook</a></li>
-                    <li><a href="#">Twitter</a></li>
-                    <li><a href="#">Instagram</a></li>
-                    <li><a href="#">LinkedIn</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>ENLACES ÚTILES</h3>
-                <ul>
-                    <li><a href="#">Política de privacidad</a></li>
-                    <li><a href="#">Términos de servicio</a></li>
-                    <li><a href="#">Ayuda</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-copy">
-            <p>&copy; 2026 RedGtech. Todos los derechos reservados.</p>
-        </div>
-    </footer>
-    <script src="../script.js"></script>
-        <!-- Chart.js para gráficos -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="dashboard-charts.js"></script>
+      </div>
+      <div class="footer-column">
+        <h3>NOSOTROS</h3>
+        <ul>
+          <li>
+            <a href="#">Mesa de servicio</a>
+          </li>
+          <li>
+            <a href="#">Canal de denuncias</a>
+          </li>
+          <li>
+            <a href="#">Mapa del sitio</a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>SÍGUENOS</h3>
+        <ul>
+          <li>
+            <a href="#">Facebook</a>
+          </li>
+          <li>
+            <a href="#">Twitter</a>
+          </li>
+          <li>
+            <a href="#">Instagram</a>
+          </li>
+          <li>
+            <a href="#">LinkedIn</a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>ENLACES ÚTILES</h3>
+        <ul>
+          <li>
+            <a href="#">Política de privacidad</a>
+          </li>
+          <li>
+            <a href="#">Términos de servicio</a>
+          </li>
+          <li>
+            <a href="#">Ayuda</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-copy">
+      <p>© 2026 RedGtech. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+  <script src="../script.js"></script> 
+  <!-- Chart.js para gráficos -->
+   
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+  <script src="dashboard-charts.js"></script>
 </body>
 </html>
