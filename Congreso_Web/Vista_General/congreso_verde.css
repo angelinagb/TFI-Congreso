@@ -1,0 +1,116 @@
+:root {
+            --azul-oscuro: #0A2F50;
+            --azul-medio: #1F618D;
+            --azul-claro: #A9D9F3;
+            --azul-acento: #2BB6F0; /* Para elementos interactivos o destacados */
+            --blanco: #FFFFFF;
+            --gris-claro: #F0F2F5;
+            --gris-texto: #333333;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--gris-claro);
+            color: var(--gris-texto);
+            line-height: 1.6;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: var(--blanco);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h1 {
+            color: var(--azul-oscuro);
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h1::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--azul-acento);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            color: var(--azul-medio);
+            font-size: 1.1em;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .commitment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .commitment-card {
+            background-color: var(--azul-claro);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Alinea el contenido al principio */
+            min-height: 220px; /* Asegura una altura mínima para todas las tarjetas */
+        }
+
+        .commitment-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .commitment-card h3 {
+            color: var(--azul-oscuro);
+            font-size: 1.6em;
+            margin-top: 0;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .commitment-card h3 svg {
+            margin-right: 10px;
+            min-width: 30px; /* Asegura que el ícono no se achique */
+        }
+
+        .commitment-card p {
+            color: var(--gris-texto);
+            font-size: 0.95em;
+            flex-grow: 1; /* Permite que el párrafo ocupe el espacio disponible */
+        }
+
+        /* Estilos para los iconos SVG */
+        .commitment-card svg path {
+            fill: var(--azul-medio); /* Color del icono */
+        }
+
+        @media (max-width: 768px) {
+            .section-header h1 {
+                font-size: 2em;
+            }
+
+            .commitment-grid {
+                grid-template-columns: 1fr;
+            }
+        }

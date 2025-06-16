@@ -1,5 +1,5 @@
-//Hay comentarios de consola porque no sabía por qué no se mostraba la tabla en ninguna página
-//Sacar después
+// TODO: Hay comentarios de consola porque no sabía por qué no se mostraba la tabla en ninguna página
+// Sacar después
 
 document.addEventListener('DOMContentLoaded', () => {
 	console.log('DOM completamente cargado. Iniciando programa.js');

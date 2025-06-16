@@ -152,7 +152,7 @@ header {
 header h1{
   font-size: 2.5rem;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  background-color: greenyellow;
+  background-color: white;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -174,7 +174,17 @@ header .btn {
 header .btn:hover {
   background-color: var(--secondary);
 }
-
+header h3 {
+  font-size: 1.4rem;
+  font-family: 'Inter', sans-serif;
+  color: var(--on-primary);
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  text-align: center;
+  opacity: 0.92;
+}
 /* Estilos base para la navbar */
 .navbar {
   position: relative;
@@ -410,7 +420,7 @@ footer {
   position: fixed;
   top: 0;
   width: 100%;
-  background: url('images/martech.jpg') no-repeat center center;
+  background: url('images/MDQ/ciudad3.jpg') no-repeat center center;
   background-size: cover;
   background-position: center;
   animation: sticky-header linear forwards;
@@ -706,7 +716,7 @@ footer {
 
 
 .hero {
-  background-image: linear-gradient(to bottom right, rgba(0,0,0,0.5), rgba(0,40,80,0.7)), url('images/fondo_tecnologico.jpg');
+  background-image: linear-gradient(to bottom right, rgba(0,0,0,0.5), rgba(0,40,80,0.7)), url('images/martech.jpg');
   background-size: cover;
   background-position: center;
   height: 85vh;
@@ -1185,4 +1195,138 @@ footer {
   .gallery-container {
     grid-template-columns: 1fr; /* Single column on very small screens */
   }
+}
+
+.menuinfo-section {
+  background: #1769aa;
+  padding: 40px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.menuinfo-container {
+  display: flex;
+  gap: 16px;
+  background: white;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.menuinfo-item {
+  background: #f5f7fa;
+  flex: 1;
+  text-align: center;
+  padding: 16px;
+  border-radius: 6px;
+  min-width: 140px;
+}
+
+.menuinfo-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 8px;
+}
+
+.menuinfo-item h3 {
+  color: #1769aa;
+  margin: 8px 0 4px 0;
+  font-size: 1.1em;
+}
+
+.menuinfo-item p {
+  font-size: 0.95em;
+  color: #333;
+}
+.menuinfo-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  transition: box-shadow 0.2s, background 0.2s;
+  border-radius: 6px;
+  padding: 8px 0;
+}
+
+/* Responsive: Mobile & Tablet adjustments for .menuinfo-section */
+@media (max-width: 900px) {
+  .menuinfo-container {
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    align-items: stretch;
+  }
+  .menuinfo-item {
+    min-width: 0;
+    padding: 12px;
+    font-size: 1em;
+  }
+  .menuinfo-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 6px;
+  }
+}
+
+@media (max-width: 600px) {
+  .menuinfo-section {
+    padding: 20px 0;
+  }
+  .menuinfo-container {
+    padding: 8px;
+    gap: 8px;
+  }
+  .menuinfo-item {
+    padding: 8px;
+    font-size: 0.98em;
+  }
+  .menuinfo-icon {
+    width: 32px;
+    height: 32px;
+  }
+  .menuinfo-item h3 {
+    font-size: 1em;
+  }
+  .menuinfo-item p {
+    font-size: 0.92em;
+  }
+}
+
+.menuinfo-item:hover,
+.menuinfo-link:hover {
+  background: #e3f0fa;
+  box-shadow: 0 4px 16px rgba(23, 105, 170, 0.15);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.menuinfo-link:hover .menuinfo-icon {
+  filter: brightness(1.2) drop-shadow(0 0 8px #1769aa55);
+  transition: filter 0.2s;
+}
+
+.menuinfo-link:hover h3 {
+  color: #1769aa;
+  text-decoration: underline;
+}
+
+.header-small .header-container {
+  padding-top: 2%;
+  min-height: 80px;
+}
+.header-small #sticky-parallax-header-bkg {
+  padding-top: 2%;
+}
+.header-small h1 {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+.header-small .slogan {
+  font-size: 1.1rem;
+  padding: 6px 16px;
+  margin: 12px auto 0 auto;
+}
+.header-small .countdown-wrapper {
+  padding: 8px;
+}
+.header-small .navbar {
+  padding: 4px 0;
 }
