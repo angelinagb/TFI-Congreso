@@ -80,7 +80,7 @@ main {
 }
 
 .text-container {
-  max-width: 1000px;      /* Aumenta el ancho máximo */
+  max-width: 1000px;      
   font-size: 20px;
   font-weight: 400;
   margin: 0 auto;
@@ -239,8 +239,8 @@ header h3 {
 
 /* Submenú anidado */
 .sub-dropdown .dropdown-content {
-    top: 100%; /* Posiciona debajo del elemento padre */
-    left: 0; /* Alinea con el borde izquierdo */
+    top: 100%; 
+    left: 0;
     z-index: 102;
 }
 
@@ -251,11 +251,6 @@ header h3 {
   display: inline-block;
   transition: transform 0.3s ease;
 }
-
-/* Comportamiento en escritorio */
-
-/* Comportamiento en móviles */
-
 
 section {
   padding: 40px 20px;
@@ -704,7 +699,7 @@ footer {
 
 
 .hero {
-  background-image: linear-gradient(to bottom right, rgba(0,0,0,0.5), rgba(0,40,80,0.7)), url('images/martech.jpg');
+  background-image: linear-gradient(to bottom right, rgba(0,0,0,0.5), rgba(0,40,80,0.7)), url('images/MDQ/ciudad.jpg');
   background-size: cover;
   background-position: center;
   height: 85vh;
@@ -1052,13 +1047,13 @@ footer {
     flex-direction: column;
     align-items: start;
     background: none;
-    background-color: var(--surface-container-highest);
+    background-color: var(--inverse-primary);
     animation: none;
     margin-bottom: 0;
   }
   .navbar {
     padding: 0;
-    background-color: transparent;
+    background-color: var(--inverse-primary);
     width: 100vw;
   }
   .appbar-center-title {
@@ -1070,14 +1065,14 @@ footer {
     width: 100%;
     justify-content: space-between;
     flex-direction: row;
-    color: var(--on-surface);
+    color: var(--primary);
     font-size: 24px;
     cursor: pointer;
   }
   .nav-list {
     display: none;
     flex-direction: column;
-    background-color: transparent;
+    background-color:var(--inverse-primary);
     z-index: 100;
   }
   .nav-list.active {
@@ -1306,4 +1301,30 @@ footer {
 }
 .header-small .navbar {
   padding: 4px 0;
+}
+
+.footer-norcore {
+  display: flex;
+  align-items:  center;
+  justify-content: flex-end;
+  font-size: 15px;
+  color: #e0e0e0;
+  margin-top: 8px;
+  opacity: 0.7;
+  letter-spacing: 0.5px;
+  gap: 5px;
+}
+
+.footer-norcore img {
+  height: 125px;
+  width: auto;
+  margin-left: 4px;
+  vertical-align: middle;
+
+  filter:contrast(1.2) brightness(0.9);
+}
+
+footer .footer-norcore,
+.footer-extendido .footer-norcore {
+  display: flex;
 }

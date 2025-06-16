@@ -66,18 +66,51 @@
         .commitment-card {
             background-color: var(--azul-claro);
             border-radius: 8px;
-            padding: 25px;
+            padding: 25px 25px 25px 55px; /* espacio para el icono */
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start; /* Alinea el contenido al principio */
-            min-height: 220px; /* Asegura una altura mínima para todas las tarjetas */
+            justify-content: flex-start;
+            min-height: 220px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .commitment-card .card-icon {
+            position: absolute;
+            top: 18px;
+            left: 18px;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .commitment-card .card-icon svg,
+        .commitment-card .card-icon img {
+            width: 32px;
+            height: 32px;
+            display: block;
+        }
+
+        .commitment-card h3,
+        .commitment-card p {
+            transition: transform 0.3s cubic-bezier(.4,2,.6,1), color 0.3s;
+            will-change: transform;
         }
 
         .commitment-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .commitment-card:hover h3,
+        .commitment-card:hover p {
+            transform: scale(1.07);
+            color: var(--azul-oscuro);
         }
 
         .commitment-card h3 {
@@ -89,20 +122,15 @@
             align-items: center;
         }
 
-        .commitment-card h3 svg {
-            margin-right: 10px;
-            min-width: 30px; /* Asegura que el ícono no se achique */
-        }
-
         .commitment-card p {
             color: var(--gris-texto);
             font-size: 0.95em;
-            flex-grow: 1; /* Permite que el párrafo ocupe el espacio disponible */
+            flex-grow: 1;
         }
 
-        /* Estilos para los iconos SVG */
-        .commitment-card svg path {
-            fill: var(--azul-medio); /* Color del icono */
+        .commitment-card svg path,
+        .commitment-card .card-icon svg path {
+            fill: var(--azul-medio);
         }
 
         @media (max-width: 768px) {
@@ -114,3 +142,4 @@
                 grid-template-columns: 1fr;
             }
         }
+        
