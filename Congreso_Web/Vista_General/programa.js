@@ -98,6 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+    // TODO: Usar window.innerWidth
     // --- Lógica para programa.html (Tabla Resumen) ---
     const programaResumenTableBody = document.getElementById('programaResumenTable')?.querySelector('tbody');
     if (programaResumenTableBody) {

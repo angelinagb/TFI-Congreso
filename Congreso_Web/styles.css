@@ -992,9 +992,12 @@ footer {
   .spacer-vh {
     display: block;
     position: relative;
-    height: 60vh;
+    height: 50vh;
   }
   .hamburger {
+    display: none;
+  }
+  .appbar {
     display: none;
   }
   .nav-list {
@@ -1025,7 +1028,7 @@ footer {
   .spacer-vh {
     display: block;
     position: relative;
-    height: 70px;
+    height: 90px;
   }
   .sized-box-30px{
     width: 30px;
@@ -1050,12 +1053,15 @@ footer {
   .appbar-center-title {
     height: 50px;
   }
-  .hamburger {
+  .appbar {
     display: flex;
+    flex-direction: row;
     padding: 0px 10px;
     width: 100%;
+    align-items: center;
     justify-content: space-between;
-    flex-direction: row;
+  }
+  .hamburger {
     color: var(--on-surface);
     font-size: 24px;
     cursor: pointer;
@@ -1063,6 +1069,7 @@ footer {
   .nav-list {
     display: none;
     flex-direction: column;
+    align-items: start;
     background-color: transparent;
     z-index: 100;
   }
