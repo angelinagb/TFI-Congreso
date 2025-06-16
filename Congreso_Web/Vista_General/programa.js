@@ -43,7 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
             { hora: '15:00 - 16:00', actividad: 'Sesión de Preguntas y Respuestas con Expertos', tipo: 'Panel', ponente: 'Panel de Expertos', sala: 'Auditorio Principal' },
             { hora: '16:00 - 16:30', actividad: 'Coffee Break', tipo: 'General', ponente: '', sala: 'Área de Exposiciones' },
             { hora: '16:30 - 17:30', actividad: 'Conferencia de Clausura: Desafíos Futuros de la Tecnología', tipo: 'Magistral', ponente: 'Dr. Roberto Vargas', sala: 'Auditorio Principal' },
-            { hora: '17:30 - 18:00', actividad: 'Ceremonia de Clausura y Despedida', tipo: 'General', ponente: 'Comité Organizador', sala: 'Auditorio Principal' },
+            { hora: '17:30 - 18:00', actividad: 'Premios - Sede - Evaluación Nueva Sede', tipo: 'General', ponente: 'Comité Organizador', sala: 'Auditorio Principal' },
+            { hora: '18:00 - 19:00', actividad: 'Brindis de camaradería', tipo: 'Social', ponente: 'Comité Organizador', sala: 'Terraza Principal' },    
         ],
     };
 
