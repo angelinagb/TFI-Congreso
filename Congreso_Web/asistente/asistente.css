@@ -9,21 +9,48 @@ body {
             justify-content: space-between;
             align-items: center;
         }
-        
         .asistente-nav {
             background-color: #246488;
             padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(36, 100, 136, 0.08);
+            transition: box-shadow 0.3s;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
-        
+
+        .asistente-nav:hover {
+            box-shadow: 0 4px 16px rgba(36, 100, 136, 0.18);
+            background-color: #1a4d6b;
+        }
+
         .asistente-nav ul {
             display: flex;
             gap: 1.5rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
         }
-        
-        .asistente-nav a {
+
+        .asistente-nav ul li {
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+
+        .asistente-nav ul li a {
             color: white;
             text-decoration: none;
             font-weight: 500;
+            display: block;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .asistente-nav ul li a:hover {
+            background: #e0f4ff;
+            color: #246488;
         }
 
         .login-container {
