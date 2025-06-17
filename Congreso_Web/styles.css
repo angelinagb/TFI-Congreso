@@ -66,6 +66,7 @@ body {
 
 main {
   flex-grow: 1;
+  padding-top: 100px; /* Espacio para el header */
 }
 
 .row {
@@ -159,6 +160,7 @@ header h1{
   text-align: center;
   margin-top: 2rem;
   font-weight: bold;
+  margin-top: 20px;
 }
 header h2 {
   position: relative;
@@ -282,19 +284,18 @@ section {
 
 .sticker {
   overflow: hidden;
-  position: fixed;
   border-radius: 10px;
-  top: 20px;
-  right: 20px; 
-  height: auto;
-  transform-origin: center; 
-  width: 100px; /* ajustá el tamaño que necesites */
+  position: sticky;
+  top: 0;
+  right: 0;
+  width: 100px;
   height: 100px;
+  transform-origin: center;
   animation: scaleAnimation 2s infinite ease-in-out;
   transition: transform 0.3s ease;
-  z-index: 2000;
+  z-index: 10;
 }
- .sticker:hover {
+.sticker:hover {
   transform: scale(1.05);
   background-color: #5ba273;
 }
@@ -306,6 +307,9 @@ section {
 
 .sticker img {
   object-fit: cover;
+  width: 10%;
+  height: 10%;
+  position-anchor:  center;
 }
 
 footer {
@@ -1352,3 +1356,63 @@ footer .footer-norcore,
 .footer-extendido .footer-norcore {
   display: flex;
 }
+
+
+/* CONTENEDOR GENERAL CONGRESO*/
+.engtec-verde {
+  background-color: #f4fdf6; /* Fondo verde claro */
+  border-top: 6px solid #2ecc71; /* Barra superior verde */
+  border-bottom: 6px solid #2ecc71; /* Barra inferior verde */
+  padding: 2rem;
+  border-radius: 12px;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+/* TÍTULO */
+.engtec-verde h2 {
+  color: #117a65; /* Verde más oscuro, profesional */
+  margin-bottom: 0.5rem;
+}
+
+/* PÁRRAFO */
+.engtec-verde p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* TEXTO DESTACADO */
+.engtec-verde strong {
+  color: #117a65;
+}
+
+/* LISTA */
+.engtec-verde ul {
+  margin: 1rem 0;
+  padding-left: 1.2rem;
+}
+
+.engtec-verde li {
+  margin-bottom: 0.5rem;
+}
+
+/* BOTÓN */
+.engtec-verde .btn {
+  display: inline-block;
+  margin-top: 1rem;
+  background-color: #00bcd4; /* Azul tecnología */
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.engtec-verde .btn:hover {
+  background-color: #0097a7;
+}
+
+
+

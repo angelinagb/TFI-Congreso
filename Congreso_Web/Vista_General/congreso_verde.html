@@ -135,25 +135,123 @@
         <div class="commitment-grid">
             <div class="commitment-card">
                 <h3>
+                    <img src="/Congreso_Web/images/iconos/icons/6703984_ecology_green_app_eco_interface_phone_environment.png" alt="Digitalización" style="width: 1.5em; vertical-align: middle; margin-right: 0.5em;">
                     Digitalización Total
                 </h3>
-                <p>¡Decimos adiós al papel! Todos los cronogramas, mapas del congreso, abstracts y materiales informativos están disponibles de forma <strong>exclusiva en formato digital</strong>. Accede a todo desde sitio web.</p>
-            </div>
+                <p>¡Decimos adiós al papel! Todos los cronogramas, mapas del congreso, abstracts y materiales informativos están disponibles de forma <strong>exclusiva en formato digital</strong>. Accede a todo desde el <a href="/Congreso_Web/Proximamente.html" target="_blank">material informativo</a> en nuestro sitio web.</p>
+              </div>
 
             <div class="commitment-card">
                 <h3>
+                  <img src="/Congreso_Web/images/iconos/icons/6703997_reusable_reuse_eco_nature_recycle_water.png" alt="Hidratación" style="width: 1.5em; vertical-align: middle; margin-right: 0.5em;">
                     Hidratación Sostenible
                 </h3>
                 <p>Te invitamos a <strong>traer tu propio vaso o botella reutilizable</strong>. Contaremos con estaciones de recarga de agua filtrada en todo el recinto, reduciendo drásticamente el uso de plásticos de un solo uso.</p>
             </div>
             <div class="commitment-card">
                 <h3>
+                  <img src="/Congreso_Web/images/iconos/icons/6703974_recycle_reusable_waste_ecology_environmental_bin_disposal.png" alt="Residuos" style="width: 1.5em; vertical-align: middle; margin-right: 0.5em;">
                     Gestión de Residuos
                 </h3>
                 <p>Implementamos un plan de gestión de residuos exhaustivo, con puntos de reciclaje claramente señalizados y la colaboración de equipos especializados para asegurar que los desechos se procesen de manera responsable.</p>
             </div>
         </div>
     </div>
+          <div class="spacer-6px"></div><a 
+      target="_blank" class="sticker"><img src=
+      "/Congreso_Web/images/stickers/Trae_tu_vaso_ia.png" alt=
+      "Sticker colgado"></a>
+    </div>
+    <div class="section-header">
+      <h2>Gráficos de Sustentabilidad</h2>
+      <p>Visualiza el impacto de nuestras acciones sustentables en el congreso.</p>
+    </div>
+    <div class="sustainability-charts">
+      <div class="chart-card">
+        <canvas id="wasteChart" width="300" height="300"></canvas>
+        <p class="chart-label">Reducción de residuos (kg)</p>
+      </div>
+      <div class="chart-card">
+        <canvas id="plasticChart" width="300" height="300"></canvas>
+        <p class="chart-label">Plásticos de un solo uso evitados (%)</p>
+      </div>
+      <div class="chart-card">
+        <canvas id="digitalChart" width="300" height="300"></canvas>
+        <p class="chart-label">Materiales digitalizados (%)</p>
+      </div>
+    </div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js/dist/Chart.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      // Gráfico de reducción de residuos
+      new Chart(document.getElementById('wasteChart'), {
+      type: 'doughnut',
+      data: {
+        labels: ['Reducido', 'Restante'],
+        datasets: [{
+        data: [120, 30],
+        backgroundColor: ['#4caf50', '#e0e0e0']
+        }]
+      },
+      options: {
+        plugins: { legend: { display: false } }
+      }
+      });
+
+      // Gráfico de plásticos evitados
+      new Chart(document.getElementById('plasticChart'), {
+      type: 'pie',
+      data: {
+        labels: ['Evitado', 'Usado'],
+        datasets: [{
+        data: [85, 15],
+        backgroundColor: ['#388e3c', '#bdbdbd']
+        }]
+      },
+      options: {
+        plugins: { legend: { display: false } }
+      }
+      });
+
+      // Gráfico de digitalización
+      new Chart(document.getElementById('digitalChart'), {
+      type: 'bar',
+      data: {
+        labels: ['Digitalizado', 'Imp.'],
+        datasets: [{
+        data: [98, 2],
+        backgroundColor: ['#81c784', '#c8e6c9']
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        plugins: { legend: { display: false } },
+        scales: { x: { max: 100, beginAtZero: true } }
+      }
+      });
+    </script>
+    <style>
+    .sustainability-charts {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 2rem 0;
+    }
+    .chart-card {
+      background: #f6fff6;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px #0001;
+      padding: 1.5rem 1rem 1rem 1rem;
+      text-align: center;
+      width: 320px;
+    }
+    .chart-label {
+      margin-top: 1rem;
+      font-weight: 600;
+      color: #388e3c;
+    }
+    </style>
   </main>
   <div class="spacer-15px"></div>
   <div class="spacer-15px"></div>
