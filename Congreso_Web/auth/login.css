@@ -11,7 +11,11 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(135deg, #f6f9fe 0%, #e3f2fd 100%);
+    background-image: url('/Congreso_Web/images/MDQ/ciudad3.jpg');
+    background-blend-mode:  overlay;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-size: cover;
+    background-position: center;);
     font-family: 'Roboto', sans-serif;
 }
 

@@ -198,3 +198,20 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Elemento programaDiaTableBody o data-programa-dia NO encontrado en esta página (esperado si es programa.html).');
     }
 });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const inputBusqueda = document.getElementById('busquedaMiCongreso');
+    const tabla = document.getElementById('miCongresoTable');
+    if (inputBusqueda && tabla) {
+        inputBusqueda.addEventListener('keyup', function() {
+            const filtro = this.value.toLowerCase();
+            const filas = tabla.getElementsByTagName('tr');
+            for (let i = 1; i < filas.length; i++) { // Empieza en 1 para saltar el thead
+                const fila = filas[i];
+                const textoFila = fila.textContent.toLowerCase();
+                fila.style.display = textoFila.includes(filtro) ? '' : 'none';
+            }
+        });
+    }
+});

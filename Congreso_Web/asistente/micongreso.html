@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Asistente | VII Encuentro de Gestores Tecnológicos 2026</title>
     <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../Vista_General/programa.css">
+    <link rel="stylesheet" href="asistente.css">
     <link rel="icon" href="../images/redgtech_logo.png" type="image/x-icon">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
@@ -94,24 +96,78 @@
     <div class="login-container">
         <section class="dashboard-section">
             <h2>Bienvenido/a, <span id="userName">Nombre del Asistente</span></h2>
-            <p>Aquí podrás descargar tus certificados.</p>
-        </section>
-
-        <section class="dashboard-section" id="seccionCertificados">
-            <h3>Mis Certificados</h3>
-            <div class="certificate-card">
-                <img src="../images/certificate_icon.png" alt="Icono de certificado">
-                <div class="certificate-info">
-                    <h4>Certificado de Asistente - VII Encuentro de Gestores Tecnológicos</h4>
-                    <p>Emitido el: 25/10/2026</p>
-                </div>
-                <div class="certificate-download">
-                    <a href="#" class="btn" id="generarCertificado" data-rol="Asistente">Descargar Certificado</a>
-
-                </div>
-            </div>
         </section>
     </div>
+
+    <h3 style="text-align: center; font-size: 1.5rem; text-decoration: underline;">BUSQUEDA RAPIDA</h3>
+    <div class="filtro-container" style="display: flex; flex-direction: column; align-items: center; width: 100%; margin: 0 auto;">
+        <div class="filtro-grid" style="display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; width: 100%; max-width: 900px;">
+            <div>
+                <label for="fecha">Fecha:</label>
+                <select id="fecha">
+                    <option>Cualquiera</option>
+                    <option>24/10</option>
+                    <option>25/10</option>
+                    <option>26/10</option>
+                </select>
+            </div>
+            <div>
+                <label for="tipo">Tipo de Actividad:</label>
+                <select id="tipo">
+                    <option>Cualquiera</option>
+                    <option>Conferencia</option>
+                    <option>Taller</option>
+                    <option>Panel</option>
+                    <option>General</option>
+                    <option>Exposición</option>
+                    <option>Social</option>
+                </select>
+            </div>
+            <div>
+                <label for="area">Área Temática:</label>
+                <select id="area">
+                    <option>Cualquiera</option>
+                    <option>EJE 1</option>
+                    <option>EJE 2</option>
+                    <option>EJE 3</option>          
+                </select>
+            </div>
+            <div>
+                <label for="apellido">Apellido Participante:</label>
+                <input type="text" id="apellido" placeholder="Apellido Participante (puede escribirlo completo)" />
+            </div>
+        </div>
+
+        <div style="margin-top: 10px; text-align: center;">
+            <label for="orden">Ordenado Por:</label>
+            <select id="orden">
+                <option>Día/Salón/Hora</option>
+            </select>
+        </div>
+
+        <div class="acciones" style="margin-top: 16px; display: flex; gap: 1rem; justify-content: center;"></div>
+            <button class="btn-buscar">Buscar 🔍</button>
+            <div class="spacer-15px"></div>
+            <button class="btn-ver-todas">VER TODAS (Sin Filtros)</button>
+        </div>
+    </div>
+    
+<input type="text" id="busquedaMiCongreso" placeholder="Buscar en mi congreso...">
+
+<table id="miCongresoTable">
+  <thead>
+    <tr>
+      <th>Día</th>
+      <th>Actividad</th>
+      <th>Tipo</th>
+      <th>Ponente</th>
+      <th>Sala</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Aquí van tus filas -->
+  </tbody>
+</table>
 
     <footer class="footer-extendido">
         <div class="footer-container">
@@ -154,6 +210,6 @@
     </footer>
     <script src="../script.js"></script>
     <script src="../certificado.js"></script>
-
+    <script src="/Congreso_Web/Vista_General/programa.js"></script>
 </body>
 </html>
