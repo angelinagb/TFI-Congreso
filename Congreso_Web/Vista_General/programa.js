@@ -228,3 +228,60 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 });
 
+if (programaDiaTableBody && pageDayId) {
+	console.log(`Elemento programaDiaTableBody encontrado para el día: ${pageDayId}. Llenando tabla detallada...`);
+
+	if (tituloDiaElement) {
+		const dayMap = {
+			'dia1': 'Día 1 (24 de Octubre de 2026)',
+			'dia2': 'Día 2 (25 de Octubre de 2026)',
+			'dia3': 'Día 3 (26 de Octubre de 2026)'
+		};
+		tituloDiaElement.textContent = `Programa Detallado - ${dayMap[pageDayId] || pageDayId}`;
+		console.log(`Título del día actualizado a: ${tituloDiaElement.textContent}`);
+	} else {
+		console.warn('Elemento con ID "tituloDia" no encontrado en la página de detalle del día.');
+	}
+
+	const actividadesDelDia = programaCompleto[pageDayId];
+
+	if (actividadesDelDia && actividadesDelDia.length > 0) {
+		// Limpiar contenido previo del tbody antes de insertar
+		programaDiaTableBody.innerHTML = '';
+
+		actividadesDelDia.forEach(actividad => {
+			const row = programaDiaTableBody.insertRow();
+			row.innerHTML = `
+                    <td>${actividad.hora}</td>
+                    <td>${actividad.actividad}</td>
+                    <td>${actividad.tipo}</td>
+                    <td>${actividad.ponente}</td>
+                    <td>${actividad.sala}</td>
+                `;
+		});
+		console.log(`Tabla detallada para ${pageDayId} llenada con ${actividadesDelDia.length} actividades.`);
+	} else {
+		console.warn(`No se encontraron datos de actividades para el día: ${pageDayId} o está vacío.`);
+		programaDiaTableBody.innerHTML = '<tr><td colspan="5">No hay actividades programadas para este día.</td></tr>';
+	}
+} else {
+	console.log('Elemento programaDiaTableBody o data-programa-dia NO encontrado en esta página (esperado si es programa.html).');
+}
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+	const inputBusqueda = document.getElementById('busquedaMiCongreso');
+	const tabla = document.getElementById('miCongresoTable');
+	if (inputBusqueda && tabla) {
+		inputBusqueda.addEventListener('keyup', function() {
+			const filtro = this.value.toLowerCase();
+			const filas = tabla.getElementsByTagName('tr');
+			for (let i = 1; i < filas.length; i++) { // Empieza en 1 para saltar el thead
+				const fila = filas[i];
+				const textoFila = fila.textContent.toLowerCase();
+				fila.style.display = textoFila.includes(filtro) ? '' : 'none';
+			}
+		});
+	}
+});
