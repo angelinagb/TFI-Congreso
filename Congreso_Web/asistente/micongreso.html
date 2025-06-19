@@ -85,9 +85,13 @@
 
     <nav class="dashboard-nav">
         <ul>
-            <li><a href="dashboard-asistente.html" class="active">Inicio</a></li>
-            <li><a href="#">Mi Perfil</a></li>
-            <li><a href="#">Configuración</a></li>
+            <li>
+                <a href="#" class="active" style="background-color: #e0f3fa; color: #246488; font-weight: bold; box-shadow: 0 2px 8px #b3e0f7; border-radius: 4px;">
+                    Mi Congreso
+                </a>
+            </li>
+            <li><a href="dashboard-asistente.html" class="active">Certificados</a></li>
+            <li><a href="#">Preferencias</a></li>
             <li><a href="#" id="logout">Cerrar sesión</a></li>
             <li><a href="../index.html">Página del Congreso</a></li>
         </ul>
@@ -95,81 +99,51 @@
 
     <div class="login-container">
         <section class="dashboard-section">
-            <h2>Bienvenido/a, <span id="userName">Nombre del Asistente</span></h2>
+            <h2>Bienvenido/a, <span id="userName"></span></h2>
+            <p>Aquí podrás gestionar tus actividades, buscar eventos y descargar tus certificados.</p>
         </section>
-    </div>
-
-    <h3 style="text-align: center; font-size: 1.5rem; text-decoration: underline;">BUSQUEDA RAPIDA</h3>
-    <div class="filtro-container" style="display: flex; flex-direction: column; align-items: center; width: 100%; margin: 0 auto;">
-        <div class="filtro-grid" style="display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; width: 100%; max-width: 900px;">
-            <div>
-                <label for="fecha">Fecha:</label>
-                <select id="fecha">
-                    <option>Cualquiera</option>
-                    <option>24/10</option>
-                    <option>25/10</option>
-                    <option>26/10</option>
-                </select>
-            </div>
-            <div>
-                <label for="tipo">Tipo de Actividad:</label>
-                <select id="tipo">
-                    <option>Cualquiera</option>
-                    <option>Conferencia</option>
-                    <option>Taller</option>
-                    <option>Panel</option>
-                    <option>General</option>
-                    <option>Exposición</option>
-                    <option>Social</option>
-                </select>
-            </div>
-            <div>
-                <label for="area">Área Temática:</label>
-                <select id="area">
-                    <option>Cualquiera</option>
-                    <option>EJE 1</option>
-                    <option>EJE 2</option>
-                    <option>EJE 3</option>          
-                </select>
-            </div>
-            <div>
-                <label for="apellido">Apellido Participante:</label>
-                <input type="text" id="apellido" placeholder="Apellido Participante (puede escribirlo completo)" />
-            </div>
-        </div>
-
-        <div style="margin-top: 10px; text-align: center;">
-            <label for="orden">Ordenado Por:</label>
-            <select id="orden">
-                <option>Día/Salón/Hora</option>
-            </select>
-        </div>
-
-        <div class="acciones" style="margin-top: 16px; display: flex; gap: 1rem; justify-content: center;"></div>
-            <button class="btn-buscar">Buscar 🔍</button>
-            <div class="spacer-15px"></div>
-            <button class="btn-ver-todas">VER TODAS (Sin Filtros)</button>
-        </div>
-    </div>
-    
-<input type="text" id="busquedaMiCongreso" placeholder="Buscar en mi congreso...">
+<h3>Actividades Detalladas</h3>
+<div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 10px;">
+  <input type="text" id="busquedaMiCongreso" placeholder="Buscar en mi congreso...">
+  <select id="filtroDia" class = "filtro-btn">
+    <option value="">Todos los días</option>
+    <option value="Día 1">Día 1</option>
+    <option value="Día 2">Día 2</option>
+    <option value="Día 3">Día 3</option>
+  </select>
+  <select id="filtroTipo" class = "filtro-btn">
+    <option value="">Todos los tipos</option>
+    <option value="Ponencias">Ponencias</option>
+    <option value="Magistral">Magistral</option>
+    <option value="Taller">Taller</option>
+    <option value="General">General</option>
+    <option value="Mesa Redonda">Mesa Redonda</option>
+    <option value="Panel">Panel</option>
+    <option value="Networking">Networking</option>
+    <option value="Social">Social</option>
+  </select>
+  <select id="filtroHora" class = "filtro-btn"></select>
+  <select id="filtroPonente" class = "filtro-btn"></select>
+  <button id="filtroFavoritasBtn" class="filtroFavoritasBtn">Ver solo favoritas</button>
+</div>
 
 <table id="miCongresoTable">
   <thead>
     <tr>
       <th>Día</th>
+      <th>Hora</th>
       <th>Actividad</th>
       <th>Tipo</th>
       <th>Ponente</th>
       <th>Sala</th>
+      <th>Favorita</th>
     </tr>
   </thead>
   <tbody>
-    <!-- Aquí van tus filas -->
+    <!-- El JS llenará las filas aquí -->
   </tbody>
 </table>
-
-    <footer class="footer-extendido">
+   <footer class="footer-extendido">
         <div class="footer-container">
             <div class="footer-column">
                 <h3>CONTÁCTANOS</h3>
@@ -208,8 +182,9 @@
             <p>&copy; 2026 RedGtech. Todos los derechos reservados.</p>
         </div>
     </footer>
+    <script src="../Vista_General/programa.js"></script>
     <script src="../script.js"></script>
     <script src="../certificado.js"></script>
-    <script src="/Congreso_Web/Vista_General/programa.js"></script>
+    
 </body>
 </html>

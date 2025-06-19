@@ -1,4 +1,4 @@
-Segun el Plan, la entrega del 9/6 Consiste en: 
+Segun el Plan, la entrega del 20/6 Consiste en: 
     1. Prototipo navegable con funcionalidad de registro simulada. Incluye
         a. Integracion con formularios ( o sea que caiga a excel ?)
         b. Flujos automatizados simples 
@@ -10,16 +10,13 @@ Segun el Plan, la entrega del 9/6 Consiste en:
 
 ------US----------------
 
-Mejorar estilo : Separe todos los css asi que no deberia ser un problema cambiar colores /fuentes etc.
-Hice una carpeta que es VistaGeneral que quiero poner todo lo que no es puertas adentro del sistema, aunque no mude nada para no romper todo
 En general : Falta la campanita de notificaciones 
 En el dashboard del ADMIN: 
-    a. Acomodar el css para que se vea bien "admin user" -> nombre encuadrado y toda la bola
     b. No deberia tener acceso a votar las ponencias, pero si a ver su estado
     e. Acta de congreso 
 
 En el dashboard del Ponente:
-    a. Si esta aprobada no deberia poder editarla xD
+    a. Si esta aprobaba/enviada no deberia poder editarla xD
     b. POST CONGRESO - el ranking de la ponencia en su eje 
 
 En el dashboard del Asistente: 
@@ -49,7 +46,6 @@ Las cosas que nos marcaron
 - ponentes mismo correo 
 - ponencias de autores multiples 
 - desarrollado por NORCORE 
-- Seccion Verde 
 - MI CONGRESO 
 
 ---- 
