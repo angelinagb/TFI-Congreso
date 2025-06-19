@@ -193,3 +193,33 @@ body {
 .ordenado {
     margin-top: 10px;
 }
+
+.filtroFavoritasBtn {
+    background-color: #6e6903;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.filtroFavoritasBtn:hover {
+    background-color: #c6c047;
+    box-shadow: 0 0 8px 2px #c6c047, 0 0 2px 1px #6e6903;
+}
+
+.filtro-btn {
+    background-color: #246488;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.filtro-btn:hover {
+    background-color: #1a4d6b;
+    box-shadow: 0 2px 8px rgba(36, 100, 136, 0.15);
+}
