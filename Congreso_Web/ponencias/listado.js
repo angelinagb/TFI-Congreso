@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const estadoClass = p.estado === "Aprobada" ? "status-approved" :
                           p.estado === "Rechazada" ? "status-rejected" : "status-pending";
       const tr = document.createElement("tr");
-
+      const desactivarAsignar = p.evaluador_asignado && !p.solicitud_derivacion ? 'disabled' : '';
       // Determinar el nombre del evaluador si está asignado
       const nombreEvaluador = p.evaluador_asignado ?
                               (evaluadores.find(e => e.id === p.evaluador_asignado)?.nombre || p.evaluador_asignado)
@@ -42,12 +42,13 @@ document.addEventListener('DOMContentLoaded', () => {
           <button class="btn-sm btn-approve" data-id="${p.ponencia_id}">Aprobar</button>
           <button class="btn-sm btn-reject" data-id="${p.ponencia_id}">Rechazar</button>
           <button class="btn-sm btn-detalles" data-id="${p.ponencia_id}">Ver detalles</button>
-          <button class="btn-sm btn-assign-evaluator" data-id="${p.ponencia_id}">Asignar Evaluador</button>
+         <button class="btn-sm btn-assign-evaluator" data-id="${p.ponencia_id}" ${desactivarAsignar}>Asignar Evaluador</button>
           ${p.solicitud_derivacion ? `<button class="btn-sm btn-handle-derivation" data-id="${p.ponencia_id}">Derivación Pendiente</button>` : ''}
         </td>
       `;
       tabla.appendChild(tr);
     });
+
   }
 
   // Filtro y búsqueda

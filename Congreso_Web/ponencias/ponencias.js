@@ -10,7 +10,7 @@ const ponencias = [
         infografia: "https://example.com/infografia1.png",
         informe_investigacion: "https://example.com/informe1.pdf",
         estado: "Pendiente",
-        evaluador_asignado: null, // Nuevo campo
+        evaluador_asignado: "Juan Perez", // Nuevo campo
         solicitud_derivacion: false // Nuevo campo
     },
     {
