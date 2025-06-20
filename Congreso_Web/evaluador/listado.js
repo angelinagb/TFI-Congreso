@@ -98,7 +98,6 @@ function renderTabla(ponenciasFiltradas) {
       ponenciaSeleccionada = ponencias.find(p => p.ponencia_id === id);
       if (ponenciaSeleccionada) {
         razonDerivar.value = "";
-        evaluadorDestino.innerHTML = '<option value="">Seleccionar evaluador</option>';
         modalDerivar.style.display = "flex";
       }
     }
