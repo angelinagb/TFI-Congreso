@@ -37,96 +37,164 @@ const programaCompleto = {
 		{ hora: '15:00 - 16:00', actividad: 'Sesión de Preguntas y Respuestas con Expertos', tipo: 'Panel', ponente: 'Panel de Expertos', sala: 'Auditorio Principal' },
 		{ hora: '16:00 - 16:30', actividad: 'Coffee Break', tipo: 'General', ponente: '', sala: 'Área de Exposiciones' },
 		{ hora: '16:30 - 17:30', actividad: 'Conferencia de Clausura: Desafíos Futuros de la Tecnología', tipo: 'Magistral', ponente: 'Dr. Roberto Vargas', sala: 'Auditorio Principal' },
-		{hora: '17:30 - 18:00', actividad: 'Premios - Sede - Evaluación Nueva Sede', tipo: 'General', ponente: 'Comité Organizador', sala: 'Auditorio Principal' },
-    	{hora: '18:00 - 19:00', actividad: 'Brindis de camaradería', tipo: 'Social', ponente: 'Comité Organizador', sala: 'Terraza Principal' },    
+		{ hora: '17:30 - 18:00', actividad: 'Premios - Sede - Evaluación Nueva Sede', tipo: 'General', ponente: 'Comité Organizador', sala: 'Auditorio Principal' },
+		{ hora: '18:00 - 19:00', actividad: 'Brindis de camaradería', tipo: 'Social', ponente: 'Comité Organizador', sala: 'Terraza Principal' },
 	],
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-	 // Referencias a los filtros
-    const tabla = document.getElementById('miCongresoTable');
-    const inputBusqueda = document.getElementById('busquedaMiCongreso');
-    const filtroDia = document.getElementById('filtroDia');
-    const filtroTipo = document.getElementById('filtroTipo');
-    const filtroHora = document.getElementById('filtroHora');
-    const filtroPonente = document.getElementById('filtroPonente');
-    const filtroFavoritasBtn = document.getElementById('filtroFavoritasBtn');
-    let mostrarSoloFavoritas = false;
-    // --- Estadísticas generales ---
-    let totalPonencias = 0;
-    let totalMagistrales = 0;
-    let totalTalleres = 0;
-    let totalDiasActividad = Object.keys(programaCompleto).length;
+	// Referencias a los filtros
+	const armarProgramaMobile = () => {
+		const tableContainer = document.getElementsByClassName("table-container")[0];
+		tableContainer.replaceChildren();
+		programaCompleto["dia1"].forEach(actividad => {
+			const actCard = document.createElement("div");
+			actCard.classList.add("custom-card");
+			actCard.innerHTML = `
+			  <div class="row">
+			    <h4>${actividad.actividad}</h4>
+			    <h4>${actividad.hora}</h4>
+			  </div>
+			  <hr>
+			  <p>Tipo: ${actividad.tipo}</p>
+			  <p>Ponente: ${actividad.ponente}</p>
+			  <p>Sala: ${actividad.sala}</p>
+			`;
+			tableContainer.appendChild(actCard);
+		});
+	};
+	const armarProgramaDesktop = () => {
+		// --- Lógica para programa_diaX.html (Tablas de Detalle por Día) ---
+		const programaDiaTableBody = document.getElementById('programaDiaTable')?.querySelector('tbody');
+		const pageDayId = document.body.getAttribute('data-programa-dia');
+		const tituloDiaElement = document.getElementById('tituloDia');
+
+		if (programaDiaTableBody && pageDayId) {
+			console.log(`Elemento programaDiaTableBody encontrado para el día: ${pageDayId}. Llenando tabla detallada...`);
+
+			if (tituloDiaElement) {
+				const dayMap = {
+					'dia1': 'Día 1 (24 de Octubre de 2026)',
+					'dia2': 'Día 2 (25 de Octubre de 2026)',
+					'dia3': 'Día 3 (26 de Octubre de 2026)'
+				};
+				tituloDiaElement.textContent = `Programa Detallado - ${dayMap[pageDayId] || pageDayId}`;
+				console.log(`Título del día actualizado a: ${tituloDiaElement.textContent}`);
+			} else {
+				console.warn('Elemento con ID "tituloDia" no encontrado en la página de detalle del día.');
+			}
+
+			const actividadesDelDia = programaCompleto[pageDayId];
+
+			if (actividadesDelDia && actividadesDelDia.length > 0) {
+				// Limpiar contenido previo del tbody antes de insertar
+				programaDiaTableBody.innerHTML = '';
+
+				actividadesDelDia.forEach(actividad => {
+					const row = programaDiaTableBody.insertRow();
+					let dataEl = row.insertCell();
+					dataEl.textContent = `${actividad.hora}`;
+					dataEl = row.insertCell();
+					dataEl.textContent = `${actividad.actividad}`;
+					dataEl = row.insertCell();
+					dataEl.textContent = `${actividad.tipo}`;
+					dataEl = row.insertCell();
+					dataEl.textContent = `${actividad.ponente}`;
+					dataEl = row.insertCell();
+					dataEl.textContent = `${actividad.sala}`;
+				});
+				console.log(`Tabla detallada para ${pageDayId} llenada con ${actividadesDelDia.length} actividades.`);
+			} else {
+				console.warn(`No se encontraron datos de actividades para el día: ${pageDayId} o está vacío.`);
+				programaDiaTableBody.innerHTML = '<tr><td colspan="5">No hay actividades programadas para este día.</td></tr>';
+			}
+		} else {
+			console.log('Elemento programaDiaTableBody o data-programa-dia NO encontrado en esta página (esperado si es programa.html).');
+		}
+	};
+	const tabla = document.getElementById('miCongresoTable');
+	const inputBusqueda = document.getElementById('busquedaMiCongreso');
+	const filtroDia = document.getElementById('filtroDia');
+	const filtroTipo = document.getElementById('filtroTipo');
+	const filtroHora = document.getElementById('filtroHora');
+	const filtroPonente = document.getElementById('filtroPonente');
+	const filtroFavoritasBtn = document.getElementById('filtroFavoritasBtn');
+	let mostrarSoloFavoritas = false;
+	// --- Estadísticas generales ---
+	let totalPonencias = 0;
+	let totalMagistrales = 0;
+	let totalTalleres = 0;
+	let totalDiasActividad = Object.keys(programaCompleto).length;
 
 
 	function llenarSelects() {
-        const horasSet = new Set();
-        const ponentesSet = new Set();
-        Object.keys(programaCompleto).forEach(diaKey => {
-            programaCompleto[diaKey].forEach(actividad => {
-                horasSet.add(actividad.hora);
-                if (actividad.ponente) ponentesSet.add(actividad.ponente);
-            });
-        });
-        filtroHora.innerHTML = '<option value="">Todas las horas</option>' +
-            Array.from(horasSet).map(h => `<option value="${h}">${h}</option>`).join('');
-        filtroPonente.innerHTML = '<option value="">Todos los ponentes</option>' +
-            Array.from(ponentesSet).map(p => `<option value="${p}">${p}</option>`).join('');
-    }
-    if (filtroHora && filtroPonente) llenarSelects();
+		const horasSet = new Set();
+		const ponentesSet = new Set();
+		Object.keys(programaCompleto).forEach(diaKey => {
+			programaCompleto[diaKey].forEach(actividad => {
+				horasSet.add(actividad.hora);
+				if (actividad.ponente) ponentesSet.add(actividad.ponente);
+			});
+		});
+		filtroHora.innerHTML = '<option value="">Todas las horas</option>' +
+			Array.from(horasSet).map(h => `<option value="${h}">${h}</option>`).join('');
+		filtroPonente.innerHTML = '<option value="">Todos los ponentes</option>' +
+			Array.from(ponentesSet).map(p => `<option value="${p}">${p}</option>`).join('');
+	}
+	if (filtroHora && filtroPonente) llenarSelects();
 
 
-    for (const diaKey in programaCompleto) {
-        programaCompleto[diaKey].forEach(actividad => {
-            if (actividad.tipo === 'Ponencias') totalPonencias++;
-            else if (actividad.tipo === 'Magistral') totalMagistrales++;
-            else if (actividad.tipo === 'Taller') totalTalleres++;
-        });
-    }
-    // Crea el botón de filtro si no existe
-    if (tabla && !filtroFavoritasBtn) {
-        const btn = document.createElement('button');
-        btn.id = 'filtroFavoritasBtn';
-        btn.textContent = 'Ver solo favoritas';
-        btn.style.margin = '10px 0 10px 10px';
-        tabla.parentNode.insertBefore(btn, tabla);
-    }
-    function renderizarTablaMiCongreso() {
-        const tbody = tabla.querySelector('tbody');
-        tbody.innerHTML = '';
-        const favoritos = JSON.parse(localStorage.getItem('favoritosCongreso') || '[]');
-        const textoBusqueda = (inputBusqueda?.value || '').toLowerCase();
-        const diaFiltro = filtroDia?.value || '';
-        const tipoFiltro = filtroTipo?.value || '';
-        const horaFiltro = filtroHora?.value || '';
-        const ponenteFiltro = filtroPonente?.value || '';
+	for (const diaKey in programaCompleto) {
+		programaCompleto[diaKey].forEach(actividad => {
+			if (actividad.tipo === 'Ponencias') totalPonencias++;
+			else if (actividad.tipo === 'Magistral') totalMagistrales++;
+			else if (actividad.tipo === 'Taller') totalTalleres++;
+		});
+	}
+	// Crea el botón de filtro si no existe
+	if (tabla && !filtroFavoritasBtn) {
+		const btn = document.createElement('button');
+		btn.id = 'filtroFavoritasBtn';
+		btn.textContent = 'Ver solo favoritas';
+		btn.style.margin = '10px 0 10px 10px';
+		tabla.parentNode.insertBefore(btn, tabla);
+	}
+	function renderizarTablaMiCongreso() {
+		const tbody = tabla.querySelector('tbody');
+		tbody.innerHTML = '';
+		const favoritos = JSON.parse(localStorage.getItem('favoritosCongreso') || '[]');
+		const textoBusqueda = (inputBusqueda?.value || '').toLowerCase();
+		const diaFiltro = filtroDia?.value || '';
+		const tipoFiltro = filtroTipo?.value || '';
+		const horaFiltro = filtroHora?.value || '';
+		const ponenteFiltro = filtroPonente?.value || '';
 
-        Object.keys(programaCompleto).forEach(diaKey => {
-            const actividades = programaCompleto[diaKey];
-            actividades.forEach((actividad, idx) => {
-                const actividadId = `${diaKey}-${idx}`;
-                const esFavorita = favoritos.includes(actividadId);
+		Object.keys(programaCompleto).forEach(diaKey => {
+			const actividades = programaCompleto[diaKey];
+			actividades.forEach((actividad, idx) => {
+				const actividadId = `${diaKey}-${idx}`;
+				const esFavorita = favoritos.includes(actividadId);
 
-                // Filtros
-                if (mostrarSoloFavoritas && !esFavorita) return;
-                if (diaFiltro && diaKey.replace('dia', 'Día ') !== diaFiltro) return;
-                if (tipoFiltro && actividad.tipo !== tipoFiltro) return;
-                if (horaFiltro && actividad.hora !== horaFiltro) return;
-                if (ponenteFiltro && actividad.ponente !== ponenteFiltro) return;
+				// Filtros
+				if (mostrarSoloFavoritas && !esFavorita) return;
+				if (diaFiltro && diaKey.replace('dia', 'Día ') !== diaFiltro) return;
+				if (tipoFiltro && actividad.tipo !== tipoFiltro) return;
+				if (horaFiltro && actividad.hora !== horaFiltro) return;
+				if (ponenteFiltro && actividad.ponente !== ponenteFiltro) return;
 
-                // Filtro de búsqueda general
-                const textoFila = [
-                    diaKey.replace('dia', 'Día '),
-                    actividad.hora,
-                    actividad.actividad,
-                    actividad.tipo,
-                    actividad.ponente,
-                    actividad.sala
-                ].join(' ').toLowerCase();
-                if (textoBusqueda && !textoFila.includes(textoBusqueda)) return;
+				// Filtro de búsqueda general
+				const textoFila = [
+					diaKey.replace('dia', 'Día '),
+					actividad.hora,
+					actividad.actividad,
+					actividad.tipo,
+					actividad.ponente,
+					actividad.sala
+				].join(' ').toLowerCase();
+				if (textoBusqueda && !textoFila.includes(textoBusqueda)) return;
 
-                const fila = document.createElement('tr');
-                fila.innerHTML = `
+				const fila = document.createElement('tr');
+				fila.innerHTML = `
                     <td>${diaKey.replace('dia', 'Día ')}</td>
                     <td>${actividad.hora}</td>
                     <td>${actividad.actividad}</td>
@@ -139,58 +207,58 @@ document.addEventListener('DOMContentLoaded', () => {
                         </button>
                     </td>
                 `;
-                tbody.appendChild(fila);
-            });
-        });
-    }
+				tbody.appendChild(fila);
+			});
+		});
+	}
 	// Listeners para filtros y búsqueda
 	[inputBusqueda, filtroDia, filtroTipo, filtroHora, filtroPonente].forEach(filtro => {
 		if (filtro) filtro.addEventListener('input', renderizarTablaMiCongreso);
 	});
-	
 
-    // Inicializa la tabla
-    if (tabla) renderizarTablaMiCongreso();
 
-    // --- Búsqueda en la tabla ---
-    if (inputBusqueda && tabla) {
-        inputBusqueda.addEventListener('keyup', function () {
-            const filtro = this.value.toLowerCase();
-            const filas = tabla.getElementsByTagName('tr');
-            for (let i = 1; i < filas.length; i++) {
-                const fila = filas[i];
-                const textoFila = fila.textContent.toLowerCase();
-                fila.style.display = textoFila.includes(filtro) ? '' : 'none';
-            }
-        });
-    }
+	// Inicializa la tabla
+	if (tabla) renderizarTablaMiCongreso();
 
-    // --- Marcar/desmarcar como favorita ---
-    if (tabla) {
-        const tbody = tabla.querySelector('tbody');
-        tbody.addEventListener('click', function (e) {
-            if (e.target.closest('.btn-favorito')) {
-                const btn = e.target.closest('.btn-favorito');
-                const id = btn.getAttribute('data-id');
-                let favoritos = JSON.parse(localStorage.getItem('favoritosCongreso') || '[]');
-                const star = btn.querySelector('span');
-                if (favoritos.includes(id)) {
-                    favoritos = favoritos.filter(fav => fav !== id);
-                    star.style.color = '#ccc';
-                } else {
-                    favoritos.push(id);
-                    star.style.color = 'gold';
-                }
-                localStorage.setItem('favoritosCongreso', JSON.stringify(favoritos));
-                renderizarTablaMiCongreso();
-            }
-        });
-    }
+	// --- Búsqueda en la tabla ---
+	if (inputBusqueda && tabla) {
+		inputBusqueda.addEventListener('keyup', function() {
+			const filtro = this.value.toLowerCase();
+			const filas = tabla.getElementsByTagName('tr');
+			for (let i = 1; i < filas.length; i++) {
+				const fila = filas[i];
+				const textoFila = fila.textContent.toLowerCase();
+				fila.style.display = textoFila.includes(filtro) ? '' : 'none';
+			}
+		});
+	}
 
-    // --- Filtro de favoritas ---
+	// --- Marcar/desmarcar como favorita ---
+	if (tabla) {
+		const tbody = tabla.querySelector('tbody');
+		tbody.addEventListener('click', function(e) {
+			if (e.target.closest('.btn-favorito')) {
+				const btn = e.target.closest('.btn-favorito');
+				const id = btn.getAttribute('data-id');
+				let favoritos = JSON.parse(localStorage.getItem('favoritosCongreso') || '[]');
+				const star = btn.querySelector('span');
+				if (favoritos.includes(id)) {
+					favoritos = favoritos.filter(fav => fav !== id);
+					star.style.color = '#ccc';
+				} else {
+					favoritos.push(id);
+					star.style.color = 'gold';
+				}
+				localStorage.setItem('favoritosCongreso', JSON.stringify(favoritos));
+				renderizarTablaMiCongreso();
+			}
+		});
+	}
+
+	// --- Filtro de favoritas ---
 	const filtroBtn = document.getElementById('filtroFavoritasBtn');
 	if (filtroBtn) {
-		filtroBtn.addEventListener('click', function () {
+		filtroBtn.addEventListener('click', function() {
 			mostrarSoloFavoritas = !mostrarSoloFavoritas;
 			filtroBtn.textContent = mostrarSoloFavoritas ? 'Ver todas' : 'Ver solo favoritas';
 			renderizarTablaMiCongreso();
@@ -283,7 +351,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	// --- Buscador en Mi Congreso ---
 	// Ya se declararon inputBusqueda y tabla arriba, así que solo usar esas variables aquí.
 	if (inputBusqueda && tabla) {
-		inputBusqueda.addEventListener('keyup', function () {
+		inputBusqueda.addEventListener('keyup', function() {
 			const filtro = this.value.toLowerCase();
 			const filas = tabla.getElementsByTagName('tr');
 			for (let i = 1; i < filas.length; i++) {
@@ -346,7 +414,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				}
 			});
 		});
-		tbody.addEventListener('click', function (e) {
+		tbody.addEventListener('click', function(e) {
 			if (e.target.closest('.btn-favorito')) {
 				const btn = e.target.closest('.btn-favorito');
 				const id = btn.getAttribute('data-id');
